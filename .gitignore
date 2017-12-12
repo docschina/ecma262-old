@@ -1,3 +1,4 @@
 node_modules/
 out/
 test*.js
+.DS_Store
