@@ -1,276 +1,276 @@
   <emu-clause id="sec-terms-and-definitions">
-    <h1>Terms and Definitions</h1>
-    <p>For the purposes of this document, the following terms and definitions apply.</p>
+    <h1>术语与定义</h1>
+    <p>本文档将使用下列术语和定义。</p>
 
     <!-- es6num="4.3.1" -->
     <emu-clause id="sec-type">
-      <h1>type</h1>
-      <p>set of data values as defined in clause <emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref> of this specification</p>
+      <h1>类型(type)</h1>
+      <p>在在本规范<emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref>中定义的数据值集合。</p>
     </emu-clause>
 
     <!-- es6num="4.3.2" -->
     <emu-clause id="sec-primitive-value">
-      <h1>primitive value</h1>
-      <p>member of one of the types Undefined, Null, Boolean, Number, Symbol, or String as defined in clause <emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref></p>
+      <h1>原始值(primitive value)</h1>
+      <p>指在<emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref>中定义的Undefined, Null, Boolean, Number, Symbol, String类型的成员</p>
       <emu-note>
-        <p>A primitive value is a datum that is represented directly at the lowest level of the language implementation.</p>
+        <p>一个原始值直接代表语言实现的最低层次的数据</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.3" -->
     <emu-clause id="sec-terms-and-definitions-object">
       <h1>object</h1>
-      <p>member of the type Object</p>
+      <p>Object类型的成员</p>
       <emu-note>
-        <p>An object is a collection of properties and has a single prototype object. The prototype may be the null value.</p>
+        <p>对象是属性的集合，并且具有单个原型对象。原型可能是<abbr title="null value">空值</abbr>。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.4" -->
     <emu-clause id="sec-constructor">
-      <h1>constructor</h1>
-      <p>function object that creates and initializes objects</p>
+      <h1>构造函数(constructor)</h1>
+      <p>创建和初始化对象的函数对象</p>
       <emu-note>
-        <p>The value of a constructor's `prototype` property is a prototype object that is used to implement inheritance and shared properties.</p>
+        <p>构造器的`prototype`属性值是用来实现继承和共享的一个原型对象。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.5" -->
     <emu-clause id="sec-terms-and-definitions-prototype">
-      <h1>prototype</h1>
-      <p>object that provides shared properties for other objects</p>
+      <h1>原型(prototype)</h1>
+      <p>为其他对象提供共享属性的对象</p>
       <emu-note>
-        <p>When a constructor creates an object, that object implicitly references the constructor's `prototype` property for the purpose of resolving property references. The constructor's `prototype` property can be referenced by the program expression <code><var>constructor</var>.prototype</code>, and properties added to an object's prototype are shared, through inheritance, by all objects sharing the prototype. Alternatively, a new object may be created with an explicitly specified prototype by using the `Object.create` built-in function.</p>
+        <p>当构造器创建一个对象，为了解决对象的属性引用，该对象会隐式引用构造器的`prototype`属性。通过程序表达式<code>_constructor_.prototype</code>可以引用到构造器的“prototype”属性，并且添加到对象原型里的属性，会通过继承与所有共享此原型的对象共享。另外，可使用`Object.create`内置函数，通过明确指定原型来创建一个新对象。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.6" -->
     <emu-clause id="sec-ordinary-object">
-      <h1>ordinary object</h1>
-      <p>object that has the default behaviour for the essential internal methods that must be supported by all objects</p>
+      <h1>普通对象(ordinary object)</h1>
+      <p>默认行为拥有如那些所有对象都必须支持的内部方法作的对象</p>
     </emu-clause>
 
     <!-- es6num="4.3.7" -->
     <emu-clause id="sec-exotic-object">
-      <h1>exotic object</h1>
-      <p>object that does not have the default behaviour for one or more of the essential internal methods</p>
+      <h1>异常对象(exotic object)</h1>
+      <p>默认行为缺少一个或多个必要内部方法的对象</p>
       <emu-note>
-        <p>Any object that is not an ordinary object is an exotic object.</p>
+        <p>任何对象不是普通对象就是异常对象。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.8" -->
     <emu-clause id="sec-standard-object">
-      <h1>standard object</h1>
-      <p>object whose semantics are defined by this specification</p>
+      <h1>标准对象(standard object)</h1>
+      <p>其语义由本规范定义的对象</p>
     </emu-clause>
 
     <!-- es6num="4.3.9" -->
     <emu-clause id="sec-built-in-object">
-      <h1>built-in object</h1>
-      <p>object specified and supplied by an ECMAScript implementation</p>
+      <h1>内置对象(built-in object)</h1>
+      <p>ECMAScript实现指定和提供的对象</p>
       <emu-note>
-        <p>Standard built-in objects are defined in this specification. An ECMAScript implementation may specify and supply additional kinds of built-in objects. A <em>built-in constructor</em> is a built-in object that is also a constructor.</p>
+        <p>标准的内置对象由本规范定义，ECMAScript实现可以指定和定义其他的一个<em><abbr title="built-in constructor">内置构造器</abbr></em>是个内置对象，也是个构造器。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.10" -->
     <emu-clause id="sec-undefined-value">
-      <h1>undefined value</h1>
-      <p>primitive value used when a variable has not been assigned a value</p>
+      <h1>未定义值(undefined value)</h1>
+      <p>一个在变量没有被赋值时就被使用的原始值</p>
     </emu-clause>
 
     <!-- es6num="4.3.11" -->
     <emu-clause id="sec-terms-and-definitions-undefined-type">
-      <h1>Undefined type</h1>
-      <p>type whose sole value is the *undefined* value</p>
+      <h1>Undefined类型(Undefined type)</h1>
+      <p>值只有`undefined`的类型</p>
     </emu-clause>
 
     <!-- es6num="4.3.12" -->
     <emu-clause id="sec-null-value">
-      <h1>null value</h1>
-      <p>primitive value that represents the intentional absence of any object value</p>
+      <h1>空值(null value)</h1>
+      <p>表示故意缺省任何对象值的原始值</p>
     </emu-clause>
 
     <!-- es6num="4.3.13" -->
     <emu-clause id="sec-terms-and-definitions-null-type">
-      <h1>Null type</h1>
-      <p>type whose sole value is the *null* value</p>
+      <h1>Null类型(Null type)</h1>
+      <p>值只有`null`的类型</p>
     </emu-clause>
 
     <!-- es6num="4.3.14" -->
     <emu-clause id="sec-terms-and-definitions-boolean-value">
-      <h1>Boolean value</h1>
-      <p>member of the Boolean type</p>
+      <h1>Boolean值(Boolean value)</h1>
+      <p>Boolean类型的成员</p>
       <emu-note>
-        <p>There are only two Boolean values, *true* and *false*.</p>
+        <p>只有两个值, `true`和`false`.</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.15" -->
     <emu-clause id="sec-terms-and-definitions-boolean-type">
-      <h1>Boolean type</h1>
-      <p>type consisting of the primitive values *true* and *false*</p>
+      <h1>Boolean类型(Boolean type)</h1>
+      <p>由原始值`true`和`false`组成的类型</p>
     </emu-clause>
 
     <!-- es6num="4.3.16" -->
     <emu-clause id="sec-boolean-object">
-      <h1>Boolean object</h1>
-      <p>member of the Object type that is an instance of the standard built-in `Boolean` constructor</p>
+      <h1>Boolean对象(Boolean object)</h1>
+      <p>标准内置构造函数`Boolean`的实例，Object类型成员之一</p>
       <emu-note>
-        <p>A Boolean object is created by using the `Boolean` constructor in a `new` expression, supplying a Boolean value as an argument. The resulting object has an internal slot whose value is the Boolean value. A Boolean object can be coerced to a Boolean value.</p>
+        <p>通过使用`new`表达式，以一个Boolean值作为参数调用`Boolean`构造器来创建Boolean对象。由此产生的对象包含一个值为此Boolean值的内部属性。一个Boolean对象可以强制转换为Boolean值。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.17" -->
     <emu-clause id="sec-terms-and-definitions-string-value">
-      <h1>String value</h1>
-      <p>primitive value that is a finite ordered sequence of zero or more 16-bit unsigned integer values</p>
+      <h1>String值(String value)</h1>
+      <p>由零个或多个16位无符号整数组成的有限有序序列原始值</p>
       <emu-note>
-        <p>A String value is a member of the String type. Each integer value in the sequence usually represents a single 16-bit unit of UTF-16 text. However, ECMAScript does not place any restrictions or requirements on the values except that they must be 16-bit unsigned integers.</p>
+        <p>一个String值是String类型的成员。通常序列中的每个整数值代表UTF-16文本的单个16位单元。然而，对于其值，ECMAScript只要求必须是16位无符号整数，除此之外没有任何限制或要求。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.18" -->
     <emu-clause id="sec-terms-and-definitions-string-type">
-      <h1>String type</h1>
-      <p>set of all possible String values</p>
+      <h1>String类型(String type)</h1>
+      <p>所有可能的String值的集合</p>
     </emu-clause>
 
     <!-- es6num="4.3.19" -->
     <emu-clause id="sec-string-object">
-      <h1>String object</h1>
-      <p>member of the Object type that is an instance of the standard built-in `String` constructor</p>
+      <h1>String对象(String object)</h1>
+      <p>标准内置构造器`String`实例，Object类型成员之一</p>
       <emu-note>
-        <p>A String object is created by using the `String` constructor in a `new` expression, supplying a String value as an argument. The resulting object has an internal slot whose value is the String value. A String object can be coerced to a String value by calling the `String` constructor as a function (<emu-xref href="#sec-string-constructor-string-value"></emu-xref>).</p>
+        <p>通过使用`new`表达式，以一个String值为参数调用`String`构造器来创建String对象。由此产生的对象包含一个值为此String值的内部属性。将`String`构造器作为一个函数来调用，可将一个String对象强制转换为一个String值(<emu-xref href="#sec-string-constructor-string-value"></emu-xref>)。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.20" -->
     <emu-clause id="sec-terms-and-definitions-number-value">
-      <h1>Number value</h1>
-      <p>primitive value corresponding to a double-precision 64-bit binary format IEEE 754-2008 value</p>
+      <h1>Number值(Number value)</h1>
+      <p>IEEE 754-2008格式的64位双精度二进制的原始值</p>
       <emu-note>
-        <p>A Number value is a member of the Number type and is a direct representation of a number.</p>
+        <p>一个数字值是数字类型的成员，直接代表一个数字。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.21" -->
     <emu-clause id="sec-terms-and-definitions-number-type">
-      <h1>Number type</h1>
-      <p>set of all possible Number values including the special &ldquo;Not-a-Number&rdquo; (NaN) value, positive infinity, and negative infinity</p>
+      <h1>Number类型(Number type)</h1>
+      <p>所有可能的Number值的集合，包括特殊&ldquo;Not-a-Number&rdquo; (NaN) 值, <abbr title="positive infinity">正无穷</abbr>, <abbr title="negative infinity">负无穷</abbr></p>
     </emu-clause>
 
     <!-- es6num="4.3.22" -->
     <emu-clause id="sec-number-object">
-      <h1>Number object</h1>
-      <p>member of the Object type that is an instance of the standard built-in `Number` constructor</p>
+      <h1>Number对象(Number object)</h1>
+      <p>标准内置构造器`Number`的一个实例，Object类型成员之一</p>
       <emu-note>
-        <p>A Number object is created by using the `Number` constructor in a `new` expression, supplying a number value as an argument. The resulting object has an internal slot whose value is the number value. A Number object can be coerced to a number value by calling the `Number` constructor as a function (<emu-xref href="#sec-number-constructor-number-value"></emu-xref>).</p>
+        <p>通过使用`new`表达式，以一个数字值为参数调用`Number`构造器来创建Number对象。由此产生的对象包含一个值为此Number值的内部属性。将`Number`构造器作为一个函数来调用，可将一个Number对象强制转换为一个数字值(<emu-xref href="#sec-number-constructor-number-value"></emu-xref>)。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.23" -->
     <emu-clause id="sec-terms-and-definitions-infinity">
-      <h1>Infinity</h1>
-      <p>number value that is the positive infinite number value</p>
+      <h1>无穷(Infinity)</h1>
+      <p>正无穷数值</p>
     </emu-clause>
 
     <!-- es6num="4.3.24" -->
     <emu-clause id="sec-terms-and-definitions-nan">
-      <h1>NaN</h1>
-      <p>number value that is an IEEE 754-2008 &ldquo;Not-a-Number&rdquo; value</p>
+      <h1>NaN(NaN)</h1>
+      <p>值IEEE 754-2008 &ldquo;Not-a-Number&rdquo;的数值</p>
     </emu-clause>
 
     <!-- es6num="4.3.25" -->
     <emu-clause id="sec-symbol-value">
-      <h1>Symbol value</h1>
-      <p>primitive value that represents a unique, non-String Object property key</p>
+      <h1>Symbol值(Symbol value)</h1>
+      <p>表示一个唯一的，非字符串的属性键对象的原始值</p>
     </emu-clause>
 
     <!-- es6num="4.3.26" -->
     <emu-clause id="sec-terms-and-definitions-symbol-type">
-      <h1>Symbol type</h1>
-      <p>set of all possible Symbol values</p>
+      <h1>Symbol类型(Symbol type)</h1>
+      <p>所有可能的Symbol值集合</p>
     </emu-clause>
 
     <!-- es6num="4.3.27" -->
     <emu-clause id="sec-symbol-object">
-      <h1>Symbol object</h1>
-      <p>member of the Object type that is an instance of the standard built-in `Symbol` constructor</p>
+      <h1>Symbol对象(Symbol object)</h1>
+      <p>标准内置构造器`Symbol`的一个实例，Object类型成员之一</p>
     </emu-clause>
 
     <!-- es6num="4.3.28" -->
     <emu-clause id="sec-terms-and-definitions-function">
-      <h1>function</h1>
-      <p>member of the Object type that may be invoked as a subroutine</p>
+      <h1>函数(function)</h1>
+      <p>可作为子程序调用的Object类型成员之一</p>
       <emu-note>
-        <p>In addition to its properties, a function contains executable code and state that determine how it behaves when invoked. A function's code may or may not be written in ECMAScript.</p>
+        <p>函数除了其属性，还包含可执行代码、状态，用来确定被调用时的行为。函数的代码不限于 ECMAScript。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.29" -->
     <emu-clause id="sec-built-in-function">
-      <h1>built-in function</h1>
-      <p>built-in object that is a function</p>
+      <h1>内置函数(built-in function)</h1>
+      <p>作为函数的内置对象</p>
       <emu-note>
-        <p>Examples of built-in functions include `parseInt` and `Math.exp`. An implementation may provide implementation-dependent built-in functions that are not described in this specification.</p>
+        <p>如 parseInt 和 Math.exp 就是内置函数。一个实现可以提供本规范没有描述的依赖于实现的内置函数。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.30" -->
     <emu-clause id="sec-property">
-      <h1>property</h1>
-      <p>part of an object that associates a key (either a String value or a Symbol value) and a value</p>
+      <h1>属性(property)</h1>
+      <p>将一个键（String值或Symbor值）和值相关联的对象的一部分</p>
       <emu-note>
-        <p>Depending upon the form of the property the value may be represented either directly as a data value (a primitive value, an object, or a function object) or indirectly by a pair of accessor functions.</p>
+        <p>属性可能根据属性值的不同表现为直接的数据值（原始值，对象，或一个函数对象）或间接的一对访问器函数。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.31" -->
     <emu-clause id="sec-method">
-      <h1>method</h1>
-      <p>function that is the value of a property</p>
+      <h1>方法(method)</h1>
+      <p>作为属性值的函数</p>
       <emu-note>
-        <p>When a function is called as a method of an object, the object is passed to the function as its *this* value.</p>
+        <p>当一个函数被作为一个对象的方法调用，此对象将作为`this`值传递给函数。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.32" -->
     <emu-clause id="sec-built-in-method">
-      <h1>built-in method</h1>
-      <p>method that is a built-in function</p>
+      <h1>内置方法(built-in method)</h1>
+      <p>作为内置函数的方法</p>
       <emu-note>
-        <p>Standard built-in methods are defined in this specification, and an ECMAScript implementation may specify and provide other additional built-in methods.</p>
+        <p>标准内置方法由本规范定义，ECMAScript 实现可指定，提供其他额外的内置方法。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.33" -->
     <emu-clause id="sec-attribute">
-      <h1>attribute</h1>
-      <p>internal value that defines some characteristic of a property</p>
+      <h1>特性(attribute)</h1>
+      <p>定义一个属性的一些特性的内部值</p>
     </emu-clause>
 
     <!-- es6num="4.3.34" -->
     <emu-clause id="sec-own-property">
-      <h1>own property</h1>
-      <p>property that is directly contained by its object</p>
+      <h1>自身属性(own property)</h1>
+      <p>对象直接拥有的属性</p>
     </emu-clause>
 
     <!-- es6num="4.3.35" -->
     <emu-clause id="sec-inherited-property">
-      <h1>inherited property</h1>
-      <p>property of an object that is not an own property but is a property (either own or inherited) of the object's prototype</p>
+      <h1>继承属性(inherited property)</h1>
+      <p>不是对象的自身属性，但是是对象原型的属性(原型的自身属性或继承属性)</p>
     </emu-clause>
   </emu-clause>
 
-  <!-- es6num="4.4" -->
+    <!-- es6num="4.4" -->
   <emu-clause id="sec-organization-of-this-specification">
-    <h1>Organization of This Specification</h1>
-    <p>The remainder of this specification is organized as follows:</p>
-    <p>Clause 5 defines the notational conventions used throughout the specification.</p>
-    <p>Clauses 6-9 define the execution environment within which ECMAScript programs operate.</p>
-    <p>Clauses 10-16 define the actual ECMAScript programming language including its syntactic encoding and the execution semantics of all language features.</p>
-    <p>Clauses 17-26 define the ECMAScript standard library. They include the definitions of all of the standard objects that are available for use by ECMAScript programs as they execute.</p>
+    <h1>本规范的结构</h1>
+    <p>本规范的剩余部分章节组织如下：</p>
+    <p>第5章定义了在本规范中使用的一些符号或者语法的约定。</p>
+    <p>第6-9章定义了ECMAScript程序操作包含的执行环境。</p>
+    <p>第10-16章定义了实际的ECMAScript语言，包括它的语法编码以及语言特性的执行语义。</p>
+    <p>第17-26章定义了ECMAScript标准库。它们包括所有当ECMAScript程序执行时可用的标准对象的定义。</p>
   </emu-clause>
 </emu-clause>

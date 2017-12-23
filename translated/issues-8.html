@@ -1,8 +1,8 @@
-<emu-clause id="sec-algorithm-conventions">
-    <h1>Algorithm Conventions</h1>
-    <p>The specification often uses a numbered list to specify steps in an algorithm. These algorithms are used to precisely specify the required semantics of ECMAScript language constructs. The algorithms are not intended to imply the use of any specific implementation technique. In practice, there may be more efficient algorithms available to implement a given feature.</p>
-    <p>Algorithms may be explicitly parameterized, in which case the names and usage of the parameters must be provided as part of the algorithm's definition.</p>
-    <p>Algorithm steps may be subdivided into sequential substeps. Substeps are indented and may themselves be further divided into indented substeps. Outline numbering conventions are used to identify substeps with the first level of substeps labelled with lower case alphabetic characters and the second level of substeps labelled with lower case roman numerals. If more than three levels are required these rules repeat with the fourth level using numeric labels. For example:</p>
+  <emu-clause id="sec-algorithm-conventions">
+    <h1><abbr title="Algorithm Conventions">算法约定</abbr></h1>
+    <p>此规范通常使用带编号的列表来指定算法的步骤。这些算法是用来精确地指定 ECMAScript 语言结构所需的语义。该算法无意暗示任何具体实现使用的技术。在实践中，也许可用更有效的算法实现一个给定功能。</p>
+    <p>算法也许被显式的参数化，在这些案例中参数的名称和用法必须作为算法定义的一部分提高。</p>
+    <p>算法步骤也许被细分成多个连续的子步骤。子步骤需要用缩进表示，并且也许会进一步被划分成更小的缩进的子步骤。大纲编号约定被用作标识有小写字母字符标签的一级子步骤以及有小写罗马数字标签的二级子步骤。如果超过步骤3级，那么这些规则从第四级开始用数字标签进行重复。例如：</p>
     <emu-alg>
       1. Top-level step
         1. Substep.
@@ -12,109 +12,109 @@
               1. Subsubsubsubstep
                 1. Subsubsubsubsubstep
     </emu-alg>
-    <p>A step or substep may be written as an &ldquo;if&rdquo; predicate that conditions its substeps. In this case, the substeps are only applied if the predicate is true. If a step or substep begins with the word &ldquo;else&rdquo;, it is a predicate that is the negation of the preceding &ldquo;if&rdquo; predicate step at the same level.</p>
-    <p>A step may specify the iterative application of its substeps.</p>
-    <p>A step that begins with &ldquo;<dfn id="assert">Assert</dfn>:&rdquo; asserts an invariant condition of its algorithm. Such assertions are used to make explicit algorithmic invariants that would otherwise be implicit. Such assertions add no additional semantic requirements and hence need not be checked by an implementation. They are used simply to clarify algorithms.</p>
-    <p>Algorithm steps may declare named aliases for any value using the form &ldquo;Let _x_ be _someValue_&rdquo;. These aliases are reference-like in that both _x_ and _someValue_ refer to the same underlying data and modifications to either are visible to both. Algorithm steps that want to avoid this reference-like behaviour should explicitly make a copy of the right-hand side: &ldquo;Let _x_ be a copy of _someValue_&rdquo; creates a shallow copy of _someValue_.</p>
-    <p>Once declared, an alias may be referenced in any subsequent steps and must not be referenced from steps prior to the alias's declaration. Aliases may be modified using the form &ldquo;Set _x_ to _someOtherValue_&rdquo;.</p>
+    <p>一个步骤或者子步骤也许会使用&ldquo;if&rdquo;去断言它的子步骤的条件。在这样的案例中，这些子步骤只能适用于&ldquo;if&rdquo;断言为真的情况。如果一个步骤或者子步骤以&ldquo;else&rdquo;开始，那么表示这是之前的&ldquo;if&rdquo;断言的同一级的否定断言。</p>
+    <p>一个步骤也许会指定它的子步骤的迭代程序。</p>
+    <p>一个以&ldquo;<dfn id="assert">Assert</dfn>:&rdquo;开头的步骤断言一个它的算法里不变的条件。这样的断言被用作使算法不变量显式地展示，否则它将是隐式的。这样的断言不增加额外的语义需求，因此在实现中不需要被检查。它们被使用只是为了使算法更清晰。</p>
+    <p>对于任意形如&ldquo;Let _x_ be _someValue_&rdquo;的值，算法步骤也许会声明命名别名。这些别名即可能通过_x_也可能通过_someValue_引用，它们指向同一个潜在的数据，并且修改其中任意一个对另一个都是可见的。那些想避免这样的类似引用的算法步骤需要显式地复制一份右值：即&ldquo;Let_x_ be a copy of _someValue_&rdquo;创建了一个_someValue_的浅复制。</p>
+    <p>一旦声明完毕，别名也许会在随后的任意步骤或者子步骤中被引用，但是它们也许不会在最高级步骤中被引用。别名也许会通过形如&ldquo;Set _x_ to _someOtherValue_&rdquo;这样的形式被修改。</p>
 
     <emu-clause id=sec-algorithm-conventions-abstract-operations>
-      <h1>Abstract Operations</h1>
-      <p>In order to facilitate their use in multiple parts of this specification, some algorithms, called <dfn>abstract operations</dfn>, are named and written in parameterized functional form so that they may be referenced by name from within other algorithms. Abstract operations are typically referenced using a functional application style such as OperationName(_arg1_, _arg2_). Some abstract operations are treated as polymorphically dispatched methods of class-like specification abstractions. Such method-like abstract operations are typically referenced using a method application style such as _someValue_.OperationName(_arg1_, _arg2_).</p>
+      <h1><abbr title="Abstract Operations">抽象操作</abbr></h1>
+      <p>为了促进它们在本规范的多个地方使用，一些算法，我们称之为<dfn><abbr title="abstract operations">抽象操作</abbr></dfn>，在参数化的函数形式中中命名和书写，以便它们能够在其它算法中通过名称来引用。抽象操作通常是被通过一个功能化的应用风格引用，如 OperationName(_arg1_, _arg2_)。一些抽象操作被当作像类规范里抽象的多态发送一样。这样的类似类的方法抽象操作通常通过一个方法应用风格被引用，如_someValue_.OperationName(_arg1_, _arg2_)。</p>
     </emu-clause>
 
     <emu-clause id=sec-algorithm-conventions-syntax-directed-operations namespace=algorithm-conventions>
-      <h1>Syntax-Directed Operations</h1>
-      <p>A <dfn>syntax-directed operation</dfn> is a named operation whose definition consists of algorithms, each of which is associated with one or more productions from one of the ECMAScript grammars. A production that has multiple alternative definitions will typically have a distinct algorithm for each alternative. When an algorithm is associated with a grammar production, it may reference the terminal and nonterminal symbols of the production alternative as if they were parameters of the algorithm. When used in this manner, nonterminal symbols refer to the actual alternative definition that is matched when parsing the source text.</p>
-      <p>When an algorithm is associated with a production alternative, the alternative is typically shown without any &ldquo;[ ]&rdquo; grammar annotations. Such annotations should only affect the syntactic recognition of the alternative and have no effect on the associated semantics for the alternative.</p>
-      <p>Syntax-directed operations are invoked with a parse node and, optionally, other parameters by using the conventions on steps 1, 3, and 4 in the following algorithm:</p>
+      <h1><abbr title="Syntax-Directed Operations">特定语法操作</abbr></h1>
+      <p>一个<dfn><abbr title="syntax-Directed operations">特定语法操作</abbr></dfn>是一个具有名称的操作，它的定义包含了一系列算法，每个算法与一个或者多个ECMAScript文法的产生式相关联。一个有多个可选定义的产生式通常对于每个可选部分都有一个独立的算法。当一个算法与一个文法产生式相关联的时候，它也许会引用这个产生式可选部分的终结符或者非终结符，就好像它们是这个算法的参数一样。当出现这种情况时，非终结符指向实际的源代码中与之匹配的可选部分的定义。</p>
+      <p>当一个算法与一个产生式的可选部分关联的时候，这个可选部分通常不会带上&ldquo;[ ]&rdquo;文法注释。这样的注释只应该影响可选部分的语法识别，不应该对相关的可选部分的语义有影响。</p>
+      <p>特定语法操作同一个解析节点一起被调用，还可以在步骤1，3，4中使用这个约定的其它参数:</p>
       <emu-alg>
         1. Let _status_ be the result of performing SyntaxDirectedOperation of |SomeNonTerminal|.
         2. Let _someParseNode_ be the parse of some source text.
         2. Perform SyntaxDirectedOperation of _someParseNode_.
         2. Perform SyntaxDirectedOperation of _someParseNode_ passing `"value"` as the argument.
       </emu-alg>
-      <p>Unless explicitly specified otherwise, all chain productions have an implicit definition for every operation that might be applied to that production's left-hand side nonterminal. The implicit definition simply reapplies the same operation with the same parameters, if any, to the chain production's sole right-hand side nonterminal and then returns the result. For example, assume that some algorithm has a step of the form: &ldquo;Return the result of evaluating |Block|&rdquo; and that there is a production:</p>
+      <p>除非显式地指定，否则，所有相关联的产生式对于每个也许会被应用到这个产生式左值的非终结符的操作都有一个隐式的定义。如果存在的话，这个隐式的定义简单地再次对同样的参数运用这个相同的定义，对于这些相关联的产生式唯一的右值非终结符，随后返回处理结果。例如，假设一些算法有如下形式的步骤：“返回被解析的块的结果（Return the result of evaluating Block）”，并且这里有一个产生式：</p>
       <emu-grammar type="example">
         Block :
           `{` StatementList `}`
       </emu-grammar>
-      <p>but the Evaluation operation does not associate an algorithm with that production. In that case, the Evaluation operation implicitly includes an association of the form:</p>
-      <p><b>Runtime Semantics: Evaluation</b></p>
+      <p>但是解析操作并没有关联这个产生式的算法。那么在这样的案例中，解析操作隐式地包含了下面形式的关联：</p>
+      <p><b><abbr title="Runtime Semantics: Evaluation">运行时语义: 解析</abbr></b></p>
       <emu-grammar type="example">Block : `{` StatementList `}`</emu-grammar>
       <emu-alg>
         1. Return the result of evaluating |StatementList|.
       </emu-alg>
     </emu-clause>
 
-    <!-- es6num="6.2.2.2" -->
+    <!-- es6num="5.2.3" -->
     <emu-clause id="sec-runtime-semantics">
-      <h1>Runtime Semantics</h1>
-      <p>Algorithms which specify semantics that must be called at runtime are called <dfn>runtime semantics</dfn>. Runtime semantics are defined by abstract operations or syntax-directed operations. Such algorithms always return a completion record.</p>
+      <h1><abbr title="Runtime Semantics">运行时语义</abbr></h1>
+      <p>必须在运行时被调用的指定语义的算法就叫<dfn><abbr title="runtime semantics">运行时语义</abbr></dfn>。 运行时语义通过抽象操作或者指定语法操作来定义。这样的算法必须返回一个完成记录。</p>
       <emu-clause id="sec-implicit-completion-values">
-        <h1>Implicit Completion Values</h1>
-        <p>The algorithms of this specification often implicitly return Completion Records whose [[Type]] is ~normal~. Unless it is otherwise obvious from the context, an algorithm statement that returns a value that is not a Completion Record, such as:</p>
+        <h1><abbr title="Implicit Completion Values">隐式完成值</abbr></h1>
+        <p>本规范的算法常常隐式地返回一个[[Type]]值为<emu-const>normal</emu-const>的完成记录。除非它是上下文中另外非常明显的部分，一个返回一个值的算法语句，那么这个值将不是一个完成值。例如：</p>
         <emu-alg>
           1. Return `"Infinity"`.
         </emu-alg>
-        <p>means the same thing as:</p>
+        <p>与下面的是同一个含义:</p>
         <emu-alg>
           1. Return NormalCompletion(`"Infinity"`).
         </emu-alg>
-        <p>However, if the value expression of a &ldquo;return&rdquo; statement is a Completion Record construction literal, the resulting Completion Record is returned. If the value expression is a call to an abstract operation, the &ldquo;return&rdquo; statement simply returns the Completion Record produced by the abstract operation.</p>
-        <p>The abstract operation Completion(_completionRecord_) is used to emphasize that a previously computed Completion Record is being returned. The Completion abstract operation takes a single argument, _completionRecord_, and performs the following steps:</p>
+        <p>然而，如果一个&ldquo;return&rdquo;语句的值表达式是一个完成记录构造的字面量，那么完成记录的结果将被返回。如果这个值表达式是一个对抽象操作的调用，那么&ldquo;return&rdquo;语句简单地返回这个抽象操作产生的完成记录。</p>
+        <p>抽象操作Completion(_completionRecord_)被用作强调之前计算的Completion Record被返回。Completion这个抽象操作接收一个参数，即_completionRecord_，然后执行下面的步骤：</p>
         <emu-alg>
           1. Assert: _completionRecord_ is a Completion Record.
           1. Return _completionRecord_ as the Completion Record of this abstract operation.
         </emu-alg>
-        <p>A &ldquo;return&rdquo; statement without a value in an algorithm step means the same thing as:</p>
+        <p> 一个在算法步骤中没有值的&ldquo;return&rdquo; 语句与下面的是同样的意思：</p>
         <emu-alg>
-          1. Return NormalCompletion(*undefined*).
+          1. Return NormalCompletion(`undefined`).
         </emu-alg>
-        <p>Any reference to a Completion Record value that is in a context that does not explicitly require a complete Completion Record value is equivalent to an explicit reference to the [[Value]] field of the Completion Record value unless the Completion Record is an abrupt completion.</p>
+        <p>对于任意的在一个上下文中没有显示地需要一个完整的Completion Record值的引用，等价于一个显式地对Completion Record的[[Value]]字段的引用，除非Completion Record是一个<abbr title="abrupt">打断/中断</abbr>完成。</p>
       </emu-clause>
 
-      <!-- es6num="6.2.2.3" -->
+      <!-- es6num="5.2.3.1" -->
       <emu-clause id="sec-throw-an-exception">
-        <h1>Throw an Exception</h1>
-        <p>Algorithms steps that say to throw an exception, such as</p>
+        <h1><abbr title="Throw an Exception">抛出一个异常</abbr></h1>
+        <p>描述抛出一个异常的算法步骤，例如：</p>
         <emu-alg>
-          1. Throw a *TypeError* exception.
+          1. Throw a `TypeError` exception.
         </emu-alg>
-        <p>mean the same things as:</p>
+        <p>意思就是：</p>
         <emu-alg>
-          1. Return Completion{[[Type]]: ~throw~, [[Value]]: a newly created *TypeError* object, [[Target]]: ~empty~}.
+          1. Return Completion{[[Type]]: <emu-const>throw</emu-const>, [[Value]]: a newly created `TypeError` object, [[Target]]: <emu-const>empty</emu-const>}.
         </emu-alg>
       </emu-clause>
 
-      <!-- es6num="6.2.2.4" -->
+      <!-- es6num="5.2.3.2" -->
       <emu-clause id="sec-returnifabrupt" aoid="ReturnIfAbrupt">
-        <h1>ReturnIfAbrupt</h1>
-        <p>Algorithms steps that say or are otherwise equivalent to:</p>
+        <h1><abbr title="ReturnIfAbrupt">返回</abbr></h1>
+        <p>算法步骤说明或者等同于：</p>
         <emu-alg>
           1. ReturnIfAbrupt(_argument_).
         </emu-alg>
-        <p>mean the same thing as:</p>
+        <p>意思就是:</p>
         <emu-alg>
           1. If _argument_ is an abrupt completion, return _argument_.
           1. Else if _argument_ is a Completion Record, let _argument_ be _argument_.[[Value]].
         </emu-alg>
-        <p>Algorithms steps that say or are otherwise equivalent to:</p>
+        <p>算法步骤说明或者等同于：</p>
         <emu-alg>
           1. ReturnIfAbrupt(AbstractOperation()).
         </emu-alg>
-        <p>mean the same thing as:</p>
+        <p>意思就是:</p>
         <emu-alg>
           1. Let _hygienicTemp_ be AbstractOperation().
           1. If _hygienicTemp_ is an abrupt completion, return _hygienicTemp_.
           1. Else if _hygienicTemp_ is a Completion Record, let _hygienicTemp_ be _hygienicTemp_.[[Value]].
         </emu-alg>
-        <p>Where _hygienicTemp_ is ephemeral and visible only in the steps pertaining to ReturnIfAbrupt.</p>
-        <p>Algorithms steps that say or are otherwise equivalent to:</p>
+        <p>这里的_hygienicTemp_是短暂的（临时的），并且只在ReturnIfAbrupt有关的步骤中中可见。</p>
+        <p>算法步骤说明或者等同于：</p>
         <emu-alg>
           1. Let _result_ be AbstractOperation(ReturnIfAbrupt(_argument_)).
         </emu-alg>
-        <p>mean the same thing as:</p>
+        <p>意思就是：</p>
         <emu-alg>
           1. If _argument_ is an abrupt completion, return _argument_.
           1. If _argument_ is a Completion Record, let _argument_ be _argument_.[[Value]].
@@ -122,34 +122,34 @@
         </emu-alg>
       </emu-clause>
       <emu-clause id="sec-returnifabrupt-shorthands">
-        <h1>ReturnIfAbrupt Shorthands</h1>
-        <p>Invocations of abstract operations and syntax-directed operations that are prefixed by `?` indicate that ReturnIfAbrupt should be applied to the resulting Completion Record. For example, the step:</p>
+        <h1><abbr title="ReturnIfAbrupt Shorthands">如果被打断则返回 缩写</abbr></h1>
+        <p>对抽象操作和以`?`为前缀的指定语法操作的调用暗示着ReturnIfAbrupt需要被应用到结果的Completion Record中。 例如，步骤：</p>
         <emu-alg>
           1. ? OperationName().
         </emu-alg>
-        <p>is equivalent to the following step:</p>
+        <p>等价于下面的步骤：</p>
         <emu-alg>
           1. ReturnIfAbrupt(OperationName()).
         </emu-alg>
-        <p>Similarly, for method application style, the step:</p>
+        <p>相似的，对于程序方法的风格，步骤：</p>
         <emu-alg>
           1. ? _someValue_.OperationName().
         </emu-alg>
-        <p>is equivalent to:</p>
+        <p>等价于:</p>
         <emu-alg>
           1. ReturnIfAbrupt(_someValue_.OperationName()).
         </emu-alg>
-        <p>Similarly, prefix `!` is used to indicate that the following invocation of an abstract or syntax-directed operation will never return an abrupt completion and that the resulting Completion Record's [[Value]] field should be used in place of the return value of the operation. For example, the step:</p>
+        <p>相似的，前缀`!`被用作暗示下列的对于抽象或者指定语法操作的调用将不会返回一个打断的完成值， 并且作为结果的Completion Record的[[Value]]字段应该被用作替换操作的返回值。 例如，步骤：</p>
         <emu-alg>
           1. Let _val_ be ! OperationName().
         </emu-alg>
-        <p>is equivalent to the following steps:</p>
+        <p>等价于下面的步骤：</p>
         <emu-alg>
           1. Let _val_ be OperationName().
           1. Assert: _val_ is never an abrupt completion.
           1. If _val_ is a Completion Record, set _val_ to _val_.[[Value]].
         </emu-alg>
-        <p>Syntax-directed operations for runtime semantics make use of this shorthand by placing `!` or `?` before the invocation of the operation:</p>
+        <p>对于运行时语义的指定语法的操作通过在调用操作前替换`!`或者`?`来利用这个缩写。</p>
         <emu-alg>
           1. Perform ! SyntaxDirectedOperation of |NonTerminal|.
         </emu-alg>
@@ -157,10 +157,10 @@
     </emu-clause>
     <!-- es6num="5.3" -->
     <emu-clause id="sec-static-semantic-rules">
-      <h1>Static Semantics</h1>
-      <p>Context-free grammars are not sufficiently powerful to express all the rules that define whether a stream of input elements form a valid ECMAScript |Script| or |Module| that may be evaluated. In some situations additional rules are needed that may be expressed using either ECMAScript algorithm conventions or prose requirements. Such rules are always associated with a production of a grammar and are called the <dfn>static semantics</dfn> of the production.</p>
-      <p>Static Semantic Rules have names and typically are defined using an algorithm. Named Static Semantic Rules are associated with grammar productions and a production that has multiple alternative definitions will typically have for each alternative a distinct algorithm for each applicable named static semantic rule.</p>
-      <p>Unless otherwise specified every grammar production alternative in this specification implicitly has a definition for a static semantic rule named Contains which takes an argument named _symbol_ whose value is a terminal or nonterminal of the grammar that includes the associated production. The default definition of Contains is:</p>
+      <h1><abbr title="Static Semantics">静态语义</abbr></h1>
+      <p>上下文无关文法不能足够好的去表达所有定义的规则， 不管是一个输入元素的流形成的一个合法的将被解析的ECMAScript |Script|还是|Module|。 在一些情况中，需要额外的规则通过使用ECMAScript算法约定或者散文要求来展示。这样的规则总是与一个文法的产生式相关联，被称作产生式的<dfn><abbr title="static semantics">静态语义</abbr></dfn>。</p>
+      <p>静态语义规则拥有名称，并且通常用一个算法来定义。 具有名称的静态语义规则与文法产生式相关联，对于每个可采用的具有名称的静态语义规则， 一个包含多个可选部分定义的产生式通常会对每个可选部分定义一个独有的算法。</p>
+      <p>除非在本规范中其它指定的文法产生式可选部分隐式地包含一个叫做Contains的接收一个值为包含相关产生式的文法的终结符或者非终结符的_symbol_参数静态语义规则的定义。 默认的包含定义为：</p>
       <emu-alg>
         1. For each child node _child_ of this Parse Node, do
           1. If _child_ is an instance of _symbol_, return *true*.
@@ -169,16 +169,16 @@
             1. If _contained_ is *true*, return *true*.
         1. Return *false*.
       </emu-alg>
-      <p>The above definition is explicitly over-ridden for specific productions.</p>
-      <p>A special kind of static semantic rule is an <dfn id="early-error-rule">Early Error Rule</dfn>. Early error rules define early error conditions (see clause <emu-xref href="#sec-error-handling-and-language-extensions"></emu-xref>) that are associated with specific grammar productions. Evaluation of most early error rules are not explicitly invoked within the algorithms of this specification. A conforming implementation must, prior to the first evaluation of a |Script| or |Module|, validate all of the early error rules of the productions used to parse that |Script| or |Module|. If any of the early error rules are violated the |Script| or |Module| is invalid and cannot be evaluated.</p>
+      <p>上面的定义是显式地重写了规范的产生式。</p>
+      <p>一个特殊的静态语义规则是<dfn id="early-error-rule"><abbr title="Early Error Rule">早期（提前）错误规则</abbr></dfn>。早期错误规则定了早期错误条件（见<emu-xref href="#sec-error-handling-and-language-extensions"></emu-xref>），它们与具体的文法产生式相关联。大多数早期错误规则的解析不是在本规范的算法中显式地被调用。一个符合规范的实现必须在第一次解析|Script|或者|Module|之前，验证所有被用作解析|Script|或者|Module|的产生式的早期错误规则。如果违反了任意的早期错误规则，那么|Script|或者|Module|就是不合法的，并且不能被解析执行。</p>
     </emu-clause>
     <emu-clause id=sec-mathematical-operations>
-      <h1>Mathematical Operations</h1>
-      <p>Mathematical operations such as addition, subtraction, negation, multiplication, division, and the mathematical functions defined later in this clause should always be understood as computing exact mathematical results on mathematical real numbers, which unless otherwise noted do not include infinities and do not include a negative zero that is distinguished from positive zero. Algorithms in this standard that model floating-point arithmetic include explicit steps, where necessary, to handle infinities and signed zero and to perform rounding. If a mathematical operation or function is applied to a floating-point number, it should be understood as being applied to the exact mathematical value represented by that floating-point number; such a floating-point number must be finite, and if it is *+0* or *-0* then the corresponding mathematical value is simply 0.</p>
-      <p>The mathematical function <emu-eqn id="eqn-abs" aoid="abs">abs(_x_)</emu-eqn> produces the absolute value of _x_, which is <emu-eqn>-_x_</emu-eqn> if _x_ is negative (less than zero) and otherwise is _x_ itself.</p>
-      <p>The mathematical function <emu-eqn id="eqn-min" aoid="min">min(_x1_, _x2_, ..., _xN_)</emu-eqn> produces the mathematically smallest of <emu-eqn>_x1_</emu-eqn> through <emu-eqn>_xN_</emu-eqn>. The mathematical function <emu-eqn id="eqn-max" aoid="max">max(_x1_, _x2_, ..., _xN_)</emu-eqn> produces the mathematically largest of <emu-eqn>_x1_</emu-eqn> through <emu-eqn>_xN_</emu-eqn>. The domain and range of these mathematical functions include *+&infin;* and *-&infin;*.</p>
-      <p>The notation &ldquo;<emu-eqn id="eqn-modulo" aoid="modulo">_x_ modulo _y_</emu-eqn>&rdquo; (_y_ must be finite and nonzero) computes a value _k_ of the same sign as _y_ (or zero) such that <emu-eqn>abs(_k_) &lt; abs(_y_) and _x_-_k_ = _q_ &times; _y_</emu-eqn> for some integer _q_.</p>
-      <p>The mathematical function <emu-eqn id="eqn-floor" aoid="floor">floor(_x_)</emu-eqn> produces the largest integer (closest to positive infinity) that is not larger than _x_.</p>
+      <h1><abbr title="Mathematical Operations">数学操作</abbr></h1>
+      <p>除非其它地方特别注明不包括无限并且不包括负0（为了与正0区分），数学操作，例如加，减，否定（逻辑非），乘，除以及随后在条款中定义的数学函数应总是被当作是对于数学中所有真实数字计算出来的准确的结果。本规范算法中的浮点运算包含显式地的步骤，它们对于处理无穷，有符号的0，以及舍入是必要的。如果一个数学操作或者函数被应用在一个浮点数上，那么它必须被当作应用到用浮点数表示的具体的数学值；这样的浮点数必须是有限的，并且如果它是`+0`或者`-0`的话，那么相应的数学值就是简简单单的0。</p>
+      <p>数学函数<emu-eqn id="eqn-abs" aoid="abs">abs(_x_)</emu-eqn>用来计算_x_的绝对值， 如果_x_是负数，那么结果就是<emu-eqn>-_x_</emu-eqn>，否则结果就是_x_本身。</p>
+      <p>数学函数<emu-eqn id="eqn-min" aoid="min">min(_x1_, _x2_, ..., _xN_)</emu-eqn>计算从<emu-eqn>_x1_</emu-eqn>到<emu-eqn>_xN_</emu-eqn>的最小值。 数学函数<emu-eqn id="eqn-max" aoid="max">max(_x1_, _x2_, ..., _xN_)</emu-eqn>计算从<emu-eqn>_x1_</emu-eqn>到<emu-eqn>_xN_</emu-eqn>的最大值。 这些数学函数的域以及范围包括`+&infin;`和`-&infin;`。</p>
+      <p>符号&ldquo;<emu-eqn id="eqn-modulo" aoid="modulo">_x_ modulo _y_</emu-eqn>&rdquo;（_y_必须是有限的且是非0的）计算出一个值_k_， 它的符号与_y_一致（或者是0），这样的_k_满足abs(k)< abs(y)，以及能找到某个整数y，使得_x_-_k_ = _q_ * _y_。</p>
+      <p>The mathematical function<emu-eqn id="eqn-floor" aoid="floor">floor(_x_)</emu-eqn> produces the largest integer (closest to positive infinity) that is not larger than_x_.</p>
       <emu-note>
         <p><emu-eqn>floor(_x_) = _x_-(_x_ modulo 1)</emu-eqn>.</p>
       </emu-note>

@@ -1,84 +1,84 @@
 <emu-clause id="sec-notational-conventions">
-  <h1>Notational Conventions</h1>
+  <h1><abbr title="Notational Conventions">符号约定</abbr></h1>
 
   <!-- es6num="5.1" -->
   <emu-clause id="sec-syntactic-and-lexical-grammars">
-    <h1>Syntactic and Lexical Grammars</h1>
+    <h1><abbr title="Syntactic and Lexical Grammars">语法与词法</abbr></h1>
 
     <!-- es6num="5.1.1" -->
     <emu-clause id="sec-context-free-grammars">
-      <h1>Context-Free Grammars</h1>
-      <p>A <em>context-free grammar</em> consists of a number of <em>productions</em>. Each production has an abstract symbol called a <em>nonterminal</em> as its <em>left-hand side</em>, and a sequence of zero or more nonterminal and <em>terminal</em> symbols as its <em>right-hand side</em>. For each grammar, the terminal symbols are drawn from a specified alphabet.</p>
-      <p>A <dfn>chain production</dfn> is a production that has exactly one nonterminal symbol on its right-hand side along with zero or more terminal symbols.</p>
-      <p>Starting from a sentence consisting of a single distinguished nonterminal, called the <dfn>goal symbol</dfn>, a given context-free grammar specifies a <em>language</em>, namely, the (perhaps infinite) set of possible sequences of terminal symbols that can result from repeatedly replacing any nonterminal in the sequence with a right-hand side of a production for which the nonterminal is the left-hand side.</p>
+      <h1><abbr title="Context-Free Grammars">上下文无关文法</abbr></h1>
+      <p><em><abbr title="Context-Free Grammars">上下文无关文法</abbr></em>由多个<em><abbr title="productions">产生式</abbr></em>组成。每个产生式<abbr title="left-hand side">左侧</abbr>有一个称为<em><abbr title="nonterminal">非终结符</abbr></em>的抽象符号的左值，<abbr title="right-hand side">右侧</abbr>有一个或多个非终结符和<abbr title="terminal">终结</abbr>符号组成的序列的右值。任何文法，它的终结符都来自指定的字母集。</p>
+      <p>一个<dfn><abbr title="chain production">产生式链</abbr></dfn>是一个只含有一个非终结符以及0个或多个终结符作为其右值的产生式。</p>
+      <p>句子中单一可区分的非终结符——<dfn><abbr title="goal symbol">目标符</abbr></dfn>，给定一个<em title="language">语言</em>上下文无关文法。换句话说，重复用产生式右值替换序列中任何左值为非终结符所组成的终结符序列集合(可能是无限个)。</p>
     </emu-clause>
 
     <!-- es6num="5.1.2" -->
     <emu-clause id="sec-lexical-and-regexp-grammars">
-      <h1>The Lexical and RegExp Grammars</h1>
-      <p>A <em>lexical grammar</em> for ECMAScript is given in clause <emu-xref href="#sec-ecmascript-language-lexical-grammar"></emu-xref>. This grammar has as its terminal symbols Unicode code points that conform to the rules for |SourceCharacter| defined in <emu-xref href="#sec-source-text"></emu-xref>. It defines a set of productions, starting from the goal symbol |InputElementDiv|, |InputElementTemplateTail|, or |InputElementRegExp|, or |InputElementRegExpOrTemplateTail|, that describe how sequences of such code points are translated into a sequence of input elements.</p>
-      <p>Input elements other than white space and comments form the terminal symbols for the syntactic grammar for ECMAScript and are called ECMAScript <em>tokens</em>. These tokens are the reserved words, identifiers, literals, and punctuators of the ECMAScript language. Moreover, line terminators, although not considered to be tokens, also become part of the stream of input elements and guide the process of automatic semicolon insertion (<emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>). Simple white space and single-line comments are discarded and do not appear in the stream of input elements for the syntactic grammar. A |MultiLineComment| (that is, a comment of the form `/*`&hellip;`*/` regardless of whether it spans more than one line) is likewise simply discarded if it contains no line terminator; but if a |MultiLineComment| contains one or more line terminators, then it is replaced by a single line terminator, which becomes part of the stream of input elements for the syntactic grammar.</p>
-      <p>A <em>RegExp grammar</em> for ECMAScript is given in <emu-xref href="#sec-patterns"></emu-xref>. This grammar also has as its terminal symbols the code points as defined by |SourceCharacter|. It defines a set of productions, starting from the goal symbol |Pattern|, that describe how sequences of code points are translated into regular expression patterns.</p>
-      <p>Productions of the lexical and RegExp grammars are distinguished by having two colons &ldquo;<b>::</b>&rdquo; as separating punctuation. The lexical and RegExp grammars share some productions.</p>
+      <h1><abbr title="The Lexical and RegExp Grammars">词法与正则文法</abbr></h1>
+      <p>ECMAScript<em><abbr title="lexical grammar">词法文法</abbr></em>在<emu-xref href="#sec-ecmascript-language-lexical-grammar"></emu-xref>给出。词法文法拥有符合<emu-xref href="#sec-source-text"></emu-xref>定义的|SourceCharacter|规则的终结符<abbr title="Unicode code points">Unicode码点</abbr>。 它定义了一套产生式，从目标符|InputElementDiv|,|InputElementTemplateTail|,或|InputElementRegExp|,|InputElementRegExpOrTemplateTail|起始，描述如何将这样的字符序列翻译成一个输入元素序列。</p>
+      <p>空白和注释之外的输入元素构成ECMAScript语法文法的终结符，它们被称为ECMAScript<em>tokens</em>。这些tokens是，ECMAScript语言的保留字，标识符，字面量，标点符号。此外，行结束符虽然不被视为tokens，但会成为输入元素流的一部分，用于引导处理自动插入分号(<emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>)。空白和单行注释会被简单的丢弃，不会出现在语法文法的输入元素的流中。如果一个|MultiLineComment|（即形式为`/*`&hellip;`*/`的注释，不管是否跨越多行）不包含行结束符也会简单地丢弃，但如果一个|MultiLineComment|包含一个或多个结束符，那么，注释会被替换为一个行结束符，成为语法文法输入元素流的一部分。</p>
+      <p><emu-xref href="#sec-patterns"></emu-xref>给出了ECMAScript的<em><abbr title="RegExp grammar">正则文法</abbr></em>。此文法的终结符字符也由|SourceCharacter|定义。它定义了一套产生式，从目标符|Pattern|起始，描述了如何将这样的字符序列翻译成一个正则表达式模式。</p>
+      <p>两个冒号"::"作为分隔符分割词法和正则的文法产生式。词法和正则的文法共享某些产生式。</p>
     </emu-clause>
 
     <!-- es6num="5.1.3" -->
     <emu-clause id="sec-numeric-string-grammar">
-      <h1>The Numeric String Grammar</h1>
-      <p>Another grammar is used for translating Strings into numeric values. This grammar is similar to the part of the lexical grammar having to do with numeric literals and has as its terminal symbols |SourceCharacter|. This grammar appears in <emu-xref href="#sec-tonumber-applied-to-the-string-type"></emu-xref>.</p>
-      <p>Productions of the numeric string grammar are distinguished by having three colons &ldquo;<b>:::</b>&rdquo; as punctuation.</p>
+      <h1><abbr title="The Numeric String Grammar">数字字符串文法</abbr></h1>
+      <p>用于转换字符串为数字值的一种文法。 此文法与数字字面量词法文法的一部分类似，并且有终结符|SourceCharacter|。此文法出现在<emu-xref href="#sec-tonumber-applied-to-the-string-type"></emu-xref>。</p>
+      <p>三个冒号":::"作为分隔符分割数字字符串文法的产生式。</p>
     </emu-clause>
 
     <!-- es6num="5.1.4" -->
     <emu-clause id="sec-syntactic-grammar">
-      <h1>The Syntactic Grammar</h1>
-      <p>The <em>syntactic grammar</em> for ECMAScript is given in clauses 11, 12, 13, 14, and 15. This grammar has ECMAScript tokens defined by the lexical grammar as its terminal symbols (<emu-xref href="#sec-lexical-and-regexp-grammars"></emu-xref>). It defines a set of productions, starting from two alternative goal symbols |Script| and |Module|, that describe how sequences of tokens form syntactically correct independent components of ECMAScript programs.</p>
-      <p>When a stream of code points is to be parsed as an ECMAScript |Script| or |Module|, it is first converted to a stream of input elements by repeated application of the lexical grammar; this stream of input elements is then parsed by a single application of the syntactic grammar. The input stream is syntactically in error if the tokens in the stream of input elements cannot be parsed as a single instance of the goal nonterminal (|Script| or |Module|), with no tokens left over.</p>
-      <p>When a parse is successful, it constructs a <em>parse tree</em>, a rooted tree structure in which each node is a <dfn>Parse Node</dfn>. Each Parse Node is an <em>instance</em> of a symbol in the grammar; it represents a span of the source text that can be derived from that symbol. The root node of the parse tree, representing the whole of the source text, is an instance of the parse's goal symbol. When a Parse Node is an instance of a nonterminal, it is also an instance of some production that has that nonterminal as its left-hand side. Moreover, it has zero or more <em>children</em>, one for each symbol on the production's right-hand side: each child is a Parse Node that is an instance of the corresponding symbol.</p>
-      <p>Productions of the syntactic grammar are distinguished by having just one colon &ldquo;<b>:</b>&rdquo; as punctuation.</p>
-      <p>The syntactic grammar as presented in clauses 12, 13, 14 and 15 is not a complete account of which token sequences are accepted as a correct ECMAScript |Script| or |Module|. Certain additional token sequences are also accepted, namely, those that would be described by the grammar if only semicolons were added to the sequence in certain places (such as before line terminator characters). Furthermore, certain token sequences that are described by the grammar are not considered acceptable if a line terminator character appears in certain &ldquo;awkward&rdquo; places.</p>
-      <p>In certain cases, in order to avoid ambiguities, the syntactic grammar uses generalized productions that permit token sequences that do not form a valid ECMAScript |Script| or |Module|. For example, this technique is used for object literals and object destructuring patterns. In such cases a more restrictive <em>supplemental grammar</em> is provided that further restricts the acceptable token sequences. Typically, an early error rule will then define an error condition if "_P_ cannot be <dfn>reparsed</dfn> as an _N_", where _P_ is a Parse Node (an instance of the generalized production) and _N_ is a nonterminal from the supplemental grammar. Here, the sequence of tokens originally matched by _P_ is parsed again using _N_ as the goal symbol. (If _N_ takes grammatical parameters, then they are set to the same values used when _P_ was originally parsed.) An error occurs if the sequence of tokens cannot be parsed as a single instance of _N_, with no tokens left over. Subsequently, algorithms access the result of the parse using a phrase of the form "the result of <dfn>reparsing</dfn> _P_ as an _N_". This will always be a Parse Node (an instance of _N_), since any parsing failure would have been detected by an early error rule.</p>
+      <h1><abbr title="The Syntactic Grammar">语法文法</abbr></h1>
+      <p>第 11，12，13，14 章给出了ECMAScript的<em><abbr title="The Syntactic Grammar">语法文法</abbr></em>。词法文法定义的ECMAScript tokens是此文法的终结符(<emu-xref href="#sec-lexical-and-regexp-grammars"></emu-xref>)。它定义了一系列的产生式，从两个可选的目标符号|Script|以及|Module|开始，描述形成ECMAScript程序语法上正常的独立的组件的token是怎样的序列。</p>
+      <p>当一个码点流解析成一个ECMAScript的Script或者Module时，它首先被词法文法程序转换成一个输入元素流；然后使用一个单一语法文法程序解析这个输入元素流。存在语法错误——输入元素流中的token不能被解析成一个单一的目标非终结符（|Script|或者|Module|）——的输入流，将不会留下任何token。</p>
+      <p>当一个解析成功的时候，它会构造一颗解析树（parse tree），一颗根树结构是它的每个节点都是一个<dfn>Parse Node</dfn>。每个Parse Node都是文法中的一个符号的一个<em>实例</em>。它代表了从这样的符号中派生出来的源代码文本的一个跨度。解析树的根节点代表着整个的源代码文本，是解析的目标符的一个实例。当一个Parse Node是一个非终结符的实例的时候，它也是某些左值为非终结符的产生式的一个实例。此外，它有0个或多个<el title="children">孩子</el>，产生式右值中的每个符号：每个孩子的Parse Node都是相应符号的一个实例。</p>
+      <p>只用一个冒号&ldquo;<b>:</b>&rdquo;作为分隔符分割语法词法的产生式。</p>
+      <p>语法文法在条款12，13，14以及15中提出。但是对于哪些token序列是正确的被ECMAScript |Script|或者|Module|接受的解释得并不完整。一些额外的token序列也能被接受，换句话说，那些序列将会被文法描述，只要分号被加入到序列中的某些地方（比如在行终结符之前）。此外，某些通过文法描述的token序列不会被接受，如果一个行终结符出现在某些&ldquo;awkward&rdquo;的地方。</p>
+      <p>在某些情况下，为了避免歧义，语法文法使用广义的产生式，允许token序列不形成一个合法的ECMAScript |Script|或者|Module|。例如，此技术被用作对象字面量和对象解构模式中。在这种情况下，提供了更加限制性的补充文法，其进一步限制可接受的token序列。通常，一个早期错误规则将会定义一个错误条件是否"_P_不能像一个_N_被<dfn><abbr title="reparsed">重解析</abbr></dfn>"，其中_P_是Parse Node（普通产生式的一个实例），_N_是补充文法的非终结符。这里，最初与_P_匹配的token序列被再次用_N_作为目标符号解析。（如果_N_使用语法参数，则将它们设置为当_P_最初解析时使用的相同值）。如果token序列不能被解析为_N_的一个单一实例，则会产生错误，将不会留下任何token。随后，算法访问"像一个_N_<dfn><abbr title="reparsed">重新解析</abbr></dfn>_P_的结果"的短语的解析结果。这将始终是一个解析节点（_N_的一个实例），因此任何解析失败都将被一个早期错误规则检测到。</p>
     </emu-clause>
 
     <!-- es6num="5.1.5" -->
     <emu-clause id="sec-grammar-notation" namespace=grammar-notation>
-      <h1>Grammar Notation</h1>
-      <p>Terminal symbols of the lexical, RegExp, and numeric string grammars are shown in `fixed width` font, both in the productions of the grammars and throughout this specification whenever the text directly refers to such a terminal symbol. These are to appear in a script exactly as written. All terminal symbol code points specified in this way are to be understood as the appropriate Unicode code points from the Basic Latin range, as opposed to any similar-looking code points from other Unicode ranges.</p>
-      <p>Nonterminal symbols are shown in <i>italic</i> type. The definition of a nonterminal (also called a &ldquo;production&rdquo;) is introduced by the name of the nonterminal being defined followed by one or more colons. (The number of colons indicates to which grammar the production belongs.) One or more alternative right-hand sides for the nonterminal then follow on succeeding lines. For example, the syntactic definition:</p>
+      <h1><abbr title="Grammar Notation">文法标记法</abbr></h1>
+      <p>不管是在文法的产生式，还是在本规范中，词法文法，正则文法以及数字字符串文法的终结符都用等宽字体展示。这些将以的脚本形式出现。所有通过这种方式指定的终结符码点都被当作合适的基本拉丁语Unicode码点理解，而不是来自其他任何类似Unicode范围的码点。</p>
+      <p>非终结符以<i>斜体</i>显示。非终结符（也叫产生式）的定义由非终结符名称和其后定义的一个或多个冒号给出。（冒号的数量表示产生式所属的文法。）非终结符的一个或多个替代右值紧跟在下一行。例如，语法定义：</p>
       <emu-grammar type="example">
         WhileStatement :
           `while` `(` Expression `)` Statement
       </emu-grammar>
-      <p>states that the nonterminal |WhileStatement| represents the token `while`, followed by a left parenthesis token, followed by an |Expression|, followed by a right parenthesis token, followed by a |Statement|. The occurrences of |Expression| and |Statement| are themselves nonterminals. As another example, the syntactic definition:</p>
+      <p>表示这个非终结符|WhileStatement|代表`while`token，其后跟左括号`token`，其后跟|Expression|，其后跟右括号`token`，其后跟|Statement|。这里出现的|Expression|和|Statement|本身是非终结符。另一个例子，语法定义：</p>
       <emu-grammar type="example">
         ArgumentList :
           AssignmentExpression
           ArgumentList `,` AssignmentExpression
       </emu-grammar>
-      <p>states that an |ArgumentList| may represent either a single |AssignmentExpression| or an |ArgumentList|, followed by a comma, followed by an |AssignmentExpression|. This definition of |ArgumentList| is recursive, that is, it is defined in terms of itself. The result is that an |ArgumentList| may contain any positive number of arguments, separated by commas, where each argument expression is an |AssignmentExpression|. Such recursive definitions of nonterminals are common.</p>
-      <p>The subscripted suffix &ldquo;<sub>opt</sub>&rdquo;, which may appear after a terminal or nonterminal, indicates an optional symbol. The alternative containing the optional symbol actually specifies two right-hand sides, one that omits the optional element and one that includes it. This means that:</p>
+      <p>表示这个|ArgumentList|可以代表一个|AssignmentExpression|，或|ArgumentList|，其后跟一个逗号，其后跟一个|AssignmentExpression|。这个|ArgumentList|的定义是递归的，也就是说，它定义它自身。其结果是，一个|ArgumentList|可能包含用逗号隔开的任意正数个参数，每个参数表达式是一个|AssignmentExpression|。这样，非终结符共用了递归的定义。</p>
+      <p>终结符或非终结符可能会出现后缀下标&ldquo;<sub>opt</sub>&rdquo;，表示它是可选符号。包含可选符号实际指定了包含两个右值，一个是省略可选元素的，另一个是包含可选元素的。这意味着：</p>
       <emu-grammar type="example">
         VariableDeclaration :
           BindingIdentifier Initializer?
       </emu-grammar>
-      <p>is a convenient abbreviation for:</p>
+      <p>是以下的一种缩写:</p>
       <emu-grammar type="example">
         VariableDeclaration :
           BindingIdentifier
           BindingIdentifier Initializer
       </emu-grammar>
-      <p>and that:</p>
+      <p>以及:</p>
       <emu-grammar type="example">
         IterationStatement :
           `for` `(` LexicalDeclaration Expression? `;` Expression? `)` Statement
       </emu-grammar>
-      <p>is a convenient abbreviation for:</p>
+      <p>是以下的一种缩写:</p>
       <emu-grammar type="example">
         IterationStatement :
           `for` `(` LexicalDeclaration `;` Expression? `)` Statement
           `for` `(` LexicalDeclaration Expression `;` Expression? `)` Statement
       </emu-grammar>
-      <p>which in turn is an abbreviation for:</p>
+      <p>以下也是一种缩写:</p>
       <emu-grammar type="example">
         IterationStatement :
           `for` `(` LexicalDeclaration `;` `)` Statement
@@ -86,89 +86,89 @@
           `for` `(` LexicalDeclaration Expression `;` `)` Statement
           `for` `(` LexicalDeclaration Expression `;` Expression `)` Statement
       </emu-grammar>
-      <p>so, in this example, the nonterminal |IterationStatement| actually has four alternative right-hand sides.</p>
-      <p>A production may be parameterized by a subscripted annotation of the form &ldquo;<sub>[parameters]</sub>&rdquo;, which may appear as a suffix to the nonterminal symbol defined by the production. &ldquo;<sub>parameters</sub>&rdquo; may be either a single name or a comma separated list of names. A parameterized production is shorthand for a set of productions defining all combinations of the parameter names, preceded by an underscore, appended to the parameterized nonterminal symbol. This means that:</p>
+      <p>所以在这个例子中，非终结符|IterationStatement|实际上有四个可供选择的右值。</p>
+      <p>产生式可以通过形如&ldquo;<sub>[parameters]</sub>&rdquo;这样的下标注释被参数化，会以后缀的形式出现在产生式定义的非终结符中。&ldquo;<sub>parameters</sub>&rdquo;可以是单独的名称，也可以是一个逗号分隔的名称列表。被参数化的产生式是一系列定义参数名称以下划线开头，追加到参数化的非终结符后面的所有组合的产生式的缩写。这就意味着：</p>
       <emu-grammar type="example">
         StatementList[Return] :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement
       </emu-grammar>
-      <p>is a convenient abbreviation for:</p>
+      <p>是下面的缩写:</p>
       <emu-grammar type="example">
         StatementList :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement
-
+          
         StatementList_Return :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement
       </emu-grammar>
-      <p>and that:</p>
+      <p>以及:</p>
       <emu-grammar type="example">
         StatementList[Return, In] :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement
       </emu-grammar>
-      <p>is an abbreviation for:</p>
+      <p>是下面的缩写:</p>
       <emu-grammar type="example">
         StatementList :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement
 
         StatementList_Return :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement
 
         StatementList_In :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement
 
         StatementList_Return_In :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement
       </emu-grammar>
-      <p>Multiple parameters produce a combinatory number of productions, not all of which are necessarily referenced in a complete grammar.</p>
-      <p>References to nonterminals on the right-hand side of a production can also be parameterized. For example:</p>
+      <p>多个参数产生数个产生式的组合，在一个完整语法中不必引用所有。</p>
+      <p>对生产式的非终结符右值的引用也可以被参数化，例如：</p>
       <emu-grammar type="example">
         StatementList :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement[+In]
       </emu-grammar>
-      <p>is equivalent to saying:</p>
+      <p>是下面的缩写:</p>
       <emu-grammar type="example">
         StatementList :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement_In
       </emu-grammar>
-      <p>and:</p>
+      <p>又如:</p>
       <emu-grammar type="example">
         StatementList :
-          ReturnStatement
+          ReturnStatement 
           ExpressionStatement[~In]
       </emu-grammar>
-      <p>is equivalent to:</p>
+      <p>是下面的缩写:</p>
       <emu-grammar type="example">
         StatementList :
           ReturnStatement
           ExpressionStatement
       </emu-grammar>
-      <p>A nonterminal reference may have both a parameter list and an &ldquo;<sub>opt</sub>&rdquo; suffix. For example:</p>
+      <p>非终结符引用可能同时具有参数列表和一个&ldquo;<sub>opt</sub>&rdquo;后缀。例如：</p>
       <emu-grammar type="example">
         VariableDeclaration :
           BindingIdentifier Initializer[+In]?
       </emu-grammar>
-      <p>is an abbreviation for:</p>
+      <p>是下面的缩写:</p>
       <emu-grammar type="example">
         VariableDeclaration :
           BindingIdentifier
           BindingIdentifier Initializer_In
       </emu-grammar>
-      <p>Prefixing a parameter name with &ldquo;<sub>?</sub>&rdquo; on a right-hand side nonterminal reference makes that parameter value dependent upon the occurrence of the parameter name on the reference to the current production's left-hand side symbol. For example:</p>
+      <p>在右侧非终结符引用参数名称前置以&ldquo;<sub>?</sub>&rdquo;，使该参数值取决于当前产生式的左侧符号引用的参数名称是否出现。例如：</p>
       <emu-grammar type="example">
         VariableDeclaration[In] :
           BindingIdentifier Initializer[?In]
       </emu-grammar>
-      <p>is an abbreviation for:</p>
+      <p>是下面的缩写:</p>
       <emu-grammar type="example">
         VariableDeclaration :
           BindingIdentifier Initializer
@@ -176,13 +176,13 @@
         VariableDeclaration_In :
           BindingIdentifier Initializer_In
       </emu-grammar>
-      <p>If a right-hand side alternative is prefixed with &ldquo;[+parameter]&rdquo; that alternative is only available if the named parameter was used in referencing the production's nonterminal symbol. If a right-hand side alternative is prefixed with &ldquo;[\~parameter]&rdquo; that alternative is only available if the named parameter was <em>not</em> used in referencing the production's nonterminal symbol. This means that:</p>
+      <p>如果右值<abbr title="alternative">选择</abbr>是以&ldquo;[+parameter]&rdquo;作为前缀，则表示选择只有命名参数用于引用产生式的非终结符时可用。如果右值<abbr title="alternative">选择</abbr>是以&ldquo;[\~parameter]&rdquo;作为前缀，则表示选择只有命名参数<em>不是</em>用于引用产生式的非终结符时可用。这意味着:</p>
       <emu-grammar type="example">
         StatementList[Return] :
           [+Return] ReturnStatement
           ExpressionStatement
       </emu-grammar>
-      <p>is an abbreviation for:</p>
+      <p>是下面的缩写:</p>
       <emu-grammar type="example">
         StatementList :
           ExpressionStatement
@@ -191,13 +191,13 @@
           ReturnStatement
           ExpressionStatement
       </emu-grammar>
-      <p>and that:</p>
+      <p>另外一个例子:</p>
       <emu-grammar type="example">
         StatementList[Return] :
           [~Return] ReturnStatement
           ExpressionStatement
       </emu-grammar>
-      <p>is an abbreviation for:</p>
+      <p>是下面的缩写:</p>
       <emu-grammar type="example">
         StatementList :
           ReturnStatement
@@ -206,12 +206,12 @@
         StatementList_Return :
           ExpressionStatement
       </emu-grammar>
-      <p>When the words &ldquo;<b>one of</b>&rdquo; follow the colon(s) in a grammar definition, they signify that each of the terminal symbols on the following line or lines is an alternative definition. For example, the lexical grammar for ECMAScript contains the production:</p>
+      <p>在文法定义中当单词&ldquo;<b>one of</b>&rdquo;跟随一个或多个分号后的时候，表示随后的一行或多行的终结符是一个可选的定义。例如，ECMAScript的词法文法包含下列的产生式：</p>
       <emu-grammar type="example">
         NonZeroDigit :: one of
           `1` `2` `3` `4` `5` `6` `7` `8` `9`
       </emu-grammar>
-      <p>which is merely a convenient abbreviation for:</p>
+      <p>它仅仅是下面的缩写:</p>
       <emu-grammar type="example">
         NonZeroDigit ::
           `1`
@@ -224,40 +224,40 @@
           `8`
           `9`
       </emu-grammar>
-      <p>If the phrase &ldquo;[empty]&rdquo; appears as the right-hand side of a production, it indicates that the production's right-hand side contains no terminals or nonterminals.</p>
-      <p>If the phrase &ldquo;[lookahead &notin; _set_]&rdquo; appears in the right-hand side of a production, it indicates that the production may not be used if the immediately following input token sequence is a member of the given _set_. The _set_ can be written as a comma separated list of one or two element terminal sequences enclosed in curly brackets. For convenience, the set can also be written as a nonterminal, in which case it represents the set of all terminals to which that nonterminal could expand. If the _set_ consists of a single terminal the phrase &ldquo;[lookahead &ne; _terminal_]&rdquo; may be used.</p>
-      <p>For example, given the definitions:</p>
+      <p>如果“[empty]” 出现在一个产生式的右值，它暗示着这个产生式的右值不包含终结符或者非终结符。</p>
+      <p>如果&ldquo;[lookahead &notin; _set_]&rdquo;出现在一个产生式的右值，它暗示着如果随后立即的输入的token序列是给出的集合（_set_）的成员，那么这个产生式也许不会被使用。这个集合可以用一个逗号分割的由一到两个被花括号包裹的元素终结序列的列表表示。为了方便，这个集合也可以用非终结符表示，在这种情况下，它代表所有能由非终结符展开得到的终结符的集合。如果这个集合包含一个单独的终结符，那么短语&ldquo;[lookahead &ne; _terminal_]&rdquo;也许会被使用。</p>
+      <p>例如，给出定义:</p>
       <emu-grammar type="example">
         DecimalDigit :: one of
-          `0` `1` `2` `3` `4` `5` `6` `7` `8` `9`
+        `0` `1` `2` `3` `4` `5` `6` `7` `8` `9`
 
         DecimalDigits ::
           DecimalDigit
           DecimalDigits DecimalDigit
       </emu-grammar>
-      <p>the definition:</p>
+      <p>则定义:</p>
       <emu-grammar type="example">
         LookaheadExample ::
           `n` [lookahead &lt;! {`1`, `3`, `5`, `7`, `9`}] DecimalDigits
           DecimalDigit [lookahead &lt;! DecimalDigit]
       </emu-grammar>
-      <p>matches either the letter `n` followed by one or more decimal digits the first of which is even, or a decimal digit not followed by another decimal digit.</p>
-      <p>Similarly, if the phrase &ldquo;[lookahead &isin; _set_]&rdquo; appears in the right-hand side of a production, it indicates that the production may only be used if the immediately following input token sequence is a member of the given _set_. If the _set_ consists of a single terminal the phrase &ldquo;[lookahead = _terminal_]&rdquo; may be used.</p>
-      <p>If the phrase &ldquo;[no |LineTerminator| here]&rdquo; appears in the right-hand side of a production of the syntactic grammar, it indicates that the production is <em>a restricted production</em>: it may not be used if a |LineTerminator| occurs in the input stream at the indicated position. For example, the production:</p>
+      <p>能匹配字母 n 后跟随由偶数起始的一个或多个十进制数字，或一个十进制数字后面跟随一个非十进制数字。</p>
+      <p>类似的，如果产生式的右值出现&ldquo;[lookahead &isin; _set_]&rdquo;，则表示产生式只有在随后立即的输入的token序列是给出的集合（_set_）的成员才能使用。如果集合只包含一个单一的终结符，则可以使用&ldquo;[lookahead == _terminal_]&rdquo;。</p>
+      <p>如果产生式的右侧出现&ldquo;[no |LineTerminator| here]&rdquo;，那么它表示此产生式是个受限的产生式：如果|LineTerminator|在输入流的指定位置出现，那么此产生式将不会被适用。例如，产生式：</p>
       <emu-grammar type="example">
         ThrowStatement :
           `throw` [no LineTerminator here] Expression `;`
       </emu-grammar>
-      <p>indicates that the production may not be used if a |LineTerminator| occurs in the script between the `throw` token and the |Expression|.</p>
-      <p>Unless the presence of a |LineTerminator| is forbidden by a restricted production, any number of occurrences of |LineTerminator| may appear between any two consecutive tokens in the stream of input elements without affecting the syntactic acceptability of the script.</p>
-      <p>When an alternative in a production of the lexical grammar or the numeric string grammar appears to be a multi-code point token, it represents the sequence of code points that would make up such a token.</p>
-      <p>The right-hand side of a production may specify that certain expansions are not permitted by using the phrase &ldquo;<b>but not</b>&rdquo; and then indicating the expansions to be excluded. For example, the production:</p>
+      <p>如果一个|LineTerminator|出现在脚本的`throw`token和|Expression|之间的时候，暗示着这个产生式也许不会被使用。</p>
+      <p>除非通过一个受限的产生式禁止一个|LineTerminator|的出现，否则任意数量|LineTerminator|的出现也许会发生在输入元素流中任意两个连续的token之间，并且不影响脚本的语义可接受性。</p>
+      <p>当一个词法文法或者数字字符串文法的产生式中可选部分出现多码点的token时，意味着码点序列将会组成一个token。</p>
+      <p>一个产生式的右值也许会通过&ldquo;<b>but not</b>&rdquo;指定某些不被允许的扩展，然后暗示这个扩展将是被排除在外的。例如，产生式：</p>
       <emu-grammar type="example">
         Identifier ::
           IdentifierName but not ReservedWord
       </emu-grammar>
-      <p>means that the nonterminal |Identifier| may be replaced by any sequence of code points that could replace |IdentifierName| provided that the same sequence of code points could not replace |ReservedWord|.</p>
-      <p>Finally, a few nonterminal symbols are described by a descriptive phrase in sans-serif type in cases where it would be impractical to list all the alternatives:</p>
+      <p>意味着非终结符|Identifier|也许会被任意的码点序列替换，这些码点能够替换提供的|IdentifierName|，但是相同序列的码点不能替换|ReservedWord|。</p>
+      <p>最后，一些非终结符通过sans-serif字体书写的描述性的短语来描述， 在这样的案例中，列出所有的可选部分是不切实际的。</p>
       <emu-grammar type="example">
         SourceCharacter ::
           &gt; any Unicode code point
