@@ -36,7 +36,7 @@ ECMAScript 中文
   $ git checkout -b translate/issues-[ISSUE ID] origin/translated
 ~~~
 
-翻译完成以后，你还需要用译文去替换 `spec.html` 文件中相应的英文原文，然后执行 `npm run build`。记得要在浏览器中打开 `out/index.html` 预览翻译后的效果和预期的效果一直哦。
+翻译完成以后，你还需要用译文去替换 `spec.html` 文件中相应的英文原文，然后执行 `npm run build`。记得要在浏览器中打开 `out/index.html` 预览翻译后的效果和预期的效果一致哦。
 
 一切都 OK 的话，请丢弃 `spec.html` 文件更改内容，并提交译文，建议 `commit message` 写为 **translated：[LN - LN] issue #ISSUE ID** (为了审校时方便替换)。
 

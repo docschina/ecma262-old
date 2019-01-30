@@ -1,21 +1,21 @@
   <emu-clause id="sec-line-terminators">
-    <h1>Line Terminators</h1>
-    <p>Like white space code points, line terminator code points are used to improve source text readability and to separate tokens (indivisible lexical units) from each other. However, unlike white space code points, line terminators have some influence over the behaviour of the syntactic grammar. In general, line terminators may occur between any two tokens, but there are a few places where they are forbidden by the syntactic grammar. Line terminators also affect the process of automatic semicolon insertion (<emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>). A line terminator cannot occur within any token except a |StringLiteral|, |Template|, or |TemplateSubstitutionTail|. Line terminators may only occur within a |StringLiteral| token as part of a |LineContinuation|.</p>
-    <p>A line terminator can occur within a |MultiLineComment| but cannot occur within a |SingleLineComment|.</p>
-    <p>Line terminators are included in the set of white space code points that are matched by the `\\s` class in regular expressions.</p>
-    <p>The ECMAScript line terminator code points are listed in <emu-xref href="#table-33"></emu-xref>.</p>
+    <h1>行终止符</h1>
+    <p>如空码点，行终止符用于提高源码的可读性，并将 token（不可分割的 lexical 单元）彼此分开。但是，与空码点不同，行终止符对句法语法的行为有一些影响。一般来说，行终止符可能出现在任何两个 tokens 之间，但是有一些地方会被句法语法禁止。 行终止符也会影响自动插入分号的过程 (<emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>)。除了 | StringLiteral |，| Template | 或 | TemplateSubstitutionTail |之外，任何 token 都不能出现行终止符。 行终止符只能出现在 | StringLiteral | token 中，作为 | LineContinuation | 的一部分。</p>
+     <p>行终止符可以出现在 | MultiLineComment | 中，但不能出现在 | SingleLineComment | 中。</p>
+    <p>行终止符包含在由正则表达式中的 `\\ s` 类匹配的空格集合中。</p>
+    <p>ECMAScript 行终止符代码详情列于 <emu-xref href="#table-33"></emu-xref>.</p>
     <emu-table id="table-33" caption="Line Terminator Code Points">
       <table>
         <tbody>
         <tr>
           <th>
-            Code Point
+            码点
           </th>
           <th>
-            Unicode Name
+            Unicode 名称
           </th>
           <th>
-            Abbreviation
+            缩写
           </th>
         </tr>
         <tr>
@@ -65,8 +65,8 @@
         </tbody>
       </table>
     </emu-table>
-    <p>Only the Unicode code points in <emu-xref href="#table-33"></emu-xref> are treated as line terminators. Other new line or line breaking Unicode code points are not treated as line terminators but are treated as white space if they meet the requirements listed in <emu-xref href="#table-32"></emu-xref>. The sequence &lt;CR&gt;&lt;LF&gt; is commonly used as a line terminator. It should be considered a single |SourceCharacter| for the purpose of reporting line numbers.</p>
-    <h2>Syntax</h2>
+    <p>只有在<emu-xref href="#table-33"></emu-xref>中 Unicode 码点被视为行终止符。其他新行或换行符号的Unicode 码点不被视为行终止符，但如果符合<emu-xref href="#table-32"></emu-xref> 列出的要求，则会被视为空格。 序列 &lt;CR&gt;&lt;LF&gt; 通常用作终止符。 它应该被认为是单个 | SourceCharacter | 用于报告行号。</p>
+    <h2>语法</h2>
     <emu-grammar type="definition">
       LineTerminator ::
         &lt;LF&gt;
@@ -74,7 +74,7 @@
         &lt;LS&gt;
         &lt;PS&gt;
 
-      LineTerminatorSequence ::
+      LineTerminatorSequence :
         &lt;LF&gt;
         &lt;CR&gt; [lookahead != &lt;LF&gt; ]
         &lt;LS&gt;
@@ -85,10 +85,11 @@
 
   <!-- es6num="11.4" -->
   <emu-clause id="sec-comments">
-    <h1>Comments</h1>
-    <p>Comments can be either single or multi-line. Multi-line comments cannot nest.</p>
-    <p>Because a single-line comment can contain any Unicode code point except a |LineTerminator| code point, and because of the general rule that a token is always as long as possible, a single-line comment always consists of all code points from the `//` marker to the end of the line. However, the |LineTerminator| at the end of the line is not considered to be part of the single-line comment; it is recognized separately by the lexical grammar and becomes part of the stream of input elements for the syntactic grammar. This point is very important, because it implies that the presence or absence of single-line comments does not affect the process of automatic semicolon insertion (see <emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>).</p>
-    <p>Comments behave like white space and are discarded except that, if a |MultiLineComment| contains a line terminator code point, then the entire comment is considered to be a |LineTerminator| for purposes of parsing by the syntactic grammar.</p>
+    <h1>注释</h1>
+    <p>注释可以是单行，也可以是多行。 多行注释无法嵌套。</p>
+    <p>因为单行注释可以包含除 | LineTerminator | 之外的任何 Unicode 代码点，并且由经验法则，单行注释 token 总是尽可能长， 单行注释总是包含从 `//` 标记到行尾的所有代码点。 然而， | LineTerminator | 在该行的末尾不被视为单行注释的一部分; 它由词法语法单独识别，并成为句法语法的输入元素流的一部分。 这一点非常重要， 因为这意味着单行注释的存在与否不会影响自动分号插入的过程(see <emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>)。</p>
+    <p>注释表现类似于空格被丢弃，不过如果 |MultiLineComment| 包含行终止符码点，那么整个注释被认为是一个 | LineTerminator |  被句法文法解析。</p>
+
     <h2>Syntax</h2>
     <emu-grammar type="definition">
       Comment ::
@@ -126,7 +127,7 @@
   <!-- es6num="11.5" -->
   <emu-clause id="sec-tokens">
     <h1>Tokens</h1>
-    <h2>Syntax</h2>
+    <h2>语法</h2>
     <emu-grammar type="definition">
       CommonToken ::
         IdentifierName
@@ -136,6 +137,7 @@
         Template
     </emu-grammar>
     <emu-note>
-      <p>The |DivPunctuator|, |RegularExpressionLiteral|, |RightBracePunctuator|, and |TemplateSubstitutionTail| productions derive additional tokens that are not included in the |CommonToken| production.</p>
+      <p> |DivPunctuator|，|RegularExpressionLiteral|，|RightBracePunctuator| 和 |TemplateSubstitutionTail|  生产式派生出的 token 未被包含在 |CommonToken| 生产式中。</p>
+
     </emu-note>
   </emu-clause>
