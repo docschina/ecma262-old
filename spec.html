@@ -1089,7 +1089,7 @@
       <div class="math-display">
         _s_ &times; _m_ &times; 2<sup>_e_</sup>
       </div>
-      <p>其中 s 是 +1 或 -1 ，m 是小于 52 的正整数，e 是 -1074。</p>
+      <p>其中 s 是 +1 或 -1 ，m 是小于 2 的 52 次方的正整数，e 是 -1074。</p>
       <p>注意，大小不大于 2<sup>53</sup> 的所有正整数和负整数可以在 Number 类型中表示（实际上，整数 0 具有两个表示，*+0* 和 *-0*）。</p>
       <p>如果一个有限的数值非零且用来表达它（上文两种形式之一）的整数 m 是奇数，则该数值有<em><abbr title="odd significand">奇数意义</abbr></em>。否则，它有<em><abbr title="even significand">偶数意义</abbr></em>。</p>
       <p>在本规范中，当 _x_ 表示一个精确的非零实数数学量（甚至可以是无理数，比如&pi;）时，&ldquo;the Number value for _x_&rdquo; 意为，以下面的方式选择一个 Number 值。考虑 Number 类型中除了 *-0* 和两个被加入在数值类型中但不可呈现的值，2<sup>1024</sup> (<emu-eqn>+1 &times; 2<sup>53</sup> &times; 2<sup>971</sup></emu-eqn>) 以及 <emu-eqn>-2<sup>1024</sup></emu-eqn>(<emu-eqn>-1 &times; 2<sup>53</sup> &times; 2<sup>971</sup></emu-eqn>)的所有有限值的集合。选择此集合中值最接近 _x_ 的一员。若集合中的两值近似相等，那么选择有偶数意义的那个；为此，2<sup>1024</sup>和<emu-eqn>-2<sup>1024</sup></emu-eqn>这两个超额值被认为有偶数意义。最终，若选择 2<sup>1024</sup> ，用 *+&infin;* 替换它；若选择 <emu-eqn>-2<sup>1024</sup></emu-eqn>， 用 *-&infin;* 替换它；若选择 *+0*，有且只有 _x_ 小于零时，用 *-0* 替换它；其它任何被选取的值都不用改变。结果就是 _x_ 的 Number 值。（此过程正是IEEE 754-2008&ldquo;round to nearest, ties to even&rdquo;模式对应的行为。）</p>
