@@ -1,7 +1,7 @@
   <emu-clause id="sec-line-terminators">
     <h1>行终止符</h1>
-    <p>如空码点，行终止符用于提高源码的可读性，并将 token（不可分割的 lexical 单元）彼此分开。但是，与空码点不同，行终止符对句法语法的行为有一些影响。一般来说，行终止符可能出现在任何两个 tokens 之间，但是有一些地方会被句法语法禁止。 行终止符也会影响自动插入分号的过程 (<emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>)。除了 | StringLiteral |，| Template | 或 | TemplateSubstitutionTail |之外，任何 token 都不能出现行终止符。 行终止符只能出现在 | StringLiteral | token 中，作为 | LineContinuation | 的一部分。</p>
-     <p>行终止符可以出现在 | MultiLineComment | 中，但不能出现在 | SingleLineComment | 中。</p>
+    <p>如空码点，行终止符用于提高源码的可读性，并将 token（不可分割的 lexical 单元）彼此分开。但是，与空码点不同，行终止符对句法语法的行为有一些影响。一般来说，行终止符可能出现在任何两个 tokens 之间，但是有一些地方会被句法语法禁止。 行终止符也会影响自动插入分号的过程 (<emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>)。除了 |StringLiteral|，|Template| 或 |TemplateSubstitutionTail|之外，任何 token 都不能出现行终止符。 行终止符只能出现在 |StringLiteral| token 中，作为 |LineContinuation| 的一部分。</p>
+     <p>行终止符可以出现在 |MultiLineComment| 中，但不能出现在 |SingleLineComment| 中。</p>
     <p>行终止符包含在由正则表达式中的 `\\ s` 类匹配的空格集合中。</p>
     <p>ECMAScript 行终止符代码详情列于 <emu-xref href="#table-33"></emu-xref>.</p>
     <emu-table id="table-33" caption="Line Terminator Code Points">
@@ -65,7 +65,7 @@
         </tbody>
       </table>
     </emu-table>
-    <p>只有在<emu-xref href="#table-33"></emu-xref>中 Unicode 码点被视为行终止符。其他新行或换行符号的Unicode 码点不被视为行终止符，但如果符合<emu-xref href="#table-32"></emu-xref> 列出的要求，则会被视为空格。 序列 &lt;CR&gt;&lt;LF&gt; 通常用作终止符。 它应该被认为是单个 | SourceCharacter | 用于报告行号。</p>
+    <p>只有在<emu-xref href="#table-33"></emu-xref>中 Unicode 码点被视为行终止符。其他新行或换行符号的Unicode 码点不被视为行终止符，但如果符合<emu-xref href="#table-32"></emu-xref> 列出的要求，则会被视为空格。 序列 &lt;CR&gt;&lt;LF&gt; 通常用作终止符。 它应该被认为是单个 |SourceCharacter| 用于报告行号。</p>
     <h2>语法</h2>
     <emu-grammar type="definition">
       LineTerminator ::
@@ -87,8 +87,8 @@
   <emu-clause id="sec-comments">
     <h1>注释</h1>
     <p>注释可以是单行，也可以是多行。 多行注释无法嵌套。</p>
-    <p>因为单行注释可以包含除 | LineTerminator | 之外的任何 Unicode 代码点，并且由经验法则，单行注释 token 总是尽可能长， 单行注释总是包含从 `//` 标记到行尾的所有代码点。 然而， | LineTerminator | 在该行的末尾不被视为单行注释的一部分; 它由词法语法单独识别，并成为句法语法的输入元素流的一部分。 这一点非常重要， 因为这意味着单行注释的存在与否不会影响自动分号插入的过程(see <emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>)。</p>
-    <p>注释表现类似于空格被丢弃，不过如果 |MultiLineComment| 包含行终止符码点，那么整个注释被认为是一个 | LineTerminator |  被句法文法解析。</p>
+    <p>因为单行注释可以包含除 |LineTerminator| 之外的任何 Unicode 代码点，并且由经验法则，单行注释 token 总是尽可能长， 单行注释总是包含从 `//` 标记到行尾的所有代码点。 然而， |LineTerminator| 在该行的末尾不被视为单行注释的一部分; 它由词法语法单独识别，并成为句法语法的输入元素流的一部分。 这一点非常重要， 因为这意味着单行注释的存在与否不会影响自动分号插入的过程(see <emu-xref href="#sec-automatic-semicolon-insertion"></emu-xref>)。</p>
+    <p>注释表现类似于空格被丢弃，不过如果 |MultiLineComment| 包含行终止符码点，那么整个注释被认为是一个 |LineTerminator|  被句法文法解析。</p>
 
     <h2>Syntax</h2>
     <emu-grammar type="definition">
