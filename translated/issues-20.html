@@ -1,26 +1,26 @@
-  <h1>Ordinary and Exotic Objects Behaviours</h1>
+  <h1>普通和 exotic 对象行为</h1>
 
   <!-- es6num="9.1" -->
   <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots">
-    <h1>Ordinary Object Internal Methods and Internal Slots</h1>
-    <p>All ordinary objects have an internal slot called [[Prototype]]. The value of this internal slot is either *null* or an object and is used for implementing inheritance. Data properties of the [[Prototype]] object are inherited (and visible as properties of the child object) for the purposes of get access, but not for set access. Accessor properties are inherited for both get access and set access.</p>
-    <p>Every ordinary object has a Boolean-valued [[Extensible]] internal slot that controls whether or not properties may be added to the object. If the value of the [[Extensible]] internal slot is *false* then additional properties may not be added to the object. In addition, if [[Extensible]] is *false* the value of the [[Prototype]] internal slot of the object may not be modified. Once the value of an object's [[Extensible]] internal slot has been set to *false* it may not be subsequently changed to *true*.</p>
-    <p>In the following algorithm descriptions, assume _O_ is an ordinary object, _P_ is a property key value, _V_ is any ECMAScript language value, and _Desc_ is a Property Descriptor record.</p>
-    <p>Each ordinary object internal method delegates to a similarly-named abstract operation. If such an abstract operation depends on another internal method, then the internal method is invoked on _O_ rather than calling the similarly-named abstract operation directly. These semantics ensure that exotic objects have their overridden internal methods invoked when ordinary object internal methods are applied to them.</p>
+    <h1>普通对象内部方法和内部 slot</h1>
+    <p>所有的普通对象都有一个名为 [[Prototype]] 的内部 slot。这个内部 slot 的值是 *null* 或一个对象，它用来实现继承。[[Prototype]] 对象的数据属性被继承（并作为子对象的属性可见），以便获取访问权限，而不设置访问权限。访问器属性被继承以便获取访问权限和设置访问权限。</p>
+    <p>每个普通对象都有一个布尔值的 [[Extensible]] 内部 slot，用于控制是否将属性添加到对象。如果 [[Extensible]] 内部 slot 的值为 *false*，则额外的属性不可以被添加到对象。另外，如果 [[Extensible]] 是 *false*，则对象的 [[Prototype]] 内部 slot 的值不可以被修改。一旦对象的 [[Extensible]] 内部 slot 的值被设置为 *false*，则后续不可以将其更改为 *true*。</p>
+    <p>在以下算法描述中，假设 _O_ 是普通对象，_P_ 是属性键值，_V_ 是任何 ECMAScript 语言值，_Desc_ 是属性描述符记录。</p>
+    <p>每个普通的对象内部方法委托给一个类似的命名的抽象操作。如果这样的抽象操作依赖于另一个内部方法，则在 _O_ 上调用内部方法，而不是直接调用类似名称的抽象操作。这些语义确保当普通对象内部方法应用于 exotic 对象时，它们具有被重写的内部方法调用。</p>
 
     <!-- es6num="9.1.1" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-getprototypeof">
       <h1>[[GetPrototypeOf]] ( )</h1>
-      <p>When the [[GetPrototypeOf]] internal method of _O_ is called, the following steps are taken:</p>
+      <p>调用 _O_ 的 [[GetPrototypeOf]] 内部方法时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ! OrdinaryGetPrototypeOf(_O_).
+        1. 返回 ! OrdinaryGetPrototypeOf(_O_)。
       </emu-alg>
 
       <emu-clause id="sec-ordinarygetprototypeof" aoid="OrdinaryGetPrototypeOf">
         <h1>OrdinaryGetPrototypeOf ( _O_ )</h1>
-        <p>When the abstract operation OrdinaryGetPrototypeOf is called with Object _O_, the following steps are taken:</p>
+        <p>当用对象 _O_ 调用抽象操作 OrdinaryGetPrototypeOf 时，将执行以下步骤：</p>
         <emu-alg>
-          1. Return _O_.[[Prototype]].
+          1. 返回 _O_.[[Prototype]]。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -28,33 +28,33 @@
     <!-- es6num="9.1.2" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-setprototypeof-v">
       <h1>[[SetPrototypeOf]] ( _V_ )</h1>
-      <p>When the [[SetPrototypeOf]] internal method of _O_ is called with argument _V_, the following steps are taken:</p>
+      <p>当用参数 _V_ 调用 _O_ 的 [[SetPrototypeOf]] 内部方法时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ! OrdinarySetPrototypeOf(_O_, _V_).
+        1. 返回 ! OrdinarySetPrototypeOf(_O_, _V_)。
       </emu-alg>
 
       <emu-clause id="sec-ordinarysetprototypeof" aoid="OrdinarySetPrototypeOf">
         <h1>OrdinarySetPrototypeOf ( _O_, _V_ )</h1>
-        <p>When the abstract operation OrdinarySetPrototypeOf is called with Object _O_ and value _V_, the following steps are taken:</p>
+        <p>当用对象 _O_ 和值 _V_ 调用抽象操作 OrdinarySetPrototypeOf 时，将执行以下步骤：</p>
         <emu-alg>
-          1. Assert: Either Type(_V_) is Object or Type(_V_) is Null.
-          1. Let _extensible_ be _O_.[[Extensible]].
-          1. Let _current_ be _O_.[[Prototype]].
-          1. If SameValue(_V_, _current_) is *true*, return *true*.
-          1. If _extensible_ is *false*, return *false*.
-          1. Let _p_ be _V_.
-          1. Let _done_ be *false*.
-          1. Repeat, while _done_ is *false*,
-            1. If _p_ is *null*, set _done_ to *true*.
-            1. Else if SameValue(_p_, _O_) is *true*, return *false*.
-            1. Else,
-              1. If _p_.[[GetPrototypeOf]] is not the ordinary object internal method defined in <emu-xref href="#sec-ordinary-object-internal-methods-and-internal-slots-getprototypeof"></emu-xref>, set _done_ to *true*.
-              1. Else, set _p_ to _p_.[[Prototype]].
-          1. Set _O_.[[Prototype]] to _V_.
-          1. Return *true*.
+          1. 断言：类型（_V_）是对象或类型（_V_）是 Null。
+          1. 让 _extensible_ 为 _O_.[[Extensible]]。
+          1. 让 _current_ 为 _O_.[[Prototype]]。
+          1. 如果 SameValue(_V_, _current_) 是 *true*，返回 *true*。
+          1. 如果 _extensible_ 是 *false*，返回 *false*。
+          1. 让 _p_ 为 _V_。
+          1. 让 _done_ 为 *false*。
+          1. 重复，当 _done_ 是 *false*，
+            1. 如果 _p_ 是 *null*， 设置 _done_ 为 *true*。
+            1. 或者如果 SameValue(_p_, _O_) 是 *true*， 返回 *false*。
+            1. 或者，
+              1. 如果 _p_.[[GetPrototypeOf]] 在 <emu-xref href="#sec-ordinary-object-internal-methods-and-internal-slots-getprototypeof"></emu-xref> 中定义的普通对象内部方法，设置 _done_ 为 *true*。
+              1. 或者，设置 _p_ 为 _p_.[[Prototype]]。
+          1. 设置 _O_.[[Prototype]] 为 _V_。
+          1. 返回 *true*。
         </emu-alg>
         <emu-note>
-          <p>The loop in step 8 guarantees that there will be no circularities in any prototype chain that only includes objects that use the ordinary object definitions for [[GetPrototypeOf]] and [[SetPrototypeOf]].</p>
+          <p>步骤 8 中的循环，确保在任何只包括使用 [[GetPrototypeOf]] 和 [[SetPrototypeOf]] 的普通对象定义的对象原型链中都不会有循环。</p>
         </emu-note>
       </emu-clause>
     </emu-clause>
@@ -62,16 +62,16 @@
     <!-- es6num="9.1.3" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-isextensible">
       <h1>[[IsExtensible]] ( )</h1>
-      <p>When the [[IsExtensible]] internal method of _O_ is called, the following steps are taken:</p>
+      <p>当 _O_ 的 [[IsExtensible]] 内部方法被调用时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ! OrdinaryIsExtensible(_O_).
+        1. 返回 ! OrdinaryIsExtensible(_O_)。
       </emu-alg>
 
       <emu-clause id="sec-ordinaryisextensible" aoid="OrdinaryIsExtensible">
         <h1>OrdinaryIsExtensible ( _O_ )</h1>
-        <p>When the abstract operation OrdinaryIsExtensible is called with Object _O_, the following steps are taken:</p>
+        <p>当用对象 _O_ 调用抽象操作 OrdinaryIsExtensible 时，将执行以下步骤：</p>
         <emu-alg>
-          1. Return _O_.[[Extensible]].
+          1. 返回 _O_.[[Extensible]]。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -79,17 +79,17 @@
     <!-- es6num="9.1.4" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-preventextensions">
       <h1>[[PreventExtensions]] ( )</h1>
-      <p>When the [[PreventExtensions]] internal method of _O_ is called, the following steps are taken:</p>
+      <p>当 _O_ 的 [[PreventExtensions]] 内部方法被调用时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ! OrdinaryPreventExtensions(_O_).
+        1. 返回 ! OrdinaryPreventExtensions(_O_)。
       </emu-alg>
 
       <emu-clause id="sec-ordinarypreventextensions" aoid="OrdinaryPreventExtensions">
         <h1>OrdinaryPreventExtensions ( _O_ )</h1>
-        <p>When the abstract operation OrdinaryPreventExtensions is called with Object _O_, the following steps are taken:</p>
+        <p>当用对象 _O_ 调用抽象操作 OrdinaryPreventExtensions 时，将执行以下步骤：</p>
         <emu-alg>
-          1. Set _O_.[[Extensible]] to *false*.
-          1. Return *true*.
+          1. 设置 _O_.[[Extensible]] 为 *false*。
+          1. 返回 *true*。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -97,29 +97,29 @@
     <!-- es6num="9.1.5" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-getownproperty-p">
       <h1>[[GetOwnProperty]] ( _P_ )</h1>
-      <p>When the [[GetOwnProperty]] internal method of _O_ is called with property key _P_, the following steps are taken:</p>
+      <p>当用属性键 _P_ 调用 [[GetOwnProperty]] 内部方法时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ! OrdinaryGetOwnProperty(_O_, _P_).
+        1. 返回 ! OrdinaryGetOwnProperty(_O_, _P_)。
       </emu-alg>
 
       <!-- es6num="9.1.5.1" -->
       <emu-clause id="sec-ordinarygetownproperty" aoid="OrdinaryGetOwnProperty">
         <h1>OrdinaryGetOwnProperty ( _O_, _P_ )</h1>
-        <p>When the abstract operation OrdinaryGetOwnProperty is called with Object _O_ and with property key _P_, the following steps are taken:</p>
+        <p>当用对象 _O_ 和属性键 _P_ 调用抽象操作 OrdinaryGetOwnProperty 时，将执行以下步骤：</p>
         <emu-alg>
-          1. Assert: IsPropertyKey(_P_) is *true*.
-          1. If _O_ does not have an own property with key _P_, return *undefined*.
-          1. Let _D_ be a newly created Property Descriptor with no fields.
-          1. Let _X_ be _O_'s own property whose key is _P_.
-          1. If _X_ is a data property, then
-            1. Set _D_.[[Value]] to the value of _X_'s [[Value]] attribute.
-            1. Set _D_.[[Writable]] to the value of _X_'s [[Writable]] attribute.
-          1. Else _X_ is an accessor property,
-            1. Set _D_.[[Get]] to the value of _X_'s [[Get]] attribute.
-            1. Set _D_.[[Set]] to the value of _X_'s [[Set]] attribute.
-          1. Set _D_.[[Enumerable]] to the value of _X_'s [[Enumerable]] attribute.
-          1. Set _D_.[[Configurable]] to the value of _X_'s [[Configurable]] attribute.
-          1. Return _D_.
+          1. 断言：IsPropertyKey(_P_) 是 *true*。
+          1. 如果 _O_ 没有一个键 _P_ 的自有属性，返回 *undefined*。
+          1. 让 _D_ 为一个新创建的没有字段的属性描述符。
+          1. 让 _X_ 为 _O_ 的自有属性，其键为 _P_。
+          1. 如果 _X_ 是一个数据属性，然后
+            1. 设置 _D_.[[Value]] 为 _X_ 的 [[Value]] 特性值。
+            1. 设置 _D_.[[Writable]] 为 _X_ 的 [[Writable]] 特性值。
+          1. 或者 _X_ 是一个防问器属性。
+            1. 设置 _D_.[[Get]] 为 _X_ 的 [[Get]] 特性值。
+            1. 设置 _D_.[[Set]] 为 _X_ 的 [[Set]] 特性值。
+          1. 设置 _D_.[[Enumerable]] 为 _X_ 的 [[Enumerable]] 特性值。
+          1. 设置 _D_.[[Configurable]] 为 _X_ 的 [[Configurable]] 特性值。
+          1. 返回 _D_。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -127,72 +127,72 @@
     <!-- es6num="9.1.6" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc">
       <h1>[[DefineOwnProperty]] ( _P_, _Desc_ )</h1>
-      <p>When the [[DefineOwnProperty]] internal method of _O_ is called with property key _P_ and Property Descriptor _Desc_, the following steps are taken:</p>
+      <p>当用属性 _P_ 和属性描述符 _Desc_ 调用 _O_ 的 [[DefineOwnProperty]] 内部方法 时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ? OrdinaryDefineOwnProperty(_O_, _P_, _Desc_).
+        1. 返回 ? OrdinaryDefineOwnProperty(_O_, _P_, _Desc_)。
       </emu-alg>
 
       <!-- es6num="9.1.6.1" -->
       <emu-clause id="sec-ordinarydefineownproperty" aoid="OrdinaryDefineOwnProperty">
         <h1>OrdinaryDefineOwnProperty ( _O_, _P_, _Desc_ )</h1>
-        <p>When the abstract operation OrdinaryDefineOwnProperty is called with Object _O_, property key _P_, and Property Descriptor _Desc_, the following steps are taken:</p>
+        <p>当用对象 _O_，属性键 _P_ 和属性描述符 _Desc_ 调用抽象操作 OrdinaryDefineOwnProperty 时，将执行以下步骤：</p>
         <emu-alg>
-          1. Let _current_ be ? _O_.[[GetOwnProperty]](_P_).
-          1. Let _extensible_ be _O_.[[Extensible]].
-          1. Return ValidateAndApplyPropertyDescriptor(_O_, _P_, _extensible_, _Desc_, _current_).
+          1. 让 _current_ 为 ? _O_.[[GetOwnProperty]](_P_)。
+          1. 让 _extensible_ 为 _O_.[[Extensible]]。
+          1. 返回 ValidateAndApplyPropertyDescriptor(_O_, _P_, _extensible_, _Desc_, _current_)。
         </emu-alg>
       </emu-clause>
 
       <!-- es6num="9.1.6.2" -->
       <emu-clause id="sec-iscompatiblepropertydescriptor" aoid="IsCompatiblePropertyDescriptor">
         <h1>IsCompatiblePropertyDescriptor ( _Extensible_, _Desc_, _Current_ )</h1>
-        <p>When the abstract operation IsCompatiblePropertyDescriptor is called with Boolean value _Extensible_, and Property Descriptors _Desc_, and _Current_, the following steps are taken:</p>
+        <p>当用布尔值 _Extensible_，和属性描述符 _Desc_ 和 _Current_ 调用抽象操作 IsCompatiblePropertyDescriptor 时，将执行以下步骤：</p>
         <emu-alg>
-          1. Return ValidateAndApplyPropertyDescriptor(*undefined*, *undefined*, _Extensible_, _Desc_, _Current_).
+          1. 返回 ValidateAndApplyPropertyDescriptor(*undefined*, *undefined*, _Extensible_, _Desc_, _Current_)。
         </emu-alg>
       </emu-clause>
 
       <!-- es6num="9.1.6.3" -->
       <emu-clause id="sec-validateandapplypropertydescriptor" aoid="ValidateAndApplyPropertyDescriptor">
         <h1>ValidateAndApplyPropertyDescriptor ( _O_, _P_, _extensible_, _Desc_, _current_ )</h1>
-        <p>When the abstract operation ValidateAndApplyPropertyDescriptor is called with Object _O_, property key _P_, Boolean value _extensible_, and Property Descriptors _Desc_, and _current_, the following steps are taken:</p>
+        <p>当用对象 _O_，属性键 _P_，布尔值 _Extensible_，和属性描述符 _Desc_ 和 _Current_ 调用抽象操作 ValidateAndApplyPropertyDescriptor 时，将执行以下步骤：</p>
         <emu-note>
-          <p>If *undefined* is passed as _O_, only validation is performed and no object updates are performed.</p>
+          <p>如果 *undefined* 作为_O_传递，则只执行验证，不执行对象更新。</p>
         </emu-note>
         <emu-alg>
-          1. Assert: If _O_ is not *undefined*, then IsPropertyKey(_P_) is *true*.
-          1. If _current_ is *undefined*, then
-            1. If _extensible_ is *false*, return *false*.
-            1. Assert: _extensible_ is *true*.
-            1. If IsGenericDescriptor(_Desc_) is *true* or IsDataDescriptor(_Desc_) is *true*, then
-              1. If _O_ is not *undefined*, create an own data property named _P_ of object _O_ whose [[Value]], [[Writable]], [[Enumerable]] and [[Configurable]] attribute values are described by _Desc_. If the value of an attribute field of _Desc_ is absent, the attribute of the newly created property is set to its default value.
-            1. Else _Desc_ must be an accessor Property Descriptor,
-              1. If _O_ is not *undefined*, create an own accessor property named _P_ of object _O_ whose [[Get]], [[Set]], [[Enumerable]] and [[Configurable]] attribute values are described by _Desc_. If the value of an attribute field of _Desc_ is absent, the attribute of the newly created property is set to its default value.
-            1. Return *true*.
-          1. If every field in _Desc_ is absent, return *true*.
-          1. If _current_.[[Configurable]] is *false*, then
-            1. If _Desc_.[[Configurable]] is present and its value is *true*, return *false*.
-            1. If _Desc_.[[Enumerable]] is present and the [[Enumerable]] fields of _current_ and _Desc_ are the Boolean negation of each other, return *false*.
-          1. If IsGenericDescriptor(_Desc_) is *true*, no further validation is required.
-          1. Else if IsDataDescriptor(_current_) and IsDataDescriptor(_Desc_) have different results, then
-            1. If _current_.[[Configurable]] is *false*, return *false*.
-            1. If IsDataDescriptor(_current_) is *true*, then
-              1. If _O_ is not *undefined*, convert the property named _P_ of object _O_ from a data property to an accessor property. Preserve the existing values of the converted property's [[Configurable]] and [[Enumerable]] attributes and set the rest of the property's attributes to their default values.
-            1. Else,
-              1. If _O_ is not *undefined*, convert the property named _P_ of object _O_ from an accessor property to a data property. Preserve the existing values of the converted property's [[Configurable]] and [[Enumerable]] attributes and set the rest of the property's attributes to their default values.
-          1. Else if IsDataDescriptor(_current_) and IsDataDescriptor(_Desc_) are both *true*, then
-            1. If _current_.[[Configurable]] is *false* and _current_.[[Writable]] is *false*, then
-              1. If _Desc_.[[Writable]] is present and _Desc_.[[Writable]] is *true*, return *false*.
-              1. If _Desc_.[[Value]] is present and SameValue(_Desc_.[[Value]], _current_.[[Value]]) is *false*, return *false*.
-              1. Return *true*.
-          1. Else IsAccessorDescriptor(_current_) and IsAccessorDescriptor(_Desc_) are both *true*,
-            1. If _current_.[[Configurable]] is *false*, then
-              1. If _Desc_.[[Set]] is present and SameValue(_Desc_.[[Set]], _current_.[[Set]]) is *false*, return *false*.
-              1. If _Desc_.[[Get]] is present and SameValue(_Desc_.[[Get]], _current_.[[Get]]) is *false*, return *false*.
-              1. Return *true*.
-          1. If _O_ is not *undefined*, then
-            1. For each field of _Desc_ that is present, set the corresponding attribute of the property named _P_ of object _O_ to the value of the field.
-          1. Return *true*.
+          1. 断言：如果 _O_ 不是 *undefined*，则 IsPropertyKey(_P_) 是 *true*。
+          1. 如果 _current_ 是 *undefined*，则
+            1. 如果 _extensible_ 是 *false*，返回 *false*。
+            1. 断言：_extensible_ 是 *true*。
+            1. 如果 IsGenericDescriptor(_Desc_) 是 *true* 或者 IsDataDescriptor(_Desc_) 是 *true*， 则
+              1. 如果 _O_ 不是 *undefined*，创建一个对象 _O_ 的名为 _P_ 的自有数据属性，它的 [[Value]]，[[Writable]]，[[Enumerable]] 和 [[Configurable]] 特性值由 _Desc_ 描述。如果 _Desc_ 的特性字段的值不存在，则将新创建的属性的特性设置为其默认值。
+            1. 或者 _Desc_ 必须是一个访问属性描述符，
+              1. 如果 _O_ 不是 *undefined*， 创建一个对象 _O_ 的名为 _P_ 的访问器属性，它的 [[Get]], [[Set]], [[Enumerable]] 和 [[Configurable]] 特性值由 _Desc_ 描述。如果 _Desc_ 的特性字段的值不存在，则将新创建的属性的特性设置为其默认值。
+            1. 返回 *true*。
+          1. 如果 _Desc_ 中的每个字段都不存在, 返回 *true*。
+          1. 如果 _current_.[[Configurable]] 是 *false*，则
+            1. 如果 _Desc_.[[Configurable]] 存在且其值为 *true*，返回 *false*。
+            1. 如果 _Desc_.[[Enumerable]] 存在且 _current_ 和 _Desc_ 的 [[Enumerable]] 字段是彼此的布尔否定，返回 *false*。
+          1. 如果 IsGenericDescriptor(_Desc_) 是 *true*，不需要进一步的验证。
+          1. 或者如果 IsDataDescriptor(_current_) 和 IsDataDescriptor(_Desc_) 由不同的结果，则
+            1. 如果 _current_.[[Configurable]] 是 *false*，返回 *false*。
+            1. 如果 IsDataDescriptor(_current_) 是 *true*，则
+              1. 如果 _O_ 不是 *undefined*，将对象 _O_ 名为 _P_ 的属性从数据属性转换为访问器属性。保留已转换属性的 [[Configurable]] 和 [[Enumerable]] 属性的现有值，并将属性的其余特性设置为默认值。
+            1. 或者，
+              1. 如果 _O_ 不是 *undefined*，将对象 _O_ 名为 _P_ 的属性从访问器属性转换为数据属性。保留已转换属性的 [[Configurable]] 和 [[Enumerable]] 属性的现有值，并将属性的其余特性设置为默认值。
+          1. 或者如果 IsDataDescriptor(_current_) 和 IsDataDescriptor(_Desc_) 都是 *true*， 则
+            1. 如果 _current_.[[Configurable]] 是 *false* 且 _current_.[[Writable]] 是 *false*，则
+              1. 如果 _Desc_.[[Writable]] 存在且 _Desc_.[[Writable]] 是 *true*，返回 *false*。
+              1. 如果 _Desc_.[[Value]] 存在且 SameValue(_Desc_.[[Value]], _current_.[[Value]]) 是 *false*，返回 *false*。
+              1. 返回 *true*。
+          1. 或者 IsAccessorDescriptor(_current_) 和 IsAccessorDescriptor(_Desc_) 都是 *true*，
+            1. 如果 _current_.[[Configurable]] 是 *false*，则
+              1. 如果 _Desc_.[[Set]] 存在且 SameValue(_Desc_.[[Set]], _current_.[[Set]]) 是 *false*，返回 *false*。
+              1. 如果 _Desc_.[[Get]] 存在且 SameValue(_Desc_.[[Get]], _current_.[[Get]]) 是 *false*，返回 *false*。
+              1. 返回 *true*。
+          1. 如果 _O_ 不是 *undefined*，则
+            1. 对于存在的 _Desc_ 的每个字段，将对象 _O_ 名为 _P_ 属性的相应特性设置为该字段的值。
+          1. 返回 *true*。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -200,23 +200,23 @@
     <!-- es6num="9.1.7" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-hasproperty-p">
       <h1>[[HasProperty]]( _P_ )</h1>
-      <p>When the [[HasProperty]] internal method of _O_ is called with property key _P_, the following steps are taken:</p>
+      <p>当 _O_ 的 [[HasProperty]] 内部方法调用时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ? OrdinaryHasProperty(_O_, _P_).
+        1. 返回 ? OrdinaryHasProperty(_O_, _P_)。
       </emu-alg>
 
       <!-- es6num="9.1.7.1" -->
       <emu-clause id="sec-ordinaryhasproperty" aoid="OrdinaryHasProperty">
         <h1>OrdinaryHasProperty ( _O_, _P_ )</h1>
-        <p>When the abstract operation OrdinaryHasProperty is called with Object _O_ and with property key _P_, the following steps are taken:</p>
+        <p>当用对象 _O_，属性键 _P_ 调用抽象操作 OrdinaryHasProperty 时，将执行以下步骤：</p>
         <emu-alg>
-          1. Assert: IsPropertyKey(_P_) is *true*.
-          1. Let _hasOwn_ be ? _O_.[[GetOwnProperty]](_P_).
-          1. If _hasOwn_ is not *undefined*, return *true*.
-          1. Let _parent_ be ? _O_.[[GetPrototypeOf]]().
-          1. If _parent_ is not *null*, then
-            1. Return ? _parent_.[[HasProperty]](_P_).
-          1. Return *false*.
+          1. 断言：IsPropertyKey(_P_) 为 *true*。
+          1. 让 _hasOwn_ 为 ? _O_.[[GetOwnProperty]](_P_)。
+          1. 如果 _hasOwn_ 不是 *undefined*，返回 *true*。
+          1. 让 _parent_ 为 ? _O_.[[GetPrototypeOf]]()。
+          1. 如果 _parent_ 不是 *null*，则
+            1. 返回 ? _parent_.[[HasProperty]](_P_)。
+          1. 返回 *false*。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -224,28 +224,28 @@
     <!-- es6num="9.1.8" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-get-p-receiver">
       <h1>[[Get]] ( _P_, _Receiver_ )</h1>
-      <p>When the [[Get]] internal method of _O_ is called with property key _P_ and ECMAScript language value _Receiver_, the following steps are taken:</p>
+      <p>当用属性键 _P_ 和 ECMAScript 语言值 _Receiver_ 调用 _O_ 的 [[Get]] 内部方法时，将执行以下步骤：</p>
 
       <emu-alg>
-        1. Return ? OrdinaryGet(_O_, _P_, _Receiver_).
+        1. 返回 ? OrdinaryGet(_O_, _P_, _Receiver_)。
       </emu-alg>
 
       <emu-clause id="sec-ordinaryget" aoid="OrdinaryGet">
         <h1>OrdinaryGet ( _O_, _P_, _Receiver_ )</h1>
-        <p>When the abstract operation OrdinaryGet is called with Object _O_, property key _P_, and ECMAScript language value _Receiver_, the following steps are taken:</p>
+        <p>当用对象 _O_，属性键 _P_，ECMAScript 语言值 _Receiver_ 调用抽象操作 OrdinaryGet 时，将执行以下步骤：</p>
 
         <emu-alg>
-          1. Assert: IsPropertyKey(_P_) is *true*.
-          1. Let _desc_ be ? _O_.[[GetOwnProperty]](_P_).
-          1. If _desc_ is *undefined*, then
-            1. Let _parent_ be ? _O_.[[GetPrototypeOf]]().
-            1. If _parent_ is *null*, return *undefined*.
-            1. Return ? _parent_.[[Get]](_P_, _Receiver_).
-          1. If IsDataDescriptor(_desc_) is *true*, return _desc_.[[Value]].
-          1. Assert: IsAccessorDescriptor(_desc_) is *true*.
-          1. Let _getter_ be _desc_.[[Get]].
-          1. If _getter_ is *undefined*, return *undefined*.
-          1. Return ? Call(_getter_, _Receiver_).
+          1. 断言：IsPropertyKey(_P_) 是 *true*。
+          1. 让 _desc_ 为 ? _O_.[[GetOwnProperty]](_P_)。
+          1. 如果 _desc_ 是 *undefined*，则
+            1. 让 _parent_ 为 ? _O_.[[GetPrototypeOf]]()。
+            1. 如果 _parent_ 是 *null*，返回 *undefined*。
+            1. 返回 ? _parent_.[[Get]](_P_, _Receiver_)。
+          1. 如果 IsDataDescriptor(_desc_) 是 *true*，返回 _desc_.[[Value]]。
+          1. 断言：IsAccessorDescriptor(_desc_) 是 *true*。
+          1. 让 _getter_ 为 _desc_.[[Get]]。
+          1. 如果 _getter_ 是 *undefined*，返回 *undefined*。
+          1. 返回 ? Call(_getter_, _Receiver_)。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -253,50 +253,50 @@
     <!-- es6num="9.1.9" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-set-p-v-receiver">
       <h1>[[Set]] ( _P_, _V_, _Receiver_ )</h1>
-      <p>When the [[Set]] internal method of _O_ is called with property key _P_, value _V_, and ECMAScript language value _Receiver_, the following steps are taken:</p>
+      <p>当用属性键 _P_，值 _V_，ECMAScript 语言值 _Receiver_ 调用 _O_ 的 [[Set]] 内部方法 时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ? OrdinarySet(_O_, _P_, _V_, _Receiver_).
+        1. 返回 ? OrdinarySet(_O_, _P_, _V_, _Receiver_)。
       </emu-alg>
 
       <emu-clause id="sec-ordinaryset" aoid="OrdinarySet">
         <h1>OrdinarySet ( _O_, _P_, _V_, _Receiver_ )</h1>
-        <p>When the abstract operation OrdinarySet is called with Object _O_, property key _P_, value _V_, and ECMAScript language value _Receiver_, the following steps are taken:</p>
+        <p>当用对象 _O_，属性键 _P_，值 _V_，ECMAScript 语言值 _Receiver_ 调用抽象操作 OrdinarySet 时，将执行以下步骤：</p>
 
         <emu-alg>
-          1. Assert: IsPropertyKey(_P_) is *true*.
-          1. Let _ownDesc_ be ? _O_.[[GetOwnProperty]](_P_).
-          1. Return OrdinarySetWithOwnDescriptor(_O_, _P_, _V_, _Receiver_, _ownDesc_).
+          1. 断言：IsPropertyKey(_P_) 是 *true*。
+          1. 让 _ownDesc_ 为 ? _O_.[[GetOwnProperty]](_P_)。
+          1. 染灰 OrdinarySetWithOwnDescriptor(_O_, _P_, _V_, _Receiver_, _ownDesc_)。
         </emu-alg>
       </emu-clause>
 
       <emu-clause id="sec-ordinarysetwithowndescriptor" aoid="OrdinarySetWithOwnDescriptor">
         <h1>OrdinarySetWithOwnDescriptor ( _O_, _P_, _V_, _Receiver_, _ownDesc_ )</h1>
-        <p>When the abstract operation OrdinarySetWithOwnDescriptor is called with Object _O_, property key _P_, value _V_, ECMAScript language value _Receiver_, and Property Descriptor (or *undefined*) _ownDesc_, the following steps are taken:</p>
+        <p>当用对象 _O_，属性键 _P_，值 _V_，ECMAScript 语言值 _Receiver_ 和属性描述符（或 *undefined*） _ownDesc_  调用抽象操作 OrdinarySetWithOwnDescriptor 时，将执行以下步骤：</p>
 
         <emu-alg>
-          1. Assert: IsPropertyKey(_P_) is *true*.
-          1. If _ownDesc_ is *undefined*, then
-            1. Let _parent_ be ? _O_.[[GetPrototypeOf]]().
-            1. If _parent_ is not *null*, then
-              1. Return ? _parent_.[[Set]](_P_, _V_, _Receiver_).
-            1. Else,
-              1. Set _ownDesc_ to the PropertyDescriptor{[[Value]]: *undefined*, [[Writable]]: *true*, [[Enumerable]]: *true*, [[Configurable]]: *true*}.
-          1. If IsDataDescriptor(_ownDesc_) is *true*, then
-            1. If _ownDesc_.[[Writable]] is *false*, return *false*.
-            1. If Type(_Receiver_) is not Object, return *false*.
-            1. Let _existingDescriptor_ be ? _Receiver_.[[GetOwnProperty]](_P_).
-            1. If _existingDescriptor_ is not *undefined*, then
-              1. If IsAccessorDescriptor(_existingDescriptor_) is *true*, return *false*.
-              1. If _existingDescriptor_.[[Writable]] is *false*, return *false*.
-              1. Let _valueDesc_ be the PropertyDescriptor{[[Value]]: _V_}.
-              1. Return ? _Receiver_.[[DefineOwnProperty]](_P_, _valueDesc_).
-            1. Else _Receiver_ does not currently have a property _P_,
-              1. Return ? CreateDataProperty(_Receiver_, _P_, _V_).
-          1. Assert: IsAccessorDescriptor(_ownDesc_) is *true*.
-          1. Let _setter_ be _ownDesc_.[[Set]].
-          1. If _setter_ is *undefined*, return *false*.
-          1. Perform ? Call(_setter_, _Receiver_, &laquo; _V_ &raquo;).
-          1. Return *true*.
+          1. 断言：IsPropertyKey(_P_) 是 *true*。
+          1. 如果 _ownDesc_ 是 *undefined*，则
+            1. 让 _parent_ 为 ? _O_.[[GetPrototypeOf]]()。
+            1. 如果 _parent_ 不是 *null*，则
+              1. 返回 ? _parent_.[[Set]](_P_, _V_, _Receiver_)。
+            1. 或者，
+              1. 设置 _ownDesc_ 为 PropertyDescriptor{[[Value]]: *undefined*, [[Writable]]: *true*, [[Enumerable]]: *true*, [[Configurable]]: *true*}。
+          1. 如果 IsDataDescriptor(_ownDesc_) 是 *true*，则
+            1. 如果 _ownDesc_.[[Writable]] 是 *false*, 返回 *false*。
+            1. 如果 Type(_Receiver_) 不是对象，返回 *false*。
+            1. 让 _existingDescriptor_ 为 ? _Receiver_.[[GetOwnProperty]](_P_)。
+            1. 如果 _existingDescriptor_ 不是 *undefined*，则
+              1. 如果 IsAccessorDescriptor(_existingDescriptor_) 是 *true*，返回 *false*。
+              1. 如果 _existingDescriptor_.[[Writable]] 是 *false*，返回 *false*。
+              1. 让 _valueDesc_ 为 PropertyDescriptor{[[Value]]: _V_}。
+              1. 返回 ? _Receiver_.[[DefineOwnProperty]](_P_, _valueDesc_)。
+            1. 或者 _Receiver_ 目前没有属性 _P_，
+              1. 返回 ? CreateDataProperty(_Receiver_, _P_, _V_)。
+          1. 断言：IsAccessorDescriptor(_ownDesc_) 是 *true*。
+          1. 让 _setter_ 为 _ownDesc_.[[Set]]。
+          1. 如果 _setter_ 是 *undefined*，返回 *false*。
+          1. 执行 ? Call(_setter_, _Receiver_, &laquo; _V_ &raquo;)。
+          1. 返回 *true*。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -304,22 +304,22 @@
     <!-- es6num="9.1.10" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-delete-p">
       <h1>[[Delete]] ( _P_ )</h1>
-      <p>When the [[Delete]] internal method of _O_ is called with property key _P_, the following steps are taken:</p>
+      <p>当用属性键 _P_ 调用 _O_ 的 [[Delete]] 内部方法时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ? OrdinaryDelete(_O_, _P_).
+        1. 返回 ? OrdinaryDelete(_O_, _P_).
       </emu-alg>
 
       <emu-clause id="sec-ordinarydelete" aoid="OrdinaryDelete">
         <h1>OrdinaryDelete ( _O_, _P_ )</h1>
-        <p>When the abstract operation OrdinaryDelete is called with Object _O_ and property key _P_, the following steps are taken:</p>
+        <p>当用对象 _O_，属性键 _P_ 调用抽象操作 OrdinaryDelete 时，将执行以下步骤：</p>
         <emu-alg>
-          1. Assert: IsPropertyKey(_P_) is *true*.
-          1. Let _desc_ be ? _O_.[[GetOwnProperty]](_P_).
-          1. If _desc_ is *undefined*, return *true*.
-          1. If _desc_.[[Configurable]] is *true*, then
-            1. Remove the own property with name _P_ from _O_.
-            1. Return *true*.
-          1. Return *false*.
+          1. 断言：IsPropertyKey(_P_) 是 *true*。
+          1. 让 _desc_ 为 ? _O_.[[GetOwnProperty]](_P_)。
+          1. 如果 _desc_ 是 *undefined*，返回 *true*。
+          1. 如果 _desc_.[[Configurable]] 是 *true*，则
+            1. 从 _O_ 中删除名为 _P_ 的属性。
+            1. 返回 *true*。
+          1. 返回 *false*。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -327,24 +327,24 @@
     <!-- es6num="9.1.12" -->
     <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots-ownpropertykeys">
       <h1>[[OwnPropertyKeys]] ( )</h1>
-      <p>When the [[OwnPropertyKeys]] internal method of _O_ is called, the following steps are taken:</p>
+      <p>当 _O_ 的 [[OwnPropertyKeys]] 内部方法调用时，将执行以下步骤：</p>
       <emu-alg>
-        1. Return ! OrdinaryOwnPropertyKeys(_O_).
+        1. 返回 ! OrdinaryOwnPropertyKeys(_O_)。
       </emu-alg>
 
       <emu-clause id="sec-ordinaryownpropertykeys" aoid="OrdinaryOwnPropertyKeys">
         <h1>OrdinaryOwnPropertyKeys ( _O_ )</h1>
-        <p>When the abstract operation OrdinaryOwnPropertyKeys is called with Object _O_, the following steps are taken:</p>
+        <p>当用对象 _O_ 调用抽象操作 OrdinaryOwnPropertyKeys 时，将执行以下步骤：</p>
 
         <emu-alg>
-          1. Let _keys_ be a new empty List.
-          1. For each own property key _P_ of _O_ that is an integer index, in ascending numeric index order, do
-            1. Add _P_ as the last element of _keys_.
-          1. For each own property key _P_ of _O_ that is a String but is not an integer index, in ascending chronological order of property creation, do
-            1. Add _P_ as the last element of _keys_.
-          1. For each own property key _P_ of _O_ that is a Symbol, in ascending chronological order of property creation, do
-            1. Add _P_ as the last element of _keys_.
-          1. Return _keys_.
+          1. 让 _keys_ 为一个新的空列表。
+          1. 对于 _O_ 的每个属性键 _P_，它是一个整数索引，按升序数字索引顺序执行
+            1. 将 _P_ 添加为 _keys_ 的最后一个元素。
+          1. 对于 _O_ 的每个属性键 _P_，它是一个字符串，且不是一个整数索引，按照创建属性的时间顺序执行
+            1. 将 _P_ 添加为 _keys_ 的最后一个元素。
+          1. 对于 _O_ 的每个属性键 _P_，它是一个 Symbol，按照创建属性的时间顺序执行
+            1. 将 _P_ 添加为 _keys_ 的最后一个元素。
+          1. 返回 _keys_。
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -352,43 +352,43 @@
     <!-- es6num="9.1.13" -->
     <emu-clause id="sec-objectcreate" aoid="ObjectCreate">
       <h1>ObjectCreate ( _proto_ [ , _internalSlotsList_ ] )</h1>
-      <p>The abstract operation ObjectCreate with argument _proto_ (an object or null) is used to specify the runtime creation of new ordinary objects. The optional argument _internalSlotsList_ is a List of the names of additional internal slots that must be defined as part of the object. If the list is not provided, a new empty List is used. This abstract operation performs the following steps:</p>
+      <p>具有参数 _proto_ （对象或 null ）的抽象操作 ObjectCreate 用于指定新的普通对象的运行时创建。 可选参数 _internalSlotsList_ 是必须定义为对象的一部分的附加内部 slot 名称的列表。如果没有提供列表，则使用新的空列表。 这个抽象操作执行以下步骤：</p>
       <emu-alg>
-        1. If _internalSlotsList_ is not present, set _internalSlotsList_ to a new empty List.
-        1. Let _obj_ be a newly created object with an internal slot for each name in _internalSlotsList_.
-        1. Set _obj_'s essential internal methods to the default ordinary object definitions specified in <emu-xref href="#sec-ordinary-object-internal-methods-and-internal-slots"></emu-xref>.
-        1. Set _obj_.[[Prototype]] to _proto_.
-        1. Set _obj_.[[Extensible]] to *true*.
-        1. Return _obj_.
+        1. 如果 _internalSlotsList_ 不存在，设置 _internalSlotsList_ 为一个新的空列表。
+        1. 让 _obj_ 为一个新创建对象，在 _internalSlotsList_ 中它每一个名字都有一个内部 slot。
+        1. 设置 _obj_ 的基本内部方法为 <emu-xref href="#sec-ordinary-object-internal-methods-and-internal-slots"></emu-xref> 中指定的默认普通对象定义。
+        1. 设置 _obj_.[[Prototype]] 为 _proto_。
+        1. 设置 _obj_.[[Extensible]] 为 *true*。
+        1. 返回 _obj_。
       </emu-alg>
     </emu-clause>
 
     <!-- es6num="9.1.14" -->
     <emu-clause id="sec-ordinarycreatefromconstructor" aoid="OrdinaryCreateFromConstructor">
       <h1>OrdinaryCreateFromConstructor ( _constructor_, _intrinsicDefaultProto_ [ , _internalSlotsList_ ] )</h1>
-      <p>The abstract operation OrdinaryCreateFromConstructor creates an ordinary object whose [[Prototype]] value is retrieved from a constructor's `prototype` property, if it exists. Otherwise the intrinsic named by _intrinsicDefaultProto_ is used for [[Prototype]]. The optional _internalSlotsList_ is a List of the names of additional internal slots that must be defined as part of the object. If the list is not provided, a new empty List is used. This abstract operation performs the following steps:</p>
+      <p>抽象操作 OrdinaryCreateFromConstructor 创建一个普通的对象，其 [[Prototype]] 值是从构造函数的 `prototype` 属性中检索的，如果存在的话。否则，由 _intrinsicDefaultProto_ 命名的内在用于 [[Prototype]] 。可选的 _internalSlotsList_ 是必须定义为对象的一部分的附加内部 slot 的名称列表。如果没有提供列表，则使用新的空列表。 这个抽象操作执行以下步骤：</p>
       <emu-alg>
-        1. Assert: _intrinsicDefaultProto_ is a String value that is this specification's name of an intrinsic object. The corresponding object must be an intrinsic that is intended to be used as the [[Prototype]] value of an object.
-        1. Let _proto_ be ? GetPrototypeFromConstructor(_constructor_, _intrinsicDefaultProto_).
-        1. Return ObjectCreate(_proto_, _internalSlotsList_).
+        1. 断言：_intrinsicDefaultProto_ 是一个字符串值，它是这个规范的一个内部对象的名字。相应的对象必须是一个内在的，旨在用作一个对象的 [[Prototype]] 值。
+        1. 让 _proto_ 为 ? GetPrototypeFromConstructor(_constructor_, _intrinsicDefaultProto_)。
+        1. 返回 ObjectCreate(_proto_, _internalSlotsList_)。
       </emu-alg>
     </emu-clause>
 
     <!-- es6num="9.1.15" -->
     <emu-clause id="sec-getprototypefromconstructor" aoid="GetPrototypeFromConstructor">
       <h1>GetPrototypeFromConstructor ( _constructor_, _intrinsicDefaultProto_ )</h1>
-      <p>The abstract operation GetPrototypeFromConstructor determines the [[Prototype]] value that should be used to create an object corresponding to a specific constructor. The value is retrieved from the constructor's `prototype` property, if it exists. Otherwise the intrinsic named by _intrinsicDefaultProto_ is used for [[Prototype]]. This abstract operation performs the following steps:</p>
+      <p>抽象操作 GetPrototypeFromConstructor 确定应该用来创建对应于特定构造函数对象的 [[Prototype]] 值。 该值从构造函数的 `prototype` 属性中检索，如果存在的话。否则，由 _intrinsicDefaultProto_ 命名的内在用于 [[Prototype]]。 这个抽象操作执行以下步骤：</p>
       <emu-alg>
-        1. Assert: _intrinsicDefaultProto_ is a String value that is this specification's name of an intrinsic object. The corresponding object must be an intrinsic that is intended to be used as the [[Prototype]] value of an object.
-        1. Assert: IsCallable(_constructor_) is *true*.
-        1. Let _proto_ be ? Get(_constructor_, `"prototype"`).
-        1. If Type(_proto_) is not Object, then
-          1. Let _realm_ be ? GetFunctionRealm(_constructor_).
-          1. Set _proto_ to _realm_'s intrinsic object named _intrinsicDefaultProto_.
-        1. Return _proto_.
+        1. 断言：_intrinsicDefaultProto_ 是一个字符串值，它是这个规范的一个内部对象的名字。相应的对象必须是一个内在的，旨在用作一个对象的 [[Prototype]] 值。
+        1. 断言：IsCallable(_constructor_) 是 *true*。
+        1. 让 _proto_ 为 ? Get(_constructor_, `"prototype"`)。
+        1. 如果类型（_proto_）不是对象，则
+          1. 让 _realm_ 为 ? GetFunctionRealm(_constructor_)。
+          1. 设置 _proto_ 为 _realm_ 的内部对象命名 _intrinsicDefaultProto_。
+        1. 返回 _proto_。
       </emu-alg>
       <emu-note>
-        <p>If _constructor_ does not supply a [[Prototype]] value, the default value that is used is obtained from the realm of the _constructor_ function rather than from the running execution context.</p>
+        <p>如果 _constructor_ 不提供 [[Prototype]] 值，则使用的默认值是从 _constructor_ 函数的作用域而不是从运行执行上下文中获取。</p>
       </emu-note>
     </emu-clause>
   </emu-clause>
