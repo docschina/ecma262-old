@@ -5,7 +5,7 @@ test*.js
 /deploy_key
 /deploy_key.pub
 
-# Only apps should have lockfiles
+# lockfiles we don't use are ignored
 npm-shrinkwrap.json
 package-lock.json
 yarn.lock
