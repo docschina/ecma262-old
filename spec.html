@@ -161,18 +161,18 @@
   </emu-clause>
 
   <emu-clause id="sec-hosts-and-implementations">
-    <h1>Hosts and Implementations</h1>
-    <p>To aid integrating ECMAScript into host environments, this specification defers the definition certain facilities (e.g., abstract operations), either in whole or in part, to a source outside of this specification. Editorially, this specification distinguishes the following kinds of deferrals.</p>
+    <h1>宿主和实现</h1>
+    <p>为了将 ECMAScript 整合入宿主环境中，本规范将一些特定功能的定义（例如<abbr title="Abstract Operations">抽象操作</abbr>）委托给全部或部分的外部源。出于编写的目的，本规范对以下委托的定义做出区分。</p>
     <!-- "implementation" below is not a dfn but an em to avoid excessive auto-linking. -->
-    <p>An <em id="implementation">implementation</em> is an external source that further defines facilities enumerated in Annex <emu-xref href="#sec-host-layering-points"></emu-xref> or those that are marked as implementation-defined or implementation-approximated. In informal use, an implementation refers to a concrete artefact, such as a particular web browser.</p>
-    <p>An <dfn id="implementation-defined">implementation-defined</dfn> facility is one that defers its definition to an external source without further qualification. This specification does not make any recommendations for particular behaviours, and conforming implementations are free to choose any behaviour within the constraints put forth by this specification.</p>
-    <p>An <dfn id="implementation-approximated">implementation-approximated</dfn> facility is one that defers its definition to an external source while recommending an ideal behaviour. While conforming implementations are free to choose any behaviour within the constraints put forth by this specification, they are encouraged to strive to approximate the ideal. Some mathematical operations, such as <emu-xref href="#sec-math.exp"><code>Math.exp</code></emu-xref>, are implementation-approximated.</p>
-    <p>A <dfn id="host">host</dfn> is an external source that further defines facilities listed in Annex <emu-xref href="#sec-host-layering-points"></emu-xref> but does not further define other implementation-defined or implementation-approximated facilities. In informal use, a host refers to the set of all implementations, such as the set of all web browsers, that interface with this specification in the same way via Annex <emu-xref href="#sec-host-layering-points"></emu-xref>. A host is often an external specification, such as WHATWG HTML (<a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>). In other words, facilities that are host-defined are often further defined in external specifications.</p>
-    <p>A <dfn id="host-hook">host hook</dfn> is an abstract operation that is defined in whole or in part by an external source. All host hooks must be listed in Annex <emu-xref href="#sec-host-layering-points"></emu-xref>.</p>
-    <p>A <dfn id="host-defined">host-defined</dfn> facility is one that defers its definition to an external source without further qualification and is listed in Annex <emu-xref href="#sec-host-layering-points"></emu-xref>. Implementations that are not hosts may also provide definitions for host-defined facilities.</p>
-    <p>A <dfn id="host-environment">host environment</dfn> is a particular choice of definition for all host-defined facilities. A host environment typically includes objects or functions which allow obtaining input and providing output as host-defined properties of the global object.</p>
-    <p>This specification follows the editorial convention of always using the most specific term. For example, if a facility is host-defined, it should not be referred to as implementation-defined.</p>
-    <p>Both hosts and implementations may interface with this specification via the language types, specification types, abstract operations, grammar productions, intrinsic objects, and intrinsic symbols defined herein.</p>
+    <p><em id="implementation">实现</em>是指一种进一步定义了这类列举出来的附录<emu-xref href="#sec-host-layering-points"></emu-xref>或者指被标记为<abbr title="implementation-defined">实现定义</abbr>或<abbr title="implementation-approximated">实现近似</abbr>的外部源。简单来说，一个实现是指一种具体的实体，例如一个特定的网页浏览器。</p>
+    <p><dfn id="implementation-defined">实现定义</dfn>是一种不受额外限制地委托外部源来定义的功能。本规范不对其建议任何具体行为，任何符合规范的实现可以在不违背本规范的约束前提下自行选择具体行为方式。</p>
+    <p><dfn id="implementation-approximated">实现近似</dfn>是指本规范在推荐了理想行为的同时，委托由外部源来定义的一种功能。虽然任何符合规范的实现可以在不违背本规范的约束前提下自行选择具体行为方式，但是仍推荐它们尽量符合本规范的建议。一些数学运算操作例如<emu-xref href="#sec-math.exp"><code>Math.exp</code></emu-xref>是实现近似的。</p>
+    <p><dfn id="host">宿主</dfn>是指一种进一步定义了这类列举出来的附录<emu-xref href="#sec-host-layering-points"></emu-xref>但没有进一步定义其他<abbr title="implementation-defined">实现定义</abbr>或<abbr title="implementation-approximated">实现近似</abbr>功能的外部源。简单来说，宿主是指所有的实现集合，比如所有浏览器，用附录<emu-xref href="#sec-host-layering-points"></emu-xref>相同的方式与本规范进行交互。宿主通常是外部规范，例如 WHATWG HTML (<a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>)。换言之，<abbr title="host-defined">宿主定义</abbr>的功能通常是由外部规范来进一步定义的。</p>
+    <p><dfn id="host-hook">宿主勾子</dfn>是指一种部分或全部由外部源定义的抽象操作。所有宿主勾子必须体现于附录种<emu-xref href="#sec-host-layering-points"></emu-xref>。</p>
+    <p><dfn id="host-defined">宿主定义</dfn>是指将附录内容<emu-xref href="#sec-host-layering-points"></emu-xref>不受限制地委托给外部源来定义地功能。非宿主实现也可能提供宿主定义的功能。</p>
+    <p><dfn id="host-environment">宿主环境</dfn>是所有宿主定义功能的一个特定选择。宿主环境必须包含对象或函数作为全局对象的属性来获取输入和提供输出。</p>
+    <p>本规范遵从编辑习惯，总是使用最明确的术语。例如，如果一个功能是宿主定义的，它就不能算作是实现定义。</p>
+    <p>宿主和实现都可通过本规范定义的语言类型、规范类型、抽象操作、文法产生式、内部对象和内部符号与本规范交互</p>
   </emu-clause>
   
   <emu-clause id="sec-ecmascript-overview">
@@ -211,20 +211,20 @@
     <p>本文档将使用下列术语和定义。</p>
 
     <emu-clause id="sec-terms-and-definitions-implementation-approximated">
-      <h1>implementation-approximated</h1>
-      <p>an implementation-approximated facility is defined in whole or in part by an external source but has a recommended, ideal behaviour in this specification</p>
+      <h1>实现近似</h1>
+      <p>实现近似是指由外部源全部或部分定义的功能，但规范给出了建议的理想行为</p>
     </emu-clause>
 
     <emu-clause id="sec-terms-and-definitions-implementation-defined">
-      <h1>implementation-defined</h1>
-      <p>an implementation-defined facility is defined in whole or in part by an external source to this specification</p>
+      <h1>实现定义</h1>
+      <p>实现定义由本规范的外部资源全部或部分定义的功能</p>
     </emu-clause>
 
     <emu-clause id="sec-terms-and-definitions-host-defined">
-      <h1>host-defined</h1>
-      <p>same as implementation-defined</p>
+      <h1>宿主定义</h1>
+      <p>和实现定义相同</p>
       <emu-note>
-        <p>Editorially, see clause <emu-xref href="#sec-hosts-and-implementations"></emu-xref>.</p>
+        <p>出于编辑上的简便，请参加条款<emu-xref href="#sec-hosts-and-implementations"></emu-xref>。</p>
       </emu-note>
     </emu-clause>
 
@@ -521,7 +521,7 @@
           eval(str);
           eval(str);
         </code></pre>
-        <p>Each call to `eval` converts the value of `str` into an ECMAScript source text and performs an independent parse that creates its own separate tree of Parse Nodes. The trees are distinct even though each parse operates upon a source text that was derived from the same String value.</p>
+        <p>每次调用 `eval` 都会将 `str` 的值转化为 ECMAScript 源文本并执行一次独立的解析，生成一个独立的 Parse Node 的解析树。即便是对同一个字符串进行多次解析，各个解析树仍然是互相独立的。</p>
       </emu-note>
       <emu-note>Parse Nodes 是规范的人为定义，并且不需要使用类似的数据结构来实现。</emu-note>
       <p>只用一个冒号 &ldquo;<b>:</b>&rdquo; 作为分隔符分割语法词法的产生式。</p>
@@ -925,19 +925,19 @@
     </emu-clause>
     <emu-clause id="sec-mathematical-operations">
       <h1><abbr title="Mathematical Operations">数学操作</abbr></h1>
-      <p>This specification makes reference to two kinds of numeric values:</p>
+      <p>本规范包含了两个数字型值：</p>
       <ul>
-        <li><em>Number</em>: IEEE 754-2019 double-precision floating point values, used as the default numeric type.</li>
-        <li><em>Mathematical value</em>: Arbitrary real numbers, used for specific situations.</li>
+        <li><em>Number</em>：IEEE 754-2019 双精度浮点值，作为默认的数字型值使用。</li>
+        <li><em>Mathematical 值</em>：任意实数，用于特定场合。</li>
       </ul>
 
-      <p>In the language of this specification, numerical values and operations (including addition, subtraction, negation, multiplication, division, and comparison) are distinguished among different numeric kinds using subscripts. The subscript <sub><dfn id="𝔽">𝔽</dfn></sub> refers to Numbers, and the subscript <sub><dfn id="ℝ">ℝ</dfn></sub> refers to mathematical values. A subscript is used following each numeric value and operation.</p>
-      <p>For brevity, the <sub>𝔽</sub> subscript can be omitted on Number values&mdash;a numeric value with no subscript is interpreted to be a Number. An operation with no subscript is interpreted to be a Number operation, unless one of the parameters has a particular subscript, in which case the operation adopts that subscript. For example, 1<sub>ℝ</sub> + 2<sub>ℝ</sub> = 3<sub>ℝ</sub> is a statement about mathematical values, and 1 + 2 = 3 is a statement about Numbers.</p>
-      <p>In general, when this specification refers to a numerical value, such as in the phrase, "the length of _y_" or "the integer represented by the four hexadecimal digits ...", without explicitly specifying a numeric kind, the phrase refers to a Number. Phrases which refer to a mathematical value are explicitly annotated as such; for example, "the mathematical value of the number of code points in ...".</p>
-      <p>It is not defined to mix Numbers and mathematical values in either arithmetic or comparison operations, and any such undefined operation would be an editorial error in this specification text.</p>
-      <p>The Number value 0, alternatively written 0<sub>𝔽</sub>, is defined as the double-precision floating point positive zero value. In certain contexts, it may also be written as *+0* for clarity.</p>
-      <p>This specification denotes most numeric values in base 10; it also uses numeric values of the form 0x followed by digits 0-9 or A-F as base-16 values.</p>
-      <p>In certain contexts, an operation is specified which is generic between Numbers and mathematical values. In these cases, the subscript can be a variable; _t_ is often used for this purpose, for example 5<sub>_t_</sub> &times; 10<sub>_t_</sub> = 50<sub>_t_</sub> for any _t_ ranging over ℝ and 𝔽, since the values involved are within the range where the semantics coincide.</p>
+      <p>在本规范的语言中，数字型值和操作（含加法、减法、取反、乘法、除法和比较大小）在不同的数字型类别之间是分离的。下标<sub><dfn id="𝔽">𝔽</dfn></sub> 指 Number，下标<sub><dfn id="ℝ">ℝ</dfn></sub>指 mathematical 值。下标会跟在每一个数字型值和操作之后。</p>
+      <p>简而言之，下标<sub>𝔽</sub>对于 Number 是可以省略的 &mdash; 一个没有下标的数字型值即视为 Number。一个没有下标的数字操作即视为 Number 操作，除非其中一个操作数有明确的下标，这样的话这个操作就要以这个下标的为准。例如， 1<sub>ℝ</sub> + 2<sub>ℝ</sub> = 3<sub>ℝ</sub> 是一个 mathematical 值的操作，1 + 2 = 3 是一个 Number 的语句。</p>
+      <p>总之，当本规范在谈及数字型值时，比如在短句总“_y_ 的长度”或“四个十六进制数代表的整型……” ，没有明确说明数字型类别时，这样的短语总是默认表示一个 Number。表达 mathematical 值的短语会明确的标记，例如“码点数的 mathematical value ……”。</p>
+      <p>在算术运算或比较大小操作中，将 Number 和 mathematical 值混合操作的行为是未定义的，任何这样的未定义操作如果出现，都是本规范中的编辑失误。</p>
+      <p>Number 值 0，也可能写作 0<sub>𝔽</sub>，是作为双精度浮点数零值来定义的。在特定的语境中，为了明确起见有可能写作 *+0*。</p>
+      <p>本规范的大多数数字都是以十进制来表示；同时也以 0x 开头，后跟 0-9 数字或 A-F 字母的形式来表示十六进制值。</p>
+      <p>在特定的语境中，可以明确地表示一个操作在 Number 和 mathematical 值之间都是通用的。在这种情况下，下标可以是一个变量；一般使用 _t_，比如 5<sub>_t_</sub> &times; 10<sub>_t_</sub> = 50<sub>_t_</sub> 中 _t_ 可在 ℝ 和 𝔽 中取任意一个，因为这两者无论取谁，语义都是一致的。</p>
       <p>Conversions between mathematical values and numbers are never implicit, and always explicit in this document. A conversion from a mathematical value to a Number is denoted as "the Number value for _x_", and is defined in <emu-xref href="#sec-ecmascript-language-types-number-type"></emu-xref>. A conversion from a Number to a mathematical value is denoted as "the <dfn id="mathematical-value">mathematical value</dfn> of _x_", or ℝ(_x_). Note that the mathematical value of non-finite values is not defined, and the mathematical value of *+0* and *-0* is the mathematical value 0<sub>ℝ</sub>.</p>
       <p>When the term <dfn id="integer">integer</dfn> is used in this specification, it refers to a Number value whose mathematical value is in the set of integers, unless otherwise stated: when the term <dfn id="mathematical integer">mathematical integer</dfn> is used in this specification, it refers to a mathematical value which is in the set of integers. As shorthand, integer<sub>_t_</sub> can be used to refer to either of the two, as determined by _t_.</p>
       <p>The mathematical function <emu-eqn id="eqn-abs" aoid="abs">abs<sub>_t_</sub>(_x_)</emu-eqn> produces the absolute value of _x_, which is <emu-eqn>-<sub>_t_</sub>_x_</emu-eqn> if _x_ &lt;<sub>_t_</sub> 0<sub>_t_</sub> and otherwise is _x_ itself.</p>
