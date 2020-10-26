@@ -186,7 +186,7 @@
   
     <emu-clause id="sec-objects">
       <h1>对象</h1>
-      <p>尽管 ECMAScript 包含了定义类的语法，但是 ECMAScript 对象从根本上来说并不是像 C++，Smalltalk，Java 那样基于类的。相反，对象可以通过各种方式创建，包括字面符号，或通过<em><attr title="constructors">构造器</attr></em>创建对象然后运行代码初始化其全部或部分属性值，为这些属性分配初始值。每个构造器是一个拥有名为 `"prototype"` 的属性的函数，此属性用于实现<em><abbr title="prototype-based inheritance">基于原型的继承</abbr></em> 和<em><abbr title="shared properties">共享属性</abbr></em>。构造器通过<b> new </b>表达式创建对象：例如,`new Date(2009, 11)` 创建一个新 Date 对象。不使用<b>new</b>调用一个构造器的结果由构造器本身决定。例如，`Date()`产生一个表示当前日期时间的字符串，而不是一个对象。</p>
+      <p>尽管 ECMAScript 包含了定义类的语法，但是 ECMAScript 对象从根本上来说并不是像 C++，Smalltalk，Java 那样基于类的。相反，对象可以通过各种方式创建，包括字面符号，或通过<em><abbr title="constructors">构造器</abbr></em>创建对象然后运行代码初始化其全部或部分属性值，为这些属性分配初始值。每个构造器是一个拥有名为 `"prototype"` 的属性的函数，此属性用于实现<em><abbr title="prototype-based inheritance">基于原型的继承</abbr></em> 和<em><abbr title="shared properties">共享属性</abbr></em>。构造器通过<b> new </b>表达式创建对象：例如,`new Date(2009, 11)` 创建一个新 Date 对象。不使用<b>new</b>调用一个构造器的结果由构造器本身决定。例如，`Date()`产生一个表示当前日期时间的字符串，而不是一个对象。</p>
       <p>每个由构造器创建的对象，都有一个隐式引用(叫做对象的<em><abbr title="prototype">原型</abbr></em>)链接到构造器的 `"prototype"` 属性值。再者，一个原型可能有一个<abbr title="non-null">非空</abbr>隐式引用链接到它的原型，以此类推，这叫做<em><abbr title="prototype chain">原型链</abbr></em>。当向对象的一个属性提出引用时，引用会指向原型链中包含此属性名的第一个对象的属性。换句话说，首先检查直接提及的对象的同名属性，如果对象包含同名的属性，引用即指向此属性，如果该对象不包含同名的属性，则下一步检查对象的原型；以此类推。</p>
       <emu-figure id="figure-1" caption="Object/Prototype Relationships">
         <object data="img/figure-1.svg" height="354" type="image/svg+xml" width="719"><img alt="An image of lots of boxes and arrows." height="354" src="img/figure-1.png" width="719"></object>
@@ -234,7 +234,7 @@
     </emu-clause>
 
     <emu-clause id="sec-primitive-value">
-      <h1><attr title="primitive value">原始值</attr></h1>
+      <h1><abbr title="primitive value">原始值</abbr></h1>
       <p>指在<emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref>中定义的 Undefined、Null、Boolean、Number、BigInt、Symbol 或 String 类型之一</p>
       <emu-note>
         <p>一个原始值直接代表语言实现的最低层次的数据</p>
@@ -266,12 +266,12 @@
     </emu-clause>
 
     <emu-clause id="sec-ordinary-object">
-      <h1><attr title="ordinary object">普通对象</attr></h1>
+      <h1><abbr title="ordinary object">普通对象</abbr></h1>
       <p>默认行为拥有如那些所有对象都必须支持的内部方法的对象</p>
     </emu-clause>
 
     <emu-clause id="sec-exotic-object">
-      <h1><attr title="exotic object">异常对象</attr></h1>
+      <h1><abbr title="exotic object">异常对象</abbr></h1>
       <p>默认行为缺少一个或多个必要内部方法的对象</p>
       <emu-note>
         <p>任何对象不是普通对象就是异常对象。</p>
@@ -279,12 +279,12 @@
     </emu-clause>
 
     <emu-clause id="sec-standard-object">
-      <h1><attr title="standard object">标准对象</attr></h1>
+      <h1><abbr title="standard object">标准对象</abbr></h1>
       <p>其语义由本规范定义的对象</p>
     </emu-clause>
 
     <emu-clause id="sec-built-in-object">
-      <h1><attr title="built-in object">内置对象</attr></h1>
+      <h1><abbr title="built-in object">内置对象</abbr></h1>
       <p>ECMAScript 实现指定和提供的对象</p>
       <emu-note>
         <p>标准的内置对象由本规范定义，ECMAScript 实现可以指定和定义其他的一个<em><abbr title="built-in constructor">内置构造器</abbr></em>是个内置对象，也是个构造器。</p>
@@ -375,8 +375,8 @@
     </emu-clause>
 
     <emu-clause id="sec-terms-and-definitions-infinity">
-      <h1><attr title="Infinity">无穷</attr></h1>
-      <p>正无穷大的数字值</p>
+      <h1><abbr title="Infinity">无穷</abbr></h1>
+      <p>正无穷的数字值</p>
     </emu-clause>
 
     <emu-clause id="sec-terms-and-definitions-nan">
@@ -385,18 +385,18 @@
     </emu-clause>
 
     <emu-clause id="sec-terms-and-definitions-bigint-value">
-      <h1>BigInt value</h1>
-      <p>primitive value corresponding to an arbitrary-precision integer value</p>
+      <h1>BigInt 值</h1>
+      <p>任意精度的整数值对应的原始值</p>
     </emu-clause>
 
     <emu-clause id="sec-terms-and-definitions-bigint-type">
-      <h1>BigInt type</h1>
-      <p>set of all possible BigInt values</p>
+      <h1>BigInt 类型</h1>
+      <p>所有可能的 BigInt 值的集合</p>
     </emu-clause>
 
     <emu-clause id="sec-bigint-object">
-      <h1>BigInt object</h1>
-      <p>member of the Object type that is an instance of the standard built-in BigInt constructor</p>
+      <h1>BigInt 对象</h1>
+      <p>一种对象类型，是标志内置 BigInt 构造器的实例对象</p>
     </emu-clause>
 
     <emu-clause id="sec-symbol-value">
@@ -455,7 +455,7 @@
     </emu-clause>
 
     <emu-clause id="sec-attribute">
-      <h1><attr title="attribute">特性</attr></h1>
+      <h1><abbr title="attribute">特性</abbr></h1>
       <p>定义一个属性的一些特性的内部值</p>
     </emu-clause>
 
@@ -925,33 +925,33 @@
     </emu-clause>
     <emu-clause id="sec-mathematical-operations">
       <h1><abbr title="Mathematical Operations">数学操作</abbr></h1>
-      <p>本规范包含了两个数字型值：</p>
+      <p>本规范包含了两种类别的<abbr title="numeric value">数值</abbr>：</p>
       <ul>
-        <li><em>Number</em>：IEEE 754-2019 双精度浮点值，作为默认的数字型值使用。</li>
-        <li><em>Mathematical 值</em>：任意实数，用于特定场合。</li>
+        <li><em>Number</em>：IEEE 754-2019 双精度浮点值，作为默认的数值类型使用。</li>
+        <li><em>数学数值</em>：任意实数，用于特定场合。</li>
       </ul>
 
-      <p>在本规范的语言中，数字型值和操作（含加法、减法、取反、乘法、除法和比较大小）在不同的数字型类别之间是分离的。下标<sub><dfn id="𝔽">𝔽</dfn></sub> 指 Number，下标<sub><dfn id="ℝ">ℝ</dfn></sub>指 mathematical 值。下标会跟在每一个数字型值和操作之后。</p>
-      <p>简而言之，下标<sub>𝔽</sub>对于 Number 是可以省略的 &mdash; 一个没有下标的数字型值即视为 Number。一个没有下标的数字操作即视为 Number 操作，除非其中一个操作数有明确的下标，这样的话这个操作就要以这个下标的为准。例如， 1<sub>ℝ</sub> + 2<sub>ℝ</sub> = 3<sub>ℝ</sub> 是一个 mathematical 值的操作，1 + 2 = 3 是一个 Number 的语句。</p>
-      <p>总之，当本规范在谈及数字型值时，比如在短句总“_y_ 的长度”或“四个十六进制数代表的整型……” ，没有明确说明数字型类别时，这样的短语总是默认表示一个 Number。表达 mathematical 值的短语会明确的标记，例如“码点数的 mathematical value ……”。</p>
-      <p>在算术运算或比较大小操作中，将 Number 和 mathematical 值混合操作的行为是未定义的，任何这样的未定义操作如果出现，都是本规范中的编辑失误。</p>
+      <p>在本规范的语言中，数值和操作（含加法、减法、取反、乘法、除法和比较大小）在不同的数字型类别之间是分离的。下标<sub><dfn id="𝔽">𝔽</dfn></sub> 指 Number，下标<sub><dfn id="ℝ">ℝ</dfn></sub>指<abbr title="mathematical value">数学数值</abbr>。下标会跟在每一个<abbr title="numeric value">数值</abbr>和操作之后。</p>
+      <p>简而言之，下标<sub>𝔽</sub>对于 Number 是可以省略的 &mdash; 一个没有下标的<abbr title="numeric value">数值</abbr>即视为 Number。一个没有下标的数字操作即视为 Number 操作，除非其中一个操作数有明确的下标，这样的话这个操作就要以这个下标的为准。例如， 1<sub>ℝ</sub> + 2<sub>ℝ</sub> = 3<sub>ℝ</sub> 是一个<abbr title="mathematical value">数学数值</abbr>的操作，1 + 2 = 3 是一个 Number 的语句。</p>
+      <p>总之，当本规范在谈及数值时，比如在短句总“_y_ 的长度”或“四个十六进制数代表的整型……” ，没有明确说明数字型类别时，这样的短语总是默认表示一个 Number。表达<abbr title="mathematical value">数学数值</abbr>的短语会明确的标记，例如“码点数的 mathematical value ……”。</p>
+      <p>在算术运算或比较大小操作中，将 Number 和<abbr title="mathematical value">数学数值</abbr>混合操作的行为是未定义的，任何这样的未定义操作如果出现，都是本规范中的编辑失误。</p>
       <p>Number 值 0，也可能写作 0<sub>𝔽</sub>，是作为双精度浮点数零值来定义的。在特定的语境中，为了明确起见有可能写作 *+0*。</p>
       <p>本规范的大多数数字都是以十进制来表示；同时也以 0x 开头，后跟 0-9 数字或 A-F 字母的形式来表示十六进制值。</p>
-      <p>在特定的语境中，可以明确地表示一个操作在 Number 和 mathematical 值之间都是通用的。在这种情况下，下标可以是一个变量；一般使用 _t_，比如 5<sub>_t_</sub> &times; 10<sub>_t_</sub> = 50<sub>_t_</sub> 中 _t_ 可在 ℝ 和 𝔽 中取任意一个，因为这两者无论取谁，语义都是一致的。</p>
-      <p>Conversions between mathematical values and numbers are never implicit, and always explicit in this document. A conversion from a mathematical value to a Number is denoted as "the Number value for _x_", and is defined in <emu-xref href="#sec-ecmascript-language-types-number-type"></emu-xref>. A conversion from a Number to a mathematical value is denoted as "the <dfn id="mathematical-value">mathematical value</dfn> of _x_", or ℝ(_x_). Note that the mathematical value of non-finite values is not defined, and the mathematical value of *+0* and *-0* is the mathematical value 0<sub>ℝ</sub>.</p>
-      <p>When the term <dfn id="integer">integer</dfn> is used in this specification, it refers to a Number value whose mathematical value is in the set of integers, unless otherwise stated: when the term <dfn id="mathematical integer">mathematical integer</dfn> is used in this specification, it refers to a mathematical value which is in the set of integers. As shorthand, integer<sub>_t_</sub> can be used to refer to either of the two, as determined by _t_.</p>
-      <p>The mathematical function <emu-eqn id="eqn-abs" aoid="abs">abs<sub>_t_</sub>(_x_)</emu-eqn> produces the absolute value of _x_, which is <emu-eqn>-<sub>_t_</sub>_x_</emu-eqn> if _x_ &lt;<sub>_t_</sub> 0<sub>_t_</sub> and otherwise is _x_ itself.</p>
-      <p>The mathematical function <emu-eqn id="eqn-min" aoid="min">min<sub>_t_</sub>(_x1_, _x2_, &hellip; , _xN_)</emu-eqn> produces the mathematically smallest of <emu-eqn>_x1_</emu-eqn> through <emu-eqn>_xN_</emu-eqn>. The mathematical function <emu-eqn id="eqn-max" aoid="max">max<sub>_t_</sub>(_x1_, _x2_, ..., _xN_)</emu-eqn> produces the mathematically largest of <emu-eqn>_x1_</emu-eqn> through <emu-eqn>_xN_</emu-eqn>. The domain and range of these mathematical functions include *+&infin;* and *-&infin;*.</p>
-      <p>The notation &ldquo;<emu-eqn id="eqn-modulo" aoid="modulo">_x_ modulo<sub>_t_</sub> _y_</emu-eqn>&rdquo; (_y_ must be finite and nonzero) computes a value _k_ of the same sign as _y_ (or zero) such that <emu-eqn>abs<sub>_t_</sub>(_k_) &lt;<sub>_t_</sub> abs<sub>_t_</sub>(_y_) and _x_-<sub>_t_</sub>_k_ = _q_ &times;<sub>_t_</sub> _y_</emu-eqn> for some integer<sub>_t_</sub> _q_.</p>
-      <p>The mathematical function <emu-eqn id="eqn-floor" aoid="floor">floor<sub>_t_</sub>(_x_)</emu-eqn> produces the largest integer<sub>_t_</sub> (closest to positive infinity) that is not larger than _x_.</p>
+      <p>在特定的语境中，可以明确地表示一个操作在 Number 和<abbr title="mathematical value">数学数值</abbr>之间都是通用的。在这种情况下，下标可以是一个变量；一般使用 _t_，比如 5<sub>_t_</sub> &times; 10<sub>_t_</sub> = 50<sub>_t_</sub> 中 _t_ 可在 ℝ 和 𝔽 中取任意一个，因为这两者无论取谁，语义都是一致的。</p>
+      <p>文档中永远不会出现 Number 和<abbr title="mathematical value">数学数值</abbr>的隐式转换，所有转换都是显式的。从<abbr title="mathematical value">数学数值</abbr>到 Number 的转换写作“_x_ 的 Number 值”，它定义在<emu-xref href="#sec-ecmascript-language-types-number-type"></emu-xref>中。从 Number 值到数字的转换写作“_x_ 的<dfn id="mathematical-value">数学数值</dfn>”，或者 ℝ(_x_)。请注意无穷的<abbr title="mathematical value">数学数值</abbr>是未定义的，同时<abbr title="mathematical value">数学数值</abbr>的 *+0* 和 *-0* 等同于 mathematical value 的 0<sub>ℝ</sub>。</p>
+      <p>当本规范使用术语 <dfn id="integer">integer</dfn> 一词时，表示一个其<abbr title="mathematical value">数学数值</abbr>在整数的集合中的 Number 值，除非另有说明：当本规范的使用术语 <dfn id="mathematical integer">mathematical integer</dfn> 时，表示一个在整数的集合中的<abbr title="mathematical value">数学数值</abbr>。作为简写，integer<sub>_t_</sub>可以表示用来两者中的任何一个，这取决于 _t_ 本身。</p>
+      <p>数学函数 <emu-eqn id="eqn-abs" aoid="abs">abs<sub>_t_</sub>(_x_)</emu-eqn> 生成 _x_ 的绝对值，意味着如果 _x_ &lt;<sub>_t_</sub> 0<sub>_t_</sub> 则为 <emu-eqn>-<sub>_t_</sub>_x_</emu-eqn>，否则即为 _x_ 本身。</p>
+      <p>数学函数 <emu-eqn id="eqn-min" aoid="min">min<sub>_t_</sub>(_x1_, _x2_, &hellip; , _xN_)</emu-eqn> 生成 <emu-eqn>_xN_</emu-eqn> 在数学上的最小值 <emu-eqn>_x1_</emu-eqn>。数学函数 <emu-eqn id="eqn-max" aoid="max">max<sub>_t_</sub>(_x1_, _x2_, ..., _xN_)</emu-eqn> 生成 <emu-eqn>_xN_</emu-eqn> 在数学上的最大值 <emu-eqn>_x1_</emu-eqn>。这些数学函数的适用范围也涵盖 *+&infin;* and *-&infin;*。</p>
+      <p>&ldquo;<emu-eqn id="eqn-modulo" aoid="modulo">_x_ modulo<sub>_t_</sub> _y_</emu-eqn>&rdquo; 表示法（_y_ 必须有穷且非零）计算出一个和 _y_（或 0）相同符号的 _k_ 值，他的值对于integer<sub>_t_</sub> _q_，符合 <emu-eqn>abs<sub>_t_</sub>(_k_) &lt;<sub>_t_</sub> abs<sub>_t_</sub>(_y_) 并且 _x_-<sub>_t_</sub>_k_ = _q_ &times;<sub>_t_</sub> _y_</emu-eqn>。</p>
+      <p>数学函数 <emu-eqn id="eqn-floor" aoid="floor">floor<sub>_t_</sub>(_x_)</emu-eqn> 生成不大于 _x_ 的最大（向正无穷方向） integer<sub>_t_</sub>。</p>
       <emu-note>
         <p><emu-eqn>floor<sub>_t_</sub>(_x_) = _x_ -<sub>_t_</sub> (_x_ modulo<sub>_t_</sub> 1<sub>_t_</sub>)</emu-eqn>.</p>
       </emu-note>
     </emu-clause>
     <emu-clause id="sec-value-notation">
-      <h1>Value Notation</h1>
-      <p>In this specification, ECMAScript language values are displayed in *bold*. Examples include *null*, *true*, or *"hello"*. These are distinguished from longer ECMAScript code sequences such as `Function.prototype.apply` or `let n = 42;`.</p>
-      <p>Values which are internal to the specification and not directly observable from ECMAScript code are indicated with a ~sans-serif~ typeface. For instance, a Completion Record's [[Type]] field takes on values like ~normal~, ~return~, or ~throw~.</p>
+      <h1>值表示法</h1>
+      <p>本规范中，ECMAScript 语言值以*粗体*显示。例如包括 *null*、*true* 或 *"hello"*。 它们和更长的 ECMAScript 代码序列例如 `Function.prototype.apply` 或 `let n = 42;` 加以区分。</p>
+      <p>不能直接从 ECMAScript 代码中访问的规范内部的值以~非衬线~字体表示。例如，完成记录的 [[Type]] 字段的值 ~normal~、~return~ 或 ~throw~。</p>
     </emu-clause>
   </emu-clause>
 </emu-clause>
@@ -989,7 +989,7 @@
           不是 <emu-xref href="#leading-surrogate"></emu-xref> 也不是 <emu-xref href="#trailing-surrogate"></emu-xref> 的码元被解释为具有相同值的码点。
         </li>
         <li>
-          两个码元序列，其第一个码元 _c1_ 是一个 <emu-xref href="#leading-surrogate"></emu-xref>，第二个码元 _c2_ 是一个 <emu-xref href="#trailing-surrogate"></emu-xref>， 这样的两个码元，被称为<attr title="surrogate pair"><dfn id="surrogate-pair">代理对</dfn></attr>， 被解释为一个值为 (_c1_ - 0xD800) &times; 0x400 + (_c2_ - 0xDC00) + 0x10000 的码点。(见 <emu-xref href="#sec-utf16decodesurrogatepair"></emu-xref>)
+          两个码元序列，其第一个码元 _c1_ 是一个 <emu-xref href="#leading-surrogate"></emu-xref>，第二个码元 _c2_ 是一个 <emu-xref href="#trailing-surrogate"></emu-xref>， 这样的两个码元，被称为<abbr title="surrogate pair"><dfn id="surrogate-pair">代理对</dfn></abbr>， 被解释为一个值为 (_c1_ - 0xD800) &times; 0x400 + (_c2_ - 0xDC00) + 0x10000 的码点。(见 <emu-xref href="#sec-utf16decodesurrogatepair"></emu-xref>)
         </li>
         <li>
           一个 <emu-xref href="#leading-surrogate"></emu-xref> 或者 <emu-xref href="#trailing-surrogate"></emu-xref>，但不是一个<emu-xref href="#surrogate-pair"></emu-xref>的一部分的码元被解释为具有相同值的码点。
@@ -999,27 +999,27 @@
       <emu-note>
         <p>这种设计背后的理由是尽可能的保持 String 的实现简单和高效。 如果 ECMAScript 源文本符合 Normalized Form C，只要它们不包含任何 Unicode 转义序列，则字符串字面量保证也是标准化的。</p>
       </emu-note>
-      <p>在本规范中，短语"the <dfn>string-concatenation</dfn> of _A_,_B_,..." (where each argument is a String value, a code unit, or a sequence of code units) denotes the String value whose sequence of code units is the concatenation of the code units (in order) of each of the arguments (in order).</p>
-      <p>The phrase "the <dfn id="substring">substring</dfn> of _S_ from _inclusiveStart_ to _exclusiveEnd_" (where _S_ is a String value or a sequence of code units and _inclusiveStart_ and _exclusiveEnd_ are integers) denotes the String value consisting of the consecutive code units of _S_ beginning at index _inclusiveStart_ and ending immediately before index _exclusiveEnd_ (which is the empty String when _inclusiveStart_ = _exclusiveEnd_). If the "to" suffix is omitted, the length of _S_ is used as the value of _exclusiveEnd_.</p>
+      <p>在本规范中，短语“_A_,_B_,... 的<dfn>string-concatenation</dfn>”（每个参数是一个字符串值、码元或者码点序列）表示将各个参数按顺序排列，并按顺序连接它们的各自码元而形成的字符串值。</p>
+      <p>短语“_S_ 从 _inclusiveStart_ 到 _exclusiveEnd_ 的<dfn id="substring">子字符串</dfn>”（_S_ 是一个字符串值或者码元序列，_inclusiveStart_ and _exclusiveEnd_ 是整数）表示 _S_ 从索引 _inclusiveStart_ 开始直到 _exclusiveEnd_ 前为止的连续码元组成的字符串值（如果 _inclusiveStart_ = _exclusiveEnd_ 则为空字符串）。如果“到”后缀部分被省略了，则用 _S_ 的长度作为 _exclusiveEnd_ 的值。</p>
 
       <emu-clause id="sec-stringindexof" aoid="StringIndexOf">
-        <h1>Runtime Semantics: StringIndexOf ( _string_, _searchValue_, _fromIndex_ )</h1>
-        <p>The abstract operation StringIndexOf takes arguments _string_ (a String), _searchValue_ (a String), and _fromIndex_ (a non-negative integer). It performs the following steps when called:</p>
+        <h1>运行时语义：StringIndexOf ( _string_, _searchValue_, _fromIndex_ )</h1>
+        <p>抽象操作 StringIndexOf 接受的参数分别是 _string_（字符串）、_searchValue_ （字符串）和 _fromIndex_（非负整数）。调用时执行下列步骤：</p>
         <emu-alg>
-          1. Assert: Type(_string_) is String.
-          1. Assert: Type(_searchValue_) is String.
-          1. Assert: ! IsNonNegativeInteger(_fromIndex_) is *true*.
-          1. Let _len_ be the length of _string_.
-          1. If _searchValue_ is the empty String and _fromIndex_ &le; _len_, return _fromIndex_.
-          1. Let _searchLen_ be the length of _searchValue_.
-          1. If there exists any integer _k_ such that _fromIndex_ &le; _k_ &le; _len_ - _searchLen_ and for all nonnegative integers _j_ less than _searchLen_, the code unit at index _k_ + _j_ within _string_ is the same as the code unit at index _j_ within _searchValue_, let _pos_ be the smallest (closest to *-&infin;*) such integer. Otherwise, let _pos_ be -1.
-          1. Return _pos_.
+          1. 断言：Type(_string_) 是字符串。
+          1. 断言：Type(_searchValue_) 是字符串。
+          1. 断言：! IsNonNegativeInteger(_fromIndex_) 为 *true*。
+          1. 令 _len_ 为 _string_ 的长度。
+          1. 如果 _searchValue_ 是空字符串且 _fromIndex_ &le; _len_，返回 _fromIndex_。
+          1. 令 _searchLen_ 为 _searchValue_ 的长度。
+          1. 如果存在整数 _k_ 满足 _fromIndex_ &le; _k_ &le; _len_ - _searchLen_ 且对于所有非负的、小于 _searchLen_ 的整数 _j_，在 _string_ 中索引 _k_ + _j_ 处码点和 _searchValue_ 中索引 _j_ 处的码点相同，令 _pos_ 为符合要求最小（接近负无穷）整数。否则，令 _pos_ 为 -1。
+          1. 返回 _pos_。
         </emu-alg>
         <emu-note>
-          <p>If _searchValue_ is the empty String and _fromIndex_ is less than or equal to the length of _string_, this algorithm returns _fromIndex_. The empty String is effectively found at every position within a string, including after the last code unit.</p>
+          <p>如果 _searchValue_ 是空字符串且 _fromIndex_ 小于等于 _string_ 的长度，这算法会返回 _fromIndex_。 一个字符串中实际上处处存在空字符串，包括最后一个码元之后。</p>
         </emu-note>
         <emu-note>
-          <p>This algorithm always returns -1 if _fromIndex_ &gt; the length of _string_.</p>
+          <p>当 _fromIndex_ &gt; _string_ 的长度时，算法总是返回 -1。</p>
         </emu-note>
       </emu-clause>
     </emu-clause>
@@ -1031,7 +1031,7 @@
       <p>每个 Symbol 值永远地保持一个与之关联的叫做 [[Description]] 的值（它要么是 *undefined* 要么是一个 String 值）。</p>
 
       <emu-clause id="sec-well-known-symbols">
-        <h1>总所周知的 Symbol</h1>
+        <h1>众周知的 Symbol</h1>
         <p>总所周知的 Symbol 是那些被本规范中算法明确引用的内置 Symbol 值。它们通常被用作属性的 key，这些 key 的值作为规范的算法扩展点。除非另有说明，总所周知的 Symbol 的值被所有域(<emu-xref href="#sec-code-realms"></emu-xref>)共享。</p>
         <p>在本规范内，一个总所周知的 Symbol 值通过形如 @@name 的形式被引用，这里的 &ldquo;name&rdquo; 是表 <emu-xref href="#table-well-known-symbols"></emu-xref> 列出的值之一。</p>
         <emu-table id="table-well-known-symbols" caption="Well-known Symbols" oldids="table-1">
@@ -1111,7 +1111,7 @@
                   *"Symbol.matchAll"*
                 </td>
                 <td>
-                  A regular expression method that returns an iterator, that yields matches of the regular expression against a string. Called by the <emu-xref href="#sec-string.prototype.matchall">`String.prototype.matchAll`</emu-xref> method.
+                  一个返回字面量的正则表达式方法，改方法提供正则表达式在字符串中的所有匹配结果。由 <emu-xref href="#sec-string.prototype.matchall">`String.prototype.matchAll`</emu-xref> 方法调用。
                 </td>
               </tr>
               <tr>
@@ -1199,22 +1199,22 @@
 
     <emu-clause id="sec-numeric-types">
       <h1>Numeric Types</h1>
-      <p>ECMAScript has two built-in numeric types: Number and BigInt. In this specification, every numeric type _T_ contains a multiplicative identity value denoted _T_::unit. The specification types also have the following abstract operations, likewise denoted _T_::<i>op</i> for a given operation with specification name <i>op</i>. All argument types are _T_. The "Result" column shows the return type, along with an indication if it is possible for some invocations of the operation to return an abrupt completion.</p>
+      <p>ECMAScript 有两种内置的<abbr title="numeric">数值</abbr>类型: Number 和 BigInt。在本规范中，每个数值类型 _T_ 包含一个<abbr title="multiplicative identity value">乘法单位值</abbr>，以  _T_::unit 表示。规范中有以下抽象操作，_T_::<i>op</i> 表示规范名称为 <i>op</i> 的给定抽象操作。所有参数类型都是 _T_。“结果”一列展示了返回类型，以及如果在操作时可能返回<abbr title="abrupt completion">中断完成</abbr>的指示。</p>
       <emu-table id="table-numeric-type-ops" caption="Numeric Type Operations">
         <table>
           <tbody>
           <tr>
             <th>
-              Invocation Synopsis
+              调用概要
             </th>
             <th>
-              Example source
+              示例源
             </th>
             <th>
-              Invoked by the Evaluation semantics of ...
+              调用的语义
             </th>
             <th>
-              Result
+              结果
             </th>
           </tr>
           <tr>
@@ -1257,7 +1257,7 @@
               and <emu-xref href="#sec-math.pow" title></emu-xref>
             </td>
             <td>
-              _T_, may throw *RangeError*
+              _T_，可能抛出 *RangeError*
             </td>
           </tr>
           <tr>
@@ -1285,7 +1285,7 @@
               <emu-xref href="#sec-multiplicative-operators" title></emu-xref>
             </td>
             <td>
-              _T_, may throw *RangeError*
+              _T_，可能抛出 *RangeError*
             </td>
           </tr>
           <tr>
@@ -1299,7 +1299,7 @@
               <emu-xref href="#sec-multiplicative-operators" title></emu-xref>
             </td>
             <td>
-              _T_, may throw *RangeError*
+              _T_，可能抛出 *RangeError*
             </td>
           </tr>
           <tr>
@@ -1373,7 +1373,7 @@
               <emu-xref href="#sec-unsigned-right-shift-operator" title></emu-xref>
             </td>
             <td>
-              _T_, may throw *TypeError*
+              _T_，可能抛出 *TypeError*
             </td>
           </tr>
           <tr>
@@ -1388,7 +1388,7 @@
               via <emu-xref href="#sec-abstract-relational-comparison" title></emu-xref>
             </td>
             <td>
-              Boolean or *undefined* (for unordered inputs)
+              Boolean 或 *undefined*（对于无序输入）
             </td>
           </tr>
           <tr>
@@ -1413,9 +1413,9 @@
             <td>
             </td>
             <td>
-              Object internal methods,
-              via <emu-xref href="#sec-samevalue" title></emu-xref>,
-              to test exact value equality
+              对象内部方法，通过
+              <emu-xref href="#sec-samevalue" title></emu-xref>
+              来检验实际值是否相等
             </td>
             <td>
               Boolean
@@ -1428,9 +1428,9 @@
             <td>
             </td>
             <td>
-              Array, Map, and Set methods,
-              via <emu-xref href="#sec-samevaluezero" title></emu-xref>,
-              to test value equality ignoring differences among members of the zero cohort (e.g., *-0* and *+0*)
+              Array、Map 和 Set 的方法，
+              通过 <emu-xref href="#sec-samevaluezero" title></emu-xref>
+              来检验值是否相等，忽略 0 前面不同符号的差异（比如 *-0* 和 *+0*）
             </td>
             <td>
               Boolean
@@ -1486,7 +1486,7 @@
               `String(x)`
             </td>
             <td>
-              Many expressions and built-in functions, via <emu-xref href="#sec-tostring" title></emu-xref>
+              多种表达式和内置函数，使用 <emu-xref href="#sec-tostring" title></emu-xref>
             </td>
             <td>
               String
@@ -1496,10 +1496,10 @@
           </tbody>
         </table>
       </emu-table>
-      <p>The _T_::unit value and _T_::_op_ operations are not a part of the ECMAScript language; they are defined here solely to aid the specification of the semantics of the ECMAScript language. Other abstract operations are defined throughout this specification.</p>
-      <p>Because the numeric types are in general not convertible without loss of precision or truncation, the ECMAScript language provides no implicit conversion among these types. Programmers must explicitly call `Number` and `BigInt` functions to convert among types when calling a function which requires another type.</p>
+      <p>_T_::unit 值和 _T_::_op_ 操作不是 ECMAScript 语言的一部分；在这里定义的唯一作用是给了帮助 ECMAScript 语言来规范其语义。其他抽象操作的定义贯穿本规范。</p>
+      <p>由于<abbr title="numeric types">数值类型</abbr>通常无法在保证精确和不截断的情况下做转换， ECMAScript 语言没有提供数值类型间的隐式转换。当需要另一个类型的数值时，编程人员必须显示地调用 `Number` 和 `BigInt` 函数来转换。</p>
       <emu-note>
-        <p>The first and subsequent editions of ECMAScript have provided, for certain operators, implicit numeric conversions that could lose precision or truncate. These legacy implicit conversions are maintained for backward compatibility, but not provided for BigInt in order to minimize opportunity for programmer error, and to leave open the option of generalized <em>value types</em> in a future edition.</p>
+        <p>最初的 ECMAScript 及其后续版本都假设对于特定操作符来说，隐式数值转换可能会丢失精度或截断。这种遗留下来的隐式转换是由于向下兼容而保持下来的，但是为了尽量减少编程时出错， BigInt 不提供这种隐式转换，并为将来版本普遍的<abbr title="value types"><em>值类型</em></abbr>而保留了选项。</p>
       </emu-note>
 
       <emu-clause id="sec-ecmascript-language-types-number-type">
@@ -1527,376 +1527,376 @@
         <p>在本规范中，当 _x_ 表示一个精确的非零实数数学量（甚至可以是无理数，比如&pi;）时，&ldquo;the <dfn id="number-value">Number value</dfn> for _x_&rdquo; 意为，以下面的方式选择一个 Number 值。考虑 Number 类型中除了 *-0* 和两个被加入在数值类型中但不可呈现的值，2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup> （即 <emu-eqn>+1<sub>ℝ</sub> &times; 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> &times; 2<sub>ℝ</sub><sup>971<sub>ℝ</sub></sup></emu-eqn>） 以及 <emu-eqn>-2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup></emu-eqn>（即<emu-eqn>-1<sub>ℝ</sub> &times; 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> &times; 2<sub>ℝ</sub><sup>971<sub>ℝ</sub></sup></emu-eqn>）的所有有限值的集合。选择此集合中值最接近 _x_ 的一员。若集合中的两值近似相等，那么选择有偶数意义的那个；为此，2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup> and <emu-eqn>-2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup></emu-eqn>这两个超额值被认为有偶数意义。最终，若选择 2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup> ，用 *+&infin;* 替换它；若选择 <emu-eqn>-2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup></emu-eqn>，用 *-&infin;* 替换它；若选择 *+0*，有且只有 _x_ 小于零时，用 *-0* 替换它；其它任何被选取的值都不用改变。结果就是 _x_ 的 Number 值。（此过程正是 IEEE 754-2008&ldquo;round to nearest, ties to even&rdquo; 模式对应的行为。）</p>
         <p>某些 ECMAScript 运算符仅处理闭区间 <emu-eqn>-2<sup>31</sup></emu-eqn> 到 <emu-eqn>2<sup>31</sup>-1</emu-eqn>，或者 0 到 <emu-eqn>2<sup>16</sup>-1</emu-eqn> 的整数。 这些操作符接收任意 Number 类型的值，首先会将它们转换成像上面提到的这些范围内的值。参考<emu-xref href="#sec-type-conversion"></emu-xref>的数字转换操作。</p>
 
-        <p>The Number::unit value is *1*.</p>
+        <p>Number::unit 的值是 *1*。</p>
 
         <emu-clause id="sec-numeric-types-number-unaryMinus">
           <h1>Number::unaryMinus ( _x_ )</h1>
-          <p>The abstract operation Number::unaryMinus takes argument _x_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::unaryMinus 接受参数 _x_（数字）。它在调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _x_ is *NaN*, return *NaN*.
-            1. Return the result of negating _x_; that is, compute a Number with the same magnitude but opposite sign.
+            1. 如果 _x_ 是 *NaN*，返回 *NaN*。
+            1. 返回 _x_ 取负值的结果，也就是计算相同大小但是符号相反的数。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-bitwiseNOT">
           <h1>Number::bitwiseNOT ( _x_ )</h1>
-          <p>The abstract operation Number::bitwiseNOT takes argument _x_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::bitwiseNOT 接受参数 _x_（数字）。它在调用时执行以下步骤：</p>
           <emu-alg>
-            1. Let _oldValue_ be ! ToInt32(_x_).
-            1. Return the result of applying bitwise complement to _oldValue_. The result is a signed 32-bit integer.
+            1. 令 _oldValue_ 为 ! ToInt32(_x_)。
+            1. 返回 _oldValue_ 的<abbr title="bitwise complement">按位补码</abbr>。结果是一个带符号的 32 位整数。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-exponentiate" oldids="sec-applying-the-exp-operator">
           <h1>Number::exponentiate ( _base_, _exponent_ )</h1>
-          <p>The abstract operation Number::exponentiate takes arguments _base_ (a Number) and _exponent_ (a Number). It returns an implementation-approximated value representing the result of raising _base_ to the power _exponent_, subject to the following requirements:</p>
+          <p>抽象操作 Number::exponentiate 接受参数 _base_ （数字）和 _exponent_（数字）。它返回一个<abbr title="implementation-approximated">宿主近似</abbr>值，表示基数 _base_ 的 _exponent_ 次方，遵从以下要求：</p>
           <ul>
-            <li>If _exponent_ is *NaN*, the result is *NaN*.</li>
-            <li>If _exponent_ is *+0*, the result is 1, even if _base_ is *NaN*.</li>
-            <li>If _exponent_ is *-0*, the result is 1, even if _base_ is *NaN*.</li>
-            <li>If _base_ is *NaN* and _exponent_ is nonzero, the result is *NaN*.</li>
-            <li>If abs(_base_) &gt; 1 and _exponent_ is *+&infin;*, the result is *+&infin;*.</li>
-            <li>If abs(_base_) &gt; 1 and _exponent_ is *-&infin;*, the result is *+0*.</li>
-            <li>If abs(_base_) is 1 and _exponent_ is *+&infin;*, the result is *NaN*.</li>
-            <li>If abs(_base_) is 1 and _exponent_ is *-&infin;*, the result is *NaN*.</li>
-            <li>If abs(_base_) &lt; 1 and _exponent_ is *+&infin;*, the result is *+0*.</li>
-            <li>If abs(_base_) &lt; 1 and _exponent_ is *-&infin;*, the result is *+&infin;*.</li>
-            <li>If _base_ is *+&infin;* and _exponent_ &gt; 0, the result is *+&infin;*.</li>
-            <li>If _base_ is *+&infin;* and _exponent_ &lt; 0, the result is *+0*.</li>
-            <li>If _base_ is *-&infin;* and _exponent_ &gt; 0 and _exponent_ is an odd integer, the result is *-&infin;*.</li>
-            <li>If _base_ is *-&infin;* and _exponent_ &gt; 0 and _exponent_ is not an odd integer, the result is *+&infin;*.</li>
-            <li>If _base_ is *-&infin;* and _exponent_ &lt; 0 and _exponent_ is an odd integer, the result is *-0*.</li>
-            <li>If _base_ is *-&infin;* and _exponent_ &lt; 0 and _exponent_ is not an odd integer, the result is *+0*.</li>
-            <li>If _base_ is *+0* and _exponent_ &gt; 0, the result is *+0*.</li>
-            <li>If _base_ is *+0* and _exponent_ &lt; 0, the result is *+&infin;*.</li>
-            <li>If _base_ is *-0* and _exponent_ &gt; 0 and _exponent_ is an odd integer, the result is *-0*.</li>
-            <li>If _base_ is *-0* and _exponent_ &gt; 0 and _exponent_ is not an odd integer, the result is *+0*.</li>
-            <li>If _base_ is *-0* and _exponent_ &lt; 0 and _exponent_ is an odd integer, the result is *-&infin;*.</li>
-            <li>If _base_ is *-0* and _exponent_ &lt; 0 and _exponent_ is not an odd integer, the result is *+&infin;*.</li>
-            <li>If _base_ &lt; 0 and _base_ is finite and _exponent_ is finite and _exponent_ is not an integer, the result is *NaN*.</li>
+            <li>如果 _exponent_ 是 *NaN*，则结果是 *NaN*。</li>
+            <li>如果 _exponent_ 是 *+0*，则结果是 1，即便 _base_ 是 *NaN* 时也是如此。</li>
+            <li>如果 _exponent_ 是 *-0*，则结果是 1，甚至 _base_ 是 *NaN* 时也是如此。</li>
+            <li>如果 _base_ 是 *NaN* 且 _exponent_ 是非零值，则结果是 *NaN*。</li>
+            <li>如果 abs(_base_) &gt; 1 且 _exponent_ 是 *+&infin;*，则结果是 *+&infin;*。</li>
+            <li>如果 abs(_base_) &gt; 1 且 _exponent_ 是 *-&infin;*，则结果是 *+0*。</li>
+            <li>如果 abs(_base_) 是 1 且 _exponent_ 是 *+&infin;*，则结果是 *NaN*。</li>
+            <li>如果 abs(_base_) 是 1 且 _exponent_ 是 *-&infin;*，则结果是 *NaN*。</li>
+            <li>如果 abs(_base_) &lt; 1 且 _exponent_ 是 *+&infin;*，则结果是 *+0*。</li>
+            <li>如果 abs(_base_) &lt; 1 且 _exponent_ 是 *-&infin;*，则结果是 *+&infin;*。</li>
+            <li>如果 _base_ 是 *+&infin;* 且 _exponent_ &gt; 0，则结果是 *+&infin;*。</li>
+            <li>如果 _base_ 是 *+&infin;* 且 _exponent_ &lt; 0，则结果是 *+0*。</li>
+            <li>如果 _base_ 是 *-&infin;* 且 _exponent_ &gt; 0 且 _exponent_ 是奇数整数，则结果是 *-&infin;*。</li>
+            <li>如果 _base_ 是 *-&infin;* 且 _exponent_ &gt; 0 且 _exponent_ 不是奇数整数，则结果是 *+&infin;*。</li>
+            <li>如果 _base_ 是 *-&infin;* 且 _exponent_ &lt; 0 且 _exponent_ 是奇数整数，则结果 *-0*。</li>
+            <li>如果 _base_ 是 *-&infin;* 且 _exponent_ &lt; 0 且 _exponent_ 不是奇数整数，则结果是 *+0*。</li>
+            <li>如果 _base_ 是 *+0* 且 _exponent_ &gt; 0，则结果是 *+0*。</li>
+            <li>如果 _base_ 是 *+0* 且 _exponent_ &lt; 0，则结果 *+&infin;*。</li>
+            <li>如果 _base_ 是 *-0* 且 _exponent_ &gt; 0 且 _exponent_ 是奇数整数，则结果是 *-0*。</li>
+            <li>如果 _base_ 是 *-0* 且 _exponent_ &gt; 0 且 _exponent_ 不是奇数整数，则结果是 *+0*。</li>
+            <li>如果 _base_ 是 *-0* 且 _exponent_ &lt; 0 且 _exponent_ 是奇数整数，则结果 *-&infin;*。</li>
+            <li>如果 _base_ 是 *-0* 且 _exponent_ &lt; 0 且 _exponent_ 不是奇数整数，则结果是 *+&infin;*。</li>
+            <li>如果 _base_ &lt; 0，_base_ 是有限的，_exponent_ 也是有限的，且 _exponent_ 不是整数，则结果是 *NaN*。</li>
           </ul>
           <emu-note>
-            <p>The result of _base_ `**` _exponent_ when _base_ is *1* or *-1* and _exponent_ is *+Infinity* or *-Infinity*, or when _base_ is *1* and _exponent_ is *NaN*, differs from IEEE 754-2019. The first edition of ECMAScript specified a result of *NaN* for this operation, whereas later versions of IEEE 754-2019 specified *1*. The historical ECMAScript behaviour is preserved for compatibility reasons.</p>
+            <p>当 _base_ 是 *1* 或 *-1* 且 _exponent_ 是 *+Infinity* 或 *-Infinity* 时，或者当 _base_ 是 *1* 且 _exponent_ 是 *NaN*时，_base_ `**` _exponent_ 的结果不同于 IEEE 754-2019 规定。第一版的 ECMAScript 规定这种操作的结果是 *NaN*，然而之后的 IEEE 754-2019 规定为 *1*。出于兼容性的考虑 ECMAScript 的行为保留了下来。</p>
           </emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-multiply" oldids="sec-applying-the-mul-operator">
           <h1>Number::multiply ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::multiply takes arguments _x_ (a Number) and _y_ (a Number). It performs multiplication, producing the product of _x_ and _y_, as determined by the rules of IEEE 754-2019 binary double-precision arithmetic:</p>
+          <p>抽象操作 Number::multiply 接受参数 _x_（数字）和 _y_（数字）。它根据 IEEE 754-2019 二进制双精度运算的规定执行乘法，产生 _x_ 和 _y_ 相乘的结果：</p>
           <ul>
             <li>
-              If either operand is *NaN*, the result is *NaN*.
+              如果有操作数是 *NaN*，则结果是 *NaN*。
             </li>
             <li>
-              The sign of the result is positive if both operands have the same sign, negative if the operands have different signs.
+              如果操作数符号相同则结果为正数，如果操作数符号不同则结果为负。
             </li>
             <li>
-              Multiplication of an infinity by a zero results in *NaN*.
+              无穷和 0 相乘为 *NaN*。
             </li>
             <li>
-              Multiplication of an infinity by an infinity results in an infinity. The sign is determined by the rule already stated above.
+              无穷和无穷相乘是无穷，符号由上一条规则来决定。
             </li>
             <li>
-              Multiplication of an infinity by a finite nonzero value results in a signed infinity. The sign is determined by the rule already stated above.
+              无穷和<abbr title="finite nonzero value">有限非零值</abbr>相乘是一个带符号的无穷值。符号由上述规则决定。
             </li>
             <li>
-              In the remaining cases, where neither an infinity nor *NaN* is involved, the product is computed and rounded to the nearest representable value using IEEE 754-2019 roundTiesToEven mode. If the magnitude is too large to represent, the result is then an infinity of appropriate sign. If the magnitude is too small to represent, the result is then a zero of appropriate sign. The ECMAScript language requires support of gradual underflow as defined by IEEE 754-2019.
+              在其余的情况中，不会涉及无穷和 *NaN*，结果是基于 IEEE 754-2019 roundTiesToEven mode 运算并向最接近的值舍入后得到可表示的带有适当符号的值。如果数值过小无法展示，则以带有适当符号的零左右结果。ECMAScript 语言要求支持 IEEE 754-2019 定义的渐进下溢。
             </li>
           </ul>
           <emu-note>
-            <p>Finite-precision multiplication is commutative, but not always associative.</p>
+            <p>有限精度乘法是可交换的，但不总是可结合的。</p>
           </emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-divide" oldids="sec-applying-the-div-operator">
           <h1>Number::divide ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::divide takes arguments _x_ (a Number) and _y_ (a Number). It performs division, producing the quotient of _x_ and _y_; _x_ is the dividend and _y_ is the divisor. The result is determined by the specification of IEEE 754-2019 arithmetic:</p>
+          <p>抽象操作 Number::divide 接受参数 _x_（数字）和 _y_（数字）。它执行除法操作，生成 _x_ 除以 _y_ 的商。_x_ 是被除数，_y_ 是除数。运算结果由 IEEE 754-2019 规范来决定：</p>
           <ul>
             <li>
-              If either operand is *NaN*, the result is *NaN*.
+              如果有操作数是 *NaN*，则结果是 *NaN*。
             </li>
             <li>
-              The sign of the result is positive if both operands have the same sign, negative if the operands have different signs.
+              如果操作数符号相同则结果为正数，如果操作数符号不同则结果为负。
             </li>
             <li>
-              Division of an infinity by an infinity results in *NaN*.
+              无穷和无穷相除的结果是 *NaN*。
             </li>
             <li>
-              Division of an infinity by a zero results in an infinity. The sign is determined by the rule already stated above.
+              无穷除以 0 的结果是无穷。符号由上述规则决定。
             </li>
             <li>
-              Division of an infinity by a nonzero finite value results in a signed infinity. The sign is determined by the rule already stated above.
+              无穷除以<abbr title="nonzero finite value">非零有限值</abbr>的结果是带符号的无穷。符号由上述规则决定。
             </li>
             <li>
-              Division of a finite value by an infinity results in zero. The sign is determined by the rule already stated above.
+              有限值除以无穷的结果是 0。符号由上述规则决定。
             </li>
             <li>
-              Division of a zero by a zero results in *NaN*; division of zero by any other finite value results in zero, with the sign determined by the rule already stated above.
+              0 和 0 相除的结果是 *NaN*；0 除以另一个有限值的结果是 0，符号由上述规则决定。
             </li>
             <li>
-              Division of a nonzero finite value by a zero results in a signed infinity. The sign is determined by the rule already stated above.
+              <abbr title="nonzero finite value">非零有限值</abbr>除以 0 的结果一个带符号的无穷。符号由上述规则决定。
             </li>
             <li>
-              In the remaining cases, where neither an infinity, nor a zero, nor *NaN* is involved, the quotient is computed and rounded to the nearest representable value using IEEE 754-2019 roundTiesToEven mode. If the magnitude is too large to represent, the operation overflows; the result is then an infinity of appropriate sign. If the magnitude is too small to represent, the operation underflows and the result is a zero of the appropriate sign. The ECMAScript language requires support of gradual underflow as defined by IEEE 754-2019.
+              在其余的情况中，不会涉及无穷、0 或 *NaN*，商是基于 IEEE 754-2019 roundTiesToEven mode 运算并向最接近的值舍入后得到可表示的带有适当符号的值。如果数值过大不可表示，则操作溢出；此时结果为一个带有适当符号的无穷。如果数值过小无法表示，操作下溢，结果为带有适当符号的 0。ECMAScript 语言要求支持 IEEE 754-2019 定义的渐进下溢。
             </li>
           </ul>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-remainder" oldids="sec-applying-the-mod-operator">
           <h1>Number::remainder ( _n_, _d_ )</h1>
-          <p>The abstract operation Number::remainder takes arguments _n_ (a Number) and _d_ (a Number). It yields the remainder of its operands from an implied division; _n_ is the dividend and _d_ is the divisor.</p>
+          <p>抽象操作 Number::remainder 接受参数 _n_ （数字）和 _d_ （数字）。它将操作数相除生成余数；_n_ 是被除数，_d_ 是除数。</p>
           <emu-note>
-            <p>In C and C++, the remainder operator accepts only integral operands; in ECMAScript, it also accepts floating-point operands.</p>
+            <p>在 C 和 C++ 中，取余操作仅接受整数作为操作数；在 ECMAScript 中，取余操作接受浮点数左右操作数。</p>
           </emu-note>
-          <p>The result of a floating-point remainder operation as computed by the `%` operator is not the same as the &ldquo;remainder&rdquo; operation defined by IEEE 754-2019. The IEEE 754-2019 &ldquo;remainder&rdquo; operation computes the remainder from a rounding division, not a truncating division, and so its behaviour is not analogous to that of the usual integer remainder operator. Instead the ECMAScript language defines `%` on floating-point operations to behave in a manner analogous to that of the Java integer remainder operator; this may be compared with the C library function fmod.</p>
-          <p>The result of an ECMAScript floating-point remainder operation is determined by the rules of IEEE arithmetic:</p>
+          <p>浮点取余操作通过 `%` 操作符来计算，这操作符和 IEEE 754-2019 定义的 &ldquo;remainder&rdquo; 操作并不相同。IEEE 754-2019 的 &ldquo;remainder&rdquo; 操作通过四舍五入式的除法来取余，而不是截断式的除法，所以这一逻辑就和其他常规的整数取余操作符不同。ECMAScript 语言定义的 `%` 浮点数操作和 Java 的整数取余操作符相似；可以和 C 语言库的函数 fmod 相比较。</p>
+          <p>ECMAScript 浮点取余操作的执行结果由 IEEE 运算规则决定：</p>
           <ul>
             <li>
-              If either operand is *NaN*, the result is *NaN*.
+              如果有操作数是 *NaN*，则结果是 *NaN*。
             </li>
             <li>
-              The sign of the result equals the sign of the dividend.
+              结果的符号和被除数的符号相同。
             </li>
             <li>
-              If the dividend is an infinity, or the divisor is a zero, or both, the result is *NaN*.
+              如果被除数是无穷，或者除数是零，或者两者皆有，结果为 *NaN*。
             </li>
             <li>
-              If the dividend is finite and the divisor is an infinity, the result equals the dividend.
+              如果被除数是有限的且除数是无穷，则结果是结果和被除数相同。
             </li>
             <li>
-              If the dividend is a zero and the divisor is nonzero and finite, the result is the same as the dividend.
+              如果被除数是零且除数是非零有限值，则结果结果和被除数相同。
             </li>
             <li>
-              In the remaining cases, where neither an infinity, nor a zero, nor *NaN* is involved, the floating-point remainder _r_ from a dividend _n_ and a divisor _d_ is defined by the mathematical relation _r_ = _n_ - (_d_ &times; _q_) where _q_ is an integer that is negative only if _n_/_d_ is negative and positive only if _n_/_d_ is positive, and whose magnitude is as large as possible without exceeding the magnitude of the true mathematical quotient of _n_ and _d_. _r_ is computed and rounded to the nearest representable value using IEEE 754-2019 roundTiesToEven mode.
+              在其余的情况中，不会涉及无穷、零，数学关系 _r_ = _n_ - (_d_ &times; _q_) ，其中 _q_ 为整数，仅当 _n_/_d_ 为负时 _q_ 为负，仅当 _n_/_d_ 为正时 _q_ 为正。此关系式定义了被除数 _n_ 除以除数 _d_ 得到浮点余数 _r_，其值的大小为不大于 _n_ 和 _d_ 之商的最大可能值。_r_ 为 IEEE 754-2019 roundTiesToEven 模式下计算和舍入后的最近似的可表示值。
             </li>
           </ul>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-add" oldids="sec-applying-the-additive-operators-to-numbers">
           <h1>Number::add ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::add takes arguments _x_ (a Number) and _y_ (a Number). It performs addition, producing the sum of _x_ and _y_ as determined using the rules of IEEE 754-2019 binary double-precision arithmetic:</p>
+          <p>抽象操作 Number::add 接受参数 _x_（数字）和 _y_（数字）。它执行加法，根据 IEEE 754-2019 二进制双精度浮点运算生成 _x_ 和 _y_ 之和:</p>
           <ul>
             <li>
-              If either operand is *NaN*, the result is *NaN*.
+              如果有操作数是 *NaN*，则结果是 *NaN*。
             </li>
             <li>
-              The sum of two infinities of opposite sign is *NaN*.
+              两个符号相反的无穷相加为 *NaN*。
             </li>
             <li>
-              The sum of two infinities of the same sign is the infinity of that sign.
+              两个相同符号的无穷相加是同符号的无穷。
             </li>
             <li>
-              The sum of an infinity and a finite value is equal to the infinite operand.
+              无穷和有限值相加的结果和无穷操作数相同。
             </li>
             <li>
-              The sum of two negative zeroes is *-0*. The sum of two positive zeroes, or of two zeroes of opposite sign, is *+0*.
+              两个负零相加为 *-0*。两个正零或者两个不同符号的零相加为 *+0*。
             </li>
             <li>
-              The sum of a zero and a nonzero finite value is equal to the nonzero operand.
+              零和非零有限值之和为该非零操作数。
             </li>
             <li>
-              The sum of two nonzero finite values of the same magnitude and opposite sign is *+0*.
+              两个相同大小但符号相反的非零有限值之和为 *+0*。
             </li>
             <li>
-              In the remaining cases, where neither an infinity, nor a zero, nor *NaN* is involved, and the operands have the same sign or have different magnitudes, the sum is computed and rounded to the nearest representable value using IEEE 754-2019 roundTiesToEven mode. If the magnitude is too large to represent, the operation overflows and the result is then an infinity of appropriate sign. The ECMAScript language requires support of gradual underflow as defined by IEEE 754-2019.
+              在其余的情况中，不会涉及无穷、零或者 *NaN*，且操作数都具有相同的符号或者不同的大小，相加之和为 IEEE 754-2019 roundTiesToEven 模式下计算和舍入后的最近似的可表示值。如果大小过大不可表示，则操作溢出,此时结果为一个带有适当符号的无穷。ECMAScript 语言要求支持 IEEE 754-2019 定义的渐进下溢。
             </li>
           </ul>
           <emu-note>
-            <p>Finite-precision addition is commutative, but not always associative.</p>
+            <p>有限精度加法是可交换的，但不总是可结合的。</p>
           </emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-subtract">
           <h1>Number::subtract ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::subtract takes arguments _x_ (a Number) and _y_ (a Number). It performs subtraction, producing the difference of its operands; _x_ is the minuend and _y_ is the subtrahend. It performs the following steps when called:</p>
+          <p>抽象操作 Number::subtract 接受参数 _x_（数字）和 _y_（数字）。它执行减法并求得两个操作数之差； _x_ 是被减数， _y_ 是减数。它在调用时执行下列步骤：</p>
           <emu-alg>
-            1. Return Number::add(_x_, Number::unaryMinus(_y_)).
+            1. 返回 Number::add(_x_, Number::unaryMinus(_y_))。
           </emu-alg>
           <emu-note>
-            <p>It is always the case that `x - y` produces the same result as `x + (-y)`.</p>
+            <p>`x - y` 永远生成和 `x + (-y)` 相同的结果。</p>
           </emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-leftShift">
           <h1>Number::leftShift ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::leftShift takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::leftShift 接受参数 _x_（数字）和 _y_（数字）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Let _lnum_ be ! ToInt32(_x_).
-            1. Let _rnum_ be ! ToUint32(_y_).
-            1. Let _shiftCount_ be _rnum_ modulo 32.
-            1. Return the result of left shifting _lnum_ by _shiftCount_ bits. The result is a signed 32-bit integer.
+            1. 令 _lnum_ 为 ! ToInt32(_x_)。
+            1. 令 _rnum_ 为 ! ToUint32(_y_)。
+            1. 令 _shiftCount_ 为 _rnum_ modulo 32。
+            1. 返回 _lnum_ 左移 _shiftCount_ 位的结果。这个结果是一个带符号的 32 为整数。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-signedRightShift">
           <h1>Number::signedRightShift ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::signedRightShift takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::signedRightShift 接受参数 _x_（数字）和 _y_（数字）。调用时执行以下步骤：
           <emu-alg>
-            1. Let _lnum_ be ! ToInt32(_x_).
-            1. Let _rnum_ be ! ToUint32(_y_).
-            1. Let _shiftCount_ be _rnum_ modulo 32.
-            1. Return the result of performing a sign-extending right shift of _lnum_ by _shiftCount_ bits. The most significant bit is propagated. The result is a signed 32-bit integer.
+            1. 令 _lnum_ 为 ! ToInt32(_x_)。
+            1. 令 _rnum_ 为 ! ToUint32(_y_)。
+            1. 令 _shiftCount_ 为 _rnum_ modulo 32。
+            1. 返回 _lnum_ 带符号扩展右移 _shiftCount_ 位的结果。传播最高有效位。结果为带符号的 32 位整数。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-unsignedRightShift">
           <h1>Number::unsignedRightShift ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::unsignedRightShift takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::unsignedRightShift 接受参数 _x_（数字）和 _y_（数字）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Let _lnum_ be ! ToUint32(_x_).
-            1. Let _rnum_ be ! ToUint32(_y_).
-            1. Let _shiftCount_ be _rnum_ modulo 32.
-            1. Return the result of performing a zero-filling right shift of _lnum_ by _shiftCount_ bits. Vacated bits are filled with zero. The result is an unsigned 32-bit integer.
+            1. 令 _lnum_ 为 ! ToUint32(_x_)。
+            1. 令 _rnum_ 为 ! ToUint32(_y_)。
+            1. 令 _shiftCount_ 为 _rnum_ modulo 32。
+            1. 返回 _lnum_ 零填充右移 _shiftCount_ 位的结果。空余出来的位用零填充。结果是一个无符号 32 位整数。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-lessThan">
           <h1>Number::lessThan ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::lessThan takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::lessThan 接受参数 _x_（数字）和 _y_（数字）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _x_ is *NaN*, return *undefined*.
-            1. If _y_ is *NaN*, return *undefined*.
-            1. If _x_ and _y_ are the same Number value, return *false*.
-            1. If _x_ is *+0* and _y_ is *-0*, return *false*.
-            1. If _x_ is *-0* and _y_ is *+0*, return *false*.
-            1. If _x_ is *+&infin;*, return *false*.
-            1. If _y_ is *+&infin;*, return *true*.
-            1. If _y_ is *-&infin;*, return *false*.
-            1. If _x_ is *-&infin;*, return *true*.
-            1. If the mathematical value of _x_ is less than the mathematical value of _y_&mdash;note that these mathematical values are both finite and not both zero&mdash;return *true*. Otherwise, return *false*.
+            1. 如果 _x_ 是 *NaN*，则返回 *undefined*。
+            1. 如果 _y_ 是 *NaN*，则返回 *undefined*。
+            1. 如果 _x_ 和 _y_ 是相同的 Number 值，则返回 *false*。
+            1. 如果 _x_ 是 *+0* 且 _y_ 是 *-0*，则返回 *false*。
+            1. 如果 _x_ 是 *-0* 且 _y_ 是 *+0*，则返回 *false*。
+            1. 如果 _x_ 是 *+&infin;*，则返回 *false*。
+            1. 如果 _y_ 是 *+&infin;*，则返回 *true*。
+            1. 如果 _y_ 是 *-&infin;*，则返回 *false*。
+            1. 如果 _x_ 是 *-&infin;*，则返回 *true*。
+            1. 如果 _x_ 的数学数值小于 _y_ 的数学数值&mdash;注意这两个数学数值都是有限且非零的&mdash;则返回 *true*。否则返回 *false*。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-equal">
           <h1>Number::equal ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::equal takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::equal 接受参数 _x_（数字）和 _y_（数字）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _x_ is *NaN*, return *false*.
-            1. If _y_ is *NaN*, return *false*.
-            1. If _x_ is the same Number value as _y_, return *true*.
-            1. If _x_ is *+0* and _y_ is *-0*, return *true*.
-            1. If _x_ is *-0* and _y_ is *+0*, return *true*.
-            1. Return *false*.
+            1. 如果 _x_ 是 *NaN*，则返回 *false*。
+            1. 如果 _y_ 是 *NaN*，则返回 *false*。
+            1. 如果 _x_ 是和 _y_ 相同的 Number 值，则返回 *true*。
+            1. 如果 _x_ 是 *+0* 且 _y_ 是 *-0*，则返回 *true*。
+            1. 如果 _x_ 是 *-0* 且 _y_ 是 *+0*，则返回 *true*。
+            1. 返回 *false*。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-sameValue">
           <h1>Number::sameValue ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::sameValue takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::sameValue 接受参数 _x_（数字）和 _y_（数字）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _x_ is *NaN* and _y_ is *NaN*, return *true*.
-            1. If _x_ is *+0* and _y_ is *-0*, return *false*.
-            1. If _x_ is *-0* and _y_ is *+0*, return *false*.
-            1. If _x_ is the same Number value as _y_, return *true*.
-            1. Return *false*.
+            1. 如果 _x_ 是 *NaN* 且 _y_ 是 *NaN*，则返回 *true*。
+            1. 如果 _x_ 是 *+0* 且 _y_ 是 *-0*，则返回 *false*。
+            1. 如果 _x_ 是 *-0* 且 _y_ 是 *+0*，则返回 *false*。
+            1. 如果 _x_ 是和 _y_ 相同的 Number 值，则返回 *true*。
+            1. 返回 *false*。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-sameValueZero">
           <h1>Number::sameValueZero ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::sameValueZero takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::sameValueZero 接受参数 _x_（数字）和 _y_（数字）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _x_ is *NaN* and _y_ is *NaN*, return *true*.
-            1. If _x_ is *+0* and _y_ is *-0*, return *true*.
-            1. If _x_ is *-0* and _y_ is *+0*, return *true*.
-            1. If _x_ is the same Number value as _y_, return *true*.
-            1. Return *false*.
+            1. 如果 _x_ 是 *NaN* 且 _y_ 是 *NaN*，则返回 *true*。
+            1. 如果 _x_ 是 *+0* 且 _y_ 是 *-0*，则返回 *true*。
+            1. 如果 _x_ 是 *-0* 且 _y_ 是 *+0*，则返回 *true*。
+            1. 如果 _x_ 是和 _y_ 相同的 Number 值，则返回 *true*。
+            1. 返回 *false*。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numberbitwiseop" aoid="NumberBitwiseOp">
           <h1>NumberBitwiseOp ( _op_, _x_, _y_ )</h1>
-          <p>The abstract operation NumberBitwiseOp takes arguments _op_ (a sequence of Unicode code points), _x_, and _y_. It performs the following steps when called:</p>
+          <p>抽象操作 NumberBitwiseOp 接受参数 _op_（Unicode 码元序列）、_x_ 和 _y_。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Assert: _op_ is `&amp;`, `^`, or `|`.
-            1. Let _lnum_ be ! ToInt32(_x_).
-            1. Let _rnum_ be ! ToInt32(_y_).
-            1. Let _lbits_ be the 32-bit two's complement bit string representing the mathematical value of _lnum_.
-            1. Let _rbits_ be the 32-bit two's complement bit string representing the mathematical value of _rnum_.
-            1. If _op_ is `&amp;`, let _result_ be the result of applying the bitwise AND operation to _lbits_ and _rbits_.
-            1. Else if _op_ is `^`, let _result_ be the result of applying the bitwise exclusive OR (XOR) operation to _lbits_ and _rbits_.
-            1. Else, _op_ is `|`. Let _result_ be the result of applying the bitwise inclusive OR operation to _lbits_ and _rbits_.
-            1. Return the Number value for the integer represented by the 32-bit two's complement bit string _result_.
+            1. 断言：_op_ 是 `&amp;`、`^` 或 `|`。
+            1. 令 _lnum_ 为 ! ToInt32(_x_)。
+            1. 令 _rnum_ 为 ! ToInt32(_y_)。
+            1. 令 _lbits_ 为代表 _lnum_ 的数学数值的 <abbr title="32-bit two's complement bit string">32 位二的补码位串</abbr>。
+            1. 令 _rbits_ 为代表 _rnum_ 的数学数值的 <abbr title="32-bit two's complement bit string">32 位二的补码位串</abbr>。
+            1. 如果 _op_ 是 `&amp;`，则令 _result_ 为对 _lbits_ 和 _rbits_ 进行<abbr title="bitwise AND">按位与</abbr>操作的结果。
+            1. 否则如果 _op_ 是 `^`，则令 _result_ 为对 _lbits_ 和 _rbits_ 进行<abbr title="bitwise exclusive OR (XOR)">按位异或</abbr>操作的结果。
+            1. 否则，_op_ 是 `|`。令 _result_ 为对 _lbits_ 和 _rbits_ 进行<abbr title="bitwise inclusive OR">按位或</abbr>操作的结果。
+            1. 返回代表 _result_ 的 <abbr title="32-bit two's complement bit string">32 位二的补码位串</abbr>所对应的整数 Number 值。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-bitwiseAND">
           <h1>Number::bitwiseAND ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::bitwiseAND takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::bitwiseAND 接受参数 _x_（数字）和 _y_（数字）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Return NumberBitwiseOp(`&amp;`, _x_, _y_).
+            1. 返回 NumberBitwiseOp(`&amp;`, _x_, _y_)。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-bitwiseXOR">
           <h1>Number::bitwiseXOR ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::bitwiseXOR takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::bitwiseXOR 接受 _x_（数字）和 _y_（数字）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Return NumberBitwiseOp(`^`, _x_, _y_).
+            1. 返回值 NumberBitwiseOp(`^`, _x_, _y_)。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-bitwiseOR">
           <h1>Number::bitwiseOR ( _x_, _y_ )</h1>
-          <p>The abstract operation Number::bitwiseOR takes arguments _x_ (a Number) and _y_ (a Number). It performs the following steps when called:</p>
+          <p>抽象操作 Number::bitwiseOR 接受 _x_（数字）和 _y_（数字）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Return NumberBitwiseOp(`|`, _x_, _y_).
+            1. 返回 Return NumberBitwiseOp(`|`, _x_, _y_)。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-tostring" aoid="Number::toString" oldids="sec-tostring-applied-to-the-number-type">
           <h1>Number::toString ( _x_ )</h1>
-          <p>The abstract operation Number::toString takes argument _x_ (a Number). It converts _x_ to String format. It performs the following steps when called:</p>
+          <p>抽象操作 Number::toString 接受参数 _x_（数字）。它将 _x_ 转换为 String 格式。调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _x_ is *NaN*, return the String *"NaN"*.
-            1. If _x_ is *+0* or *-0*, return the String *"0"*.
-            1. If _x_ is less than zero, return the string-concatenation of *"-"* and ! Number::toString(-_x_).
-            1. If _x_ is *+&infin;*, return the String *"Infinity"*.
-            1. [id="step-number-tostring-intermediate-values"] Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> is _x_, and _k_ is as small as possible. Note that _k_ is the number of digits in the decimal representation of _s_, that _s_ is not divisible by 10<sub>ℝ</sub>, and that the least significant digit of _s_ is not necessarily uniquely determined by these criteria.
-            1. If _k_ &le; _n_ &le; 21, return the string-concatenation of:
-              * the code units of the _k_ digits of the decimal representation of _s_ (in order, with no leading zeroes)
-              * _n_ - _k_ occurrences of the code unit 0x0030 (DIGIT ZERO)
-            1. If 0 &lt; _n_ &le; 21, return the string-concatenation of:
-              * the code units of the most significant _n_ digits of the decimal representation of _s_
-              * the code unit 0x002E (FULL STOP)
-              * the code units of the remaining _k_ - _n_ digits of the decimal representation of _s_
-            1. If -6 &lt; _n_ &le; 0, return the string-concatenation of:
-              * the code unit 0x0030 (DIGIT ZERO)
-              * the code unit 0x002E (FULL STOP)
-              * -_n_ occurrences of the code unit 0x0030 (DIGIT ZERO)
-              * the code units of the _k_ digits of the decimal representation of _s_
-            1. Otherwise, if _k_ = 1, return the string-concatenation of:
-              * the code unit of the single digit of _s_
-              * the code unit 0x0065 (LATIN SMALL LETTER E)
-              * the code unit 0x002B (PLUS SIGN) or the code unit 0x002D (HYPHEN-MINUS) according to whether _n_ - 1 is positive or negative
-              * the code units of the decimal representation of the integer abs(_n_ - 1) (with no leading zeroes)
-            1. Return the string-concatenation of:
-              * the code units of the most significant digit of the decimal representation of _s_
-              * the code unit 0x002E (FULL STOP)
-              * the code units of the remaining _k_ - 1 digits of the decimal representation of _s_
-              * the code unit 0x0065 (LATIN SMALL LETTER E)
-              * the code unit 0x002B (PLUS SIGN) or the code unit 0x002D (HYPHEN-MINUS) according to whether _n_ - 1 is positive or negative
-              * the code units of the decimal representation of the integer abs(_n_ - 1) (with no leading zeroes)
+            1. 如果 _x_ 是 *NaN*，则返回字符串 *"NaN"*。
+            1. 如果 _x_ 是 *+0* 或 *-0*，则返回字符串 *"0"*。
+            1. 如果 _x_ 小于零，则返回, *"-"* 和 ! Number::toString(-_x_) 字符串连接。
+            1. 如果 _x_ 是 *+&infin;*，则返回字符串 *"Infinity"*。
+            1. [id="step-number-tostring-intermediate-values"] 否则，令 _n_、_k_ 和 _s_为整数，满足 _k_ &ge; 1，10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>，ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> 的数字值是 _x_，且 _k_ 尽可能的小。注意 _k_ 是 _s_ 的十进制表示法的数字，同时 _s_ 不可被 10<sub>ℝ</sub> 整除，且 _s_ 的最低有效位并非有这些标准唯一确定。
+            1. 如果 _k_ &le; _n_ &le; 21，则返回以下内容的字符串连接：
+              * 表示 _s_ 的十进制的数字 _k_ 的码元（按需排列，无前导零）
+              * _n_ - _k_ 中码元 0x0030（数字零）的出现次数
+            1. 如果 0 &lt; _n_ &le; 21，则返回一下内容的字符串拼接：
+              * 表示 _s_ 的十进制数字 _n_ 的最高有效位的码元
+              * 码元 0x002E（句点）
+              * 表示 _s_ 的十进制数字 _k_ - _n_ 的剩余部分的码元
+            1. 如果 -6 &lt; _n_ &le; 0，则返回以下内容的字符串连接：
+              * 码元 0x0030（数字零）
+              * 码元 0x002E（句点）
+              * -_n_ 中码元 0x0030（数字零）的出现次数
+              * 表示 _s_ 的十进制数字 _k_ 的码元
+            1. 否则，如果 _k_ = 1，则返回则返回以下内容的字符串连接：
+              * 一位数 _s_ 的码元
+              * 码元 0x0065（小写拉丁字母 E）
+              * 码元 0x002B（加号）或码元 0x002D（横杠减号），取决于 _n_ - 1 是正数还是负数
+              * 代表 abs(_n_ - 1) 的十进制数的码元（无前导零）
+            1. 返回以下内容的字符串连接：
+              * 表示 _s_ 的最高有效位数字的码元
+              * 0x002E（句点）的码元
+              * 表示 _s_ 的十进制数字 _k_ - 1 的剩余部分数字的码元
+              * 码元 0x0065（小写拉丁字母 E）
+              * 码元 0x002B（加号）或码元 0x002D（横杠减号），取决于 _n_ - 1 是正数还是负数
+              * 代表 abs(_n_ - 1) 的十进制数的码元（无前导零）
           </emu-alg>
           <emu-note>
-            <p>The following observations may be useful as guidelines for implementations, but are not part of the normative requirements of this Standard:</p>
+            <p>一下内容可能对实现有帮助，但不属于本标准的规范内容。：</p>
             <ul>
               <li>
-                If x is any Number value other than *-0*, then ToNumber(ToString(x)) is exactly the same Number value as x.
+                如果 x 是非 *-0* 的 Number 值，则 ToNumber(ToString(x)) 的结果就和这 Number 值完全相同。
               </li>
               <li>
-                The least significant digit of s is not always uniquely determined by the requirements listed in step <emu-xref href="#step-number-tostring-intermediate-values"></emu-xref>.
+                s 的最低有效位并非总是由步骤<emu-xref href="#step-number-tostring-intermediate-values"></emu-xref>列出的要求唯一确定的。
               </li>
             </ul>
           </emu-note>
           <emu-note>
-            <p>For implementations that provide more accurate conversions than required by the rules above, it is recommended that the following alternative version of step <emu-xref href="#step-number-tostring-intermediate-values"></emu-xref> be used as a guideline:</p>
+            <p>对于提供了比上述规则更精确的转换的实现者来说，作为指南，推荐遵循另一版本的步骤<emu-xref href="#step-number-tostring-intermediate-values"></emu-xref>：</p>
             <emu-alg replaces-step="step-number-tostring-intermediate-values">
-              1. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> is _x_, and _k_ is as small as possible. If there are multiple possibilities for _s_, choose the value of _s_ for which ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> is closest in value to ℝ(_x_). If there are two such possible values of _s_, choose the one that is even. Note that _k_ is the number of digits in the decimal representation of _s_ and that _s_ is not divisible by 10<sub>ℝ</sub>.
+              1. 此外，令 _n_、_k_ 和 _s_ 为整数，满足 _k_ &ge; 1，10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>，Number 值 ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> 为 _x_，且 _k_ 是最小可能值。如果 _s_ 有多种可能性，则选取 ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> 最接近 ℝ(_x_) 时的 _s_ 值。如果有两个可能的 _s_ 值，则选择偶数值。注意 _k_ 是 _s_ 的十进制数字的位数，且 _s_ 不能被 10<sub>ℝ</sub> 整除。
             </emu-alg>
           </emu-note>
           <emu-note>
-            <p>Implementers of ECMAScript may find useful the paper and code written by David M. Gay for binary-to-decimal conversion of floating-point numbers:</p>
+            <p>David M. Gay 的关于二进制浮点数转十进制的论文可能对 ECMAScript 实现者有所帮助：</p>
             <p>Gay, David M. Correctly Rounded Binary-Decimal and Decimal-Binary Conversions. Numerical Analysis, Manuscript 90-10. AT&amp;T Bell Laboratories (Murray Hill, New Jersey). November 30, 1990. Available as
               <br>
               <a href="http://ampl.com/REFS/abstracts.html#rounding">http://ampl.com/REFS/abstracts.html#rounding</a>. Associated code available as
@@ -1910,219 +1910,219 @@
 
       <emu-clause id="sec-ecmascript-language-types-bigint-type">
         <h1>The BigInt Type</h1>
-        <p>The BigInt type represents a mathematical integer value. The value may be any size and is not limited to a particular bit-width. Generally, where not otherwise noted, operations are designed to return exact mathematically-based answers. For binary operations, BigInts act as two's complement binary strings, with negative numbers treated as having bits set infinitely to the left.</p>
+        <p>BigInt 类型表示一种数学整数值。这种值可以是任意大小，不受特定位宽的限制。通常而言，如果不是特地说明的话，操作符在设计上是会返回准确的数学结果。对于二进制操作，BigInts 使用二的补码二进制串，将负数视作在左侧有无限位。</p>
 
-        <p>The BigInt::unit value is *1n*.</p>
+        <p>BigInt::unit 值是 *1n*。</p>
 
         <emu-clause id="sec-numeric-types-bigint-unaryMinus">
           <h1>BigInt::unaryMinus ( _x_ )</h1>
-          <p>The abstract operation BigInt::unaryMinus takes argument _x_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::unaryMinus 接受参数 _x_（BigInt）。它在调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _x_ is *0n*, return *0n*.
-            1. Return the BigInt value that represents the mathematical value of negating _x_.
+            1. 如果 _x_ 是 *0n*，则返回 *0n*。
+            1. 返回表示负 _x_ 的数学数值的 BigInt 值
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseNOT">
           <h1>BigInt::bitwiseNOT ( _x_ )</h1>
-          <p>The abstract operation BigInt::bitwiseNOT takes argument _x_ (a BigInt). It returns the one's complement of _x_; that is, -_x_ - 1.</p>
+          <p>抽象操作 BigInt::bitwiseNOT 接受参数 _x_（BigInt）。返回 _x_ 的一的补码，也就是 -_x_ - 1。</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-exponentiate">
           <h1>BigInt::exponentiate ( _base_, _exponent_ )</h1>
-          <p>The abstract operation BigInt::exponentiate takes arguments _base_ (a BigInt) and _exponent_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::exponentiate 接受参数 _base_（BigInt）和 _exponent_（BigInt）。它在调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _exponent_ &lt; *0n*, throw a *RangeError* exception.
-            1. If _base_ is *0n* and _exponent_ is *0n*, return *1n*.
-            1. Return the BigInt value that represents the mathematical value of _base_ raised to the power _exponent_.
+            1. 如果 _exponent_ &lt; *0n*，抛出一个 *RangeError* 异常。
+            1. 如果 _base_ 为 *0n* 且 _exponent_ 为 *0n*，则返回 *1n*。
+            1. 返回表示 _base_ 的 _exponent_ 次幂的的数学数值的 BigInt 值。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-multiply">
           <h1>BigInt::multiply ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::multiply takes arguments _x_ (a BigInt) and _y_ (a BigInt). It returns the BigInt value that represents the result of multiplying _x_ and _y_.</p>
-          <emu-note>Even if the result has a much larger bit width than the input, the exact mathematical answer is given.</emu-note>
+          <p>抽象操作 BigInt::multiply 接受参数 _x_（BigInt）和 _y_（BigInt）。返回表示 _x_ 和 _y_ 相乘的 BigInt 值。</p>
+          <emu-note>即便结果的位宽远远大于输入值，也应当给出准确的数学结果。</emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-divide">
           <h1>BigInt::divide ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::divide takes arguments _x_ (a BigInt) and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::divide 接受参数 _x_（BigInt）和 _y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _y_ is *0n*, throw a *RangeError* exception.
-            1. Let _quotient_ be the mathematical value of _x_ divided by _y_.
-            1. Return the BigInt value that represents _quotient_ rounded towards 0 to the next integral value.
+            1. 如果 _y_ 是 *0n*，抛出一个 *RangeError* 异常。
+            1. 令 _quotient_ 为 _x_ 除以 _y_ 的数学数值。
+            1. 返回表示 _quotient_ 向 0 就进舍入后的整数的 BigInt 值。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-remainder">
           <h1>BigInt::remainder ( _n_, _d_ )</h1>
-          <p>The abstract operation BigInt::remainder takes arguments _n_ (a BigInt) and _d_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::remainder 接受参数 _n_（BigInt）和 _d_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _d_ is *0n*, throw a *RangeError* exception.
-            1. If _n_ is *0n*, return *0n*.
-            1. Let _r_ be the BigInt defined by the mathematical relation _r_ = _n_ - (_d_ &times; _q_) where _q_ is a BigInt that is negative only if _n_/_d_ is negative and positive only if _n_/_d_ is positive, and whose magnitude is as large as possible without exceeding the magnitude of the true mathematical quotient of _n_ and _d_.
-            1. Return _r_.
+            1. 如果 _d_ 是 *0n*，抛出一个 *RangeError* 异常。
+            1. 如果 _n_ 是 *0n*，返回 *0n*。
+            1. 令 _r_ 为 BigInt，并满足以下数学关系，_r_ = _n_ - (_d_ &times; _q_)，其中 _q_ 为 BigInt，仅当 _n_/_d_ 为负时，_q_ 为负，仅当 _n_/_d_ 为正时，_q_ 为正，并且它的大小为不超过 _n_ 除以 _d_ 的数学商的最大值。
+            1. 返回 _r_。
           </emu-alg>
-          <emu-note>The sign of the result equals the sign of the dividend.</emu-note>
+          <emu-note>结果的符号和被除数的符号相同。</emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-add">
           <h1>BigInt::add ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::add takes arguments _x_ (a BigInt) and _y_ (a BigInt). It returns the BigInt value that represents the sum of _x_ and _y_.</p>
+          <p>抽象操作 BigInt::add 接受参数 _x_（BigInt）和 _y_（BigInt）。返回表示 _x_ 和 _y_ 之和的 BigInt 值。</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-subtract">
           <h1>BigInt::subtract ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::subtract takes arguments _x_ (a BigInt) and _y_ (a BigInt). It returns the BigInt value that represents the difference _x_ minus _y_.</p>
+          <p>抽象操作 BigInt::subtract 接受参数 _x_（BigInt）和 _y_（BigInt）。返回表示 _x_ 减 _y_ 之差的 BigInt 值。</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-leftShift">
           <h1>BigInt::leftShift ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::leftShift takes arguments _x_ (a BigInt) and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::leftShift 接受参数 _x_（BigInt）和 _y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _y_ &lt; *0n*, then
-              1. Return the BigInt value that represents _x_ &divide; 2<sup>-_y_</sup>, rounding down to the nearest integer, including for negative numbers.
-            1. Return the BigInt value that represents _x_ &times; 2<sup>_y_</sup>.
+            1. 如果 _y_ &lt; *0n*，则
+              1. 返回表示 _x_ &divide; 2<sup>-_y_</sup> 的 BigInt 值，向下就近舍入整数，含负整数。
+            1. 返回表示 _x_ &times; 2<sup>_y_</sup> 的 BigInt 值。
           </emu-alg>
-          <emu-note>Semantics here should be equivalent to a bitwise shift, treating the BigInt as an infinite length string of binary two's complement digits.</emu-note>
+          <emu-note>此处的语义应当和按位移位相同，将 BigInt 视作一个无限长的二进制二的补码字串。</emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-signedRightShift">
           <h1>BigInt::signedRightShift ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::signedRightShift takes arguments _x_ (a BigInt) and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::signedRightShift 接受参数 _x_（BigInt）和 _y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Return BigInt::leftShift(_x_, -_y_).
+            1. 返回 BigInt::leftShift(_x_, -_y_)。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-unsignedRightShift">
           <h1>BigInt::unsignedRightShift ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::unsignedRightShift takes arguments _x_ (a BigInt) and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::unsignedRightShift 接受参数 _x_（BigInt）和 _y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Throw a *TypeError* exception.
+            1. 抛出一个 *TypeError* 异常。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-lessThan">
           <h1>BigInt::lessThan ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::lessThan takes arguments _x_ (a BigInt) and _y_ (a BigInt). It returns *true* if _x_ is less than _y_ and *false* otherwise.</p>
+          <p>抽象操作 BigInt::lessThan 接受参数 _x_（BigInt）和 _y_（BigInt）。如果 _x_ 小于 _y_ 则返回 *true*，否则返回 *false*。</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-equal">
           <h1>BigInt::equal ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::equal takes arguments _x_ (a BigInt) and _y_ (a BigInt). It returns *true* if _x_ and _y_ have the same mathematical integer value and *false* otherwise.</p>
+          <p>抽象操作 BigInt::equal 接受参数 _x_（BigInt）和 _y_（BigInt）。如果 _x_ 和 _y_ 具有相同的数学数值，则返回 *true*，否则返回 *false*。</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-sameValue">
           <h1>BigInt::sameValue ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::sameValue takes arguments _x_ (a BigInt) and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::sameValue 接受参数 _x_（BigInt）和_y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Return BigInt::equal(_x_, _y_).
+            1. 返回 BigInt::equal(_x_, _y_)。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-sameValueZero">
           <h1>BigInt::sameValueZero ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::sameValueZero takes arguments _x_ (a BigInt) and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::sameValueZero 接受参数 _x_（BigInt）和 _y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Return BigInt::equal(_x_, _y_).
+            1. 返回 BigInt::equal(_x_, _y_)。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-binaryand" aoid="BinaryAnd">
           <h1>BinaryAnd ( _x_, _y_ )</h1>
-          <p>The abstract operation BinaryAnd takes arguments _x_ and _y_. It performs the following steps when called:</p>
+          <p>抽象操作 BinaryAnd 接受参数 _x_ 和 _y_。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Assert: _x_ is 0 or 1.
-            1. Assert: _y_ is 0 or 1.
-            1. If _x_ is 1 and _y_ is 1, return 1.
-            1. Else, return 0.
+            1. 断言：_x_ 为 0 或 1。
+            1. 断言：_y_ 为 0 或 1。
+            1. 如果 _x_ 为 1 且 _y_ 为 1，返回 1。
+            1. 否则，返回 0。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-binaryor" aoid="BinaryOr">
           <h1>BinaryOr ( _x_, _y_ )</h1>
-          <p>The abstract operation BinaryOr takes arguments _x_ and _y_. It performs the following steps when called:</p>
+          <p>抽象操作 BinaryOr 接受参数 _x_ 和 _y_。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Assert: _x_ is 0 or 1.
-            1. Assert: _y_ is 0 or 1.
-            1. If _x_ is 1 or _y_ is 1, return 1.
-            1. Else, return 0.
+            1. 断言：_x_ 为 0 或 1。
+            1. 断言：_y_ 为 0 或 1。
+            1. 如果 _x_ 为 1 或者 _y_ 为 1，返回 1。
+            1. 否则，返回 0。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-binaryxor" aoid="BinaryXor">
           <h1>BinaryXor ( _x_, _y_ )</h1>
-          <p>The abstract operation BinaryXor takes arguments _x_ and _y_. It performs the following steps when called:</p>
+          <p>抽象操作 BinaryXor 接受参数 _x_ 和 _y_。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Assert: _x_ is 0 or 1.
-            1. Assert: _y_ is 0 or 1.
-            1. If _x_ is 1 and _y_ is 0, return 1.
-            1. Else if _x_ is 0 and _y_ is 1, return 1.
-            1. Else, return 0.
+            1. 断言：x_ 为 0 或 1。
+            1. 断言：_y_ 为 0 或 1。
+            1. 如果 _x_ 为 1 且 _y_ 为 0，返回 1。
+            1. 否则如果 _x_ 为 0 且 _y_ 为 1，返回 1。
+            1. 否则，返回 0。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-bigintbitwiseop" aoid="BigIntBitwiseOp">
           <h1>BigIntBitwiseOp ( _op_, _x_, _y_ )</h1>
-          <p>The abstract operation BigIntBitwiseOp takes arguments _op_ (a sequence of Unicode code points), _x_ (a BigInt), and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigIntBitwiseOp 接受参数 _op_（Unicode 码元序列），_x_（BigInt）和 _y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Assert: _op_ is `&amp;`, `^`, or `|`.
-            1. Let _result_ be *0n*.
-            1. Let _shift_ be 0.
-            1. Repeat, until (_x_ = 0 or _x_ = -1) and (_y_ = 0 or _y_ = -1),
-              1. Let _xDigit_ be _x_ modulo 2.
-              1. Let _yDigit_ be _y_ modulo 2.
-              1. If _op_ is `&amp;`, set _result_ to _result_ + 2<sup>_shift_</sup> &times; BinaryAnd(_xDigit_, _yDigit_).
-              1. Else if _op_ is `|`, set _result_ to _result_ + 2<sup>_shift_</sup> &times; BinaryOr(_xDigit_, _yDigit_).
-              1. Else,
-                1. Assert: _op_ is `^`.
-                1. Set _result_ to _result_ + 2<sup>_shift_</sup> &times; BinaryXor(_xDigit_, _yDigit_).
-              1. Set _shift_ to _shift_ + 1.
-              1. Set _x_ to (_x_ - _xDigit_) / 2.
-              1. Set _y_ to (_y_ - _yDigit_) / 2.
-            1. If _op_ is `&amp;`, let _tmp_ be BinaryAnd(_x_ modulo 2, _y_ modulo 2).
-            1. Else if _op_ is `|`, let _tmp_ be BinaryOr(_x_ modulo 2, _y_ modulo 2).
-            1. Else,
-              1. Assert: _op_ is `^`.
-              1. Let _tmp_ be BinaryXor(_x_ modulo 2, _y_ modulo 2).
-            1. If _tmp_ &ne; 0, then
-              1. Set _result_ to _result_ - 2<sup>_shift_</sup>.
-              1. NOTE: This extends the sign.
-            1. Return _result_.
+            1. 断言：_op_ 为 `&amp;`、`^` 或 `|`。
+            1. 令 _result_ 为 *0n*。
+            1. 令 _shift_ 为 0。
+            1. 重复，直到 (_x_ = 0 or _x_ = -1) 且 (_y_ = 0 or _y_ = -1)。
+              1. 令 _xDigit_ 为 _x_ modulo 2。
+              1. 令 _yDigit_ 为 _y_ modulo 2。
+              1. 如果 _op_ 为 `&amp;`，将 _result_ 设为 _result_ + 2<sup>_shift_</sup> &times; BinaryAnd(_xDigit_, _yDigit_)。
+              1. 否则如果 _op_ 为 `|`，将 _result_ 设为 _result_ + 2<sup>_shift_</sup> &times; BinaryOr(_xDigit_, _yDigit_)。
+              1. 否则，
+                1. 断言：_op_ 为 `^`。
+                1. 将 _result_ 设为 _result_ + 2<sup>_shift_</sup> &times; BinaryXor(_xDigit_, _yDigit_)。
+              1. 将 _shift_ 设为 _shift_ + 1。
+              1. 将 _x_ 设为 (_x_ - _xDigit_) / 2。
+              1. 将 _y_ 设为 (_y_ - _yDigit_) / 2。
+            1. 如果 _op_ 是 `&amp;`，令 _tmp_ 为 BinaryAnd(_x_ modulo 2, _y_ modulo 2)。
+            1. 否则如果 _op_ 是 `|`，令 _tmp_ 为 BinaryOr(_x_ modulo 2, _y_ modulo 2)。
+            1. 否则，
+              1. 断言：_op_ 为 `^`。
+              1. 令 _tmp_ 为 BinaryXor(_x_ modulo 2, _y_ modulo 2)。
+            1. 如果 _tmp_ &ne; 0，则
+              1. 将 _result_ 设为 _result_ - 2<sup>_shift_</sup>。
+              1. 注意：这会扩展符号。
+            1. 返回 _result_。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseAND">
           <h1>BigInt::bitwiseAND ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::bitwiseAND takes arguments _x_ (a BigInt) and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::bitwiseAND 接受参数 _x_（BigInt）和 _y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Return BigIntBitwiseOp(`&amp;`, _x_, _y_).
+            1. 返回 BigIntBitwiseOp(`&amp;`, _x_, _y_)。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseXOR">
           <h1>BigInt::bitwiseXOR ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::bitwiseXOR takes arguments _x_ (a BigInt) and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::bitwiseXOR 接受参数 _x_（BigInt）和 _y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Return BigIntBitwiseOp(`^`, _x_, _y_).
+            1. 返回 BigIntBitwiseOp(`^`, _x_, _y_)。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseOR">
           <h1>BigInt::bitwiseOR ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::bitwiseOR takes arguments _x_ (a BigInt) and _y_ (a BigInt). It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::bitwiseOR 接受参数 _x_（BigInt）和 _y_（BigInt）。调用时执行以下步骤：</p>
           <emu-alg>
-            1. Return BigIntBitwiseOp(`|`, _x_, _y_).
+            1. 返回 BigIntBitwiseOp(`|`, _x_, _y_)。
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-tostring" aoid="BigInt::toString">
           <h1>BigInt::toString ( _x_ )</h1>
-          <p>The abstract operation BigInt::toString takes argument _x_ (a BigInt). It converts _x_ to String format. It performs the following steps when called:</p>
+          <p>抽象操作 BigInt::toString 接受参数 _x_（BigInt），将 _x_ 转换为字符串格式。调用时执行以下步骤：</p>
           <emu-alg>
-            1. If _x_ is less than zero, return the string-concatenation of the String *"-"* and ! BigInt::toString(-_x_).
-            1. Return the String value consisting of the code units of the digits of the decimal representation of _x_.
+            1. 如果 _x_ 小于零，返回字符串 *"-"* 和 ! BigInt::toString(-_x_) 的字符串拼接。
+            1. 返回表示 _x_ 的十进制数的码元的字符串值。
           </emu-alg>
         </emu-clause>
       </emu-clause>
@@ -2342,32 +2342,31 @@
         <p>内部槽对应于相关对象的内部状态，用于各种 ECMAScript 规范算法。内部槽不是对象的属性，也不会被继承。根据具体的内部槽规范，内部状态可能由任意 ECMAScript 语言类型的值或者指定的 ECMAScript 规范类型的值组成。除非另有指定，否则分配内部槽应作为创建一个对象的过程的部分，并且不应该动态地添加到对象上。除非另有指定，否则一个内部槽的初始值是 *undefined*。本规范内很多算法都会创建有内部槽的对象。然而，ECMAScript 语言不提供直接去访问一个对象内部槽的方法。</p>
         <p>本规范内的内部方法和内部槽使用闭合的双方括号 [[]] 来标识。</p>
         <p>表 <emu-xref href="#table-essential-internal-methods"></emu-xref> 总结了本规范中适用于所有通过 ECMAScript 代码创建或者操作的对象的<em><abbr title="essential internal methods">基本内部方法</abbr></em>。每个对象必须有所有基本内部方法的算法。不过，对于那些方法不必所有的对象都用一样的算法。</p>
-        <p>An <dfn id="ordinary-object">ordinary object</dfn> is an object that satisfies all of the following criteria:</p>
+        <p><dfn id="ordinary-object">普通对象</dfn>是一种满足所有如下准则的对象：</p>
         <ul>
           <li>
-            For the internal methods listed in <emu-xref href="#table-essential-internal-methods"></emu-xref>, the object uses those defined in <emu-xref href="#sec-ordinary-object-internal-methods-and-internal-slots"></emu-xref>.
+            对象使用<emu-xref href="#sec-ordinary-object-internal-methods-and-internal-slots"></emu-xref>来定义<emu-xref href="#table-essential-internal-methods"></emu-xref>列出的内部方法。
           </li>
           <li>
-            If the object has a [[Call]] internal method, it uses the one defined in <emu-xref href="#sec-ecmascript-function-objects-call-thisargument-argumentslist"></emu-xref>.
+            如果对象拥有 [[Call]] 内部方法，使用<emu-xref href="#sec-ecmascript-function-objects-call-thisargument-argumentslist"></emu-xref>定义。
           </li>
           <li>
-            If the object has a [[Construct]] internal method, it uses the one defined in <emu-xref href="#sec-ecmascript-function-objects-construct-argumentslist-newtarget"></emu-xref>.
+            如果对象拥有 [[Construct]] 内部方法，使用<emu-xref href="#sec-ecmascript-function-objects-construct-argumentslist-newtarget"></emu-xref>定义。
           </li>
         </ul>
-        <p>An <dfn id="exotic-object">exotic object</dfn> is an object that is not an ordinary object.</p>
-        <p>This specification recognizes different kinds of exotic objects by those objects' internal methods. An object that is behaviourally equivalent to a particular kind of exotic object (such as an Array exotic object or a bound function exotic object), but does not have the same collection of internal methods specified for that kind, is not recognized as that kind of exotic object.</p>
-        <p>The &ldquo;Signature&rdquo; column of <emu-xref href="#table-essential-internal-methods"></emu-xref> and other similar tables describes the invocation pattern for each internal method. The invocation pattern always includes a parenthesized list of descriptive parameter names. If a parameter name is the same as an ECMAScript type name then the name describes the required type of the parameter value. If an internal method explicitly returns a value, its parameter list is followed by the symbol &ldquo;&rarr;&rdquo; and the type name of the returned value. The type names used in signatures refer to the types defined in clause <emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref> augmented by the following additional names. &ldquo;<em>any</em>&rdquo; means the value may be any ECMAScript language type.</p>
-        <p>In addition to its parameters, an internal method always has access to the object that is the target of the method invocation.</p>
-        <p>An internal method implicitly returns a Completion Record, either a normal completion that wraps a value of the return type shown in its invocation pattern, or a throw completion.</p>
+        <p>本规范通过对象的内部方法来辨认不同种类的异质对象。一个对象在行为上等同于一种特定的异质对象（例如数组异质对象或已绑定函数异质对象），但不具备与之相同的特定内部方法的集合，则这个对象不会被认作是这个种类的异质对象。</p>
+        <p><emu-xref href="#table-essential-internal-methods"></emu-xref>和其他类似表格的中的“签名”一列描述了各个内部方法的调用模式.调用模式中总是含有一个被括号括起来列表，里面是描述性参数名。如果参数名和 ECMAScript 类型名称相同，则该名称用于描述参数值的类型。如果一个内部方法显式返回一个值，它的参数列表后会跟上符号 &ldquo;&rarr;&rdquo; 和返回值的类型名称。签名中类型名称指的是条款<emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref>中定义的类型，并通过额外的名称来增强说明。&ldquo;<em>any</em>&rdquo; 指的是任何可能的 ECMAScript 语言类型。</p>
+        <p>除了它的参数之外，内部方法总是能够访问方法调用的目标对象。</p>
+        <p>内部方法隐式返回<abbr title="Completion Record">完成记录</abbr>，要么是包含调用模式中出现的类型的值的<abbr title="normal completion">正常完成</abbr>，要么跑出一个异常。</p>
         <emu-table id="table-essential-internal-methods" caption="Essential Internal Methods" oldids="table-5">
           <table>
             <tbody>
               <tr>
                 <th>
-                  Internal Method
+                  内部方法
                 </th>
                 <th>
-                  Signature
+                  签名
                 </th>
                 <th>
                   Description
@@ -2503,13 +2502,13 @@
             <tbody>
               <tr>
                 <th>
-                  Internal Method
+                  内部方法
                 </th>
                 <th>
-                  Signature
+                  签名
                 </th>
                 <th>
-                  Description
+                  描述
                 </th>
               </tr>
               <tr>
@@ -2560,14 +2559,14 @@
             所有对 <em>SameValue</em> 的引用都是根据 SameValue 算法定义的。
           </li>
         </ul>
-        <h2>Return value:</h2>
-        <p>The value returned by any internal method must be a Completion Record with either:</p>
+        <h2>返回值：</h2>
+        <p>内部方法返回的值必须是包含以下内容的之一完成记录：</p>
         <ul>
-          <li>[[Type]] = ~normal~, [[Target]] = ~empty~, and [[Value]] = a value of the "normal return type" shown below for that internal method, or</li>
-          <li>[[Type]] = ~throw~, [[Target]] = ~empty~, and [[Value]] = any ECMAScript language value.</li>
+          <li>[[Type]] = ~normal~，[[Target]] = ~empty~，且 [[Value]] = 下面列出的“正常完成类型”的值，或者</li>
+          <li>[[Type]] = ~throw~，[[Target]] = ~empty~，且 [[Value]] = 任意 ECMAScript 语言类型。</li>
         </ul>
         <emu-note>
-          <p>An internal method must not return a completion with [[Type]] = ~continue~, ~break~, or ~return~.</p>
+          <p>内部方法禁止返回包含 [[Type]] = ~continue~、~break~ 或 ~return~ 的完成</p>
         </emu-note>
         <h2>[[GetPrototypeOf]] ( )</h2>
         <ul>
@@ -2617,7 +2616,7 @@
             如果返回的类型是 Property Descriptor，那么返回值必须是一个完整的 property descriptor (见<emu-xref href="#sec-completepropertydescriptor"></emu-xref>)。
           </li>
           <li>
-            If _P_ is described as a non-configurable, non-writable own data property, all future calls to [[GetOwnProperty]] ( _P_ ) must return Property Descriptor whose [[Value]] is SameValue as _P_'s [[Value]] attribute.
+            如果 _P_ 被描述为不可配置的、不可写的自身数据属性，后续所有对 [[GetOwnProperty]] ( _P_ ) 的调用必须返回一个<abbr title="Property Descriptor">属性描述符</abbr>，它的 [[Value]] 必须为 _P_ 的 [[Value]] 特性的 SameValue。
           </li>
           <li>
             如果 _P_ 属性除了 [[Writable]] 特性，其他特性在将来可能变化，或者属性可能被删除，那么 _P_ 的 [[Configurable]] 特性必须为 true。
